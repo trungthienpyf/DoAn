@@ -9,13 +9,13 @@ if(empty($_POST['name']) || empty($_POST['id']) ){
 	exit();
 }
 
-$check=mysqli_query($connect,"select * from manufactures where name='$name'");
+$check=mysqli_query($connect,"select * from manufacturers where name='$name'");
 $checkrows=mysqli_num_rows($check);
 if($checkrows>0){
 	header('location:form_update.php?id='.$id.'&error=Tên vừa nhập đã bị trùng!!');
 	exit();
 }else{
-	$sql="update manufactures 
+	$sql="update manufacturers 
 	set 
 	name='$name'
 	where id='$id'

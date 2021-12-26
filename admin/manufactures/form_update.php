@@ -7,7 +7,7 @@
 
 require '../connect.php';
 $id=$_GET['id'];
-$sql="select * from manufactures where id='$id'";
+$sql="select * from manufacturers where id='$id'";
 $result=mysqli_query($connect,$sql);
 $each=mysqli_fetch_array($result);
  ?>

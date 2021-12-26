@@ -8,7 +8,7 @@ $sql="select * from product where id='$id'";
 $result=mysqli_query($connect,$sql);
 $each=mysqli_fetch_array($result);
 
-$sql_nsx="select * from manufactures";
+$sql_nsx="select * from manufacturers";
 $result_nsx=mysqli_query($connect,$sql_nsx);
 
 $sql_the_loai="select * from category";
@@ -37,15 +37,15 @@ $result_the_loai=mysqli_query($connect,$sql_the_loai);
 		<textarea name="description"><?php echo $each['description']?></textarea>
 		<br>
 		Nhà sản xuất
-		<select name="id_manufactures"> 
-			<?php foreach ($result_nsx as $key => $manufactures) { ?>
+		<select name="id_manufacturers"> 
+			<?php foreach ($result_nsx as $key => $manufacturers) { ?>
 
-				<option value="<?php echo $manufactures['id'] ?>"
-						<?php if($manufactures['id'] == $each['id_category']) {?>
+				<option value="<?php echo $manufacturers['id'] ?>"
+						<?php if($manufacturers['id'] == $each['manufacturers_id']) {?>
 						selected
 						<?php } ?>
 						>
-					<?php echo $manufactures['name']?> 
+					<?php echo $manufacturers['name']?> 
 						
 					</option>
 
@@ -57,7 +57,7 @@ $result_the_loai=mysqli_query($connect,$sql_the_loai);
 			<?php foreach ($result_the_loai as $key => $categorys) { ?>
 
 				<option value="<?php echo $categorys['id']?>"
-					<?php if($categorys['id'] == $each['id_category']) { ?>
+					<?php if($categorys['id'] == $each['category_id']) { ?>
 						selected
 					<?php } ?>
 					>

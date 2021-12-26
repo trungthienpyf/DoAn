@@ -1,7 +1,7 @@
 <?php require'../menu_top.php'?>
 
 <?php require '../connect.php';
-$sql_nsx="select * from manufactures";
+$sql_nsx="select * from manufacturers";
 $result_nsx=mysqli_query($connect,$sql_nsx);
 
 $sql_the_loai="select * from category";
@@ -24,7 +24,7 @@ $result_the_loai=mysqli_query($connect,$sql_the_loai);
 		<textarea name="description"></textarea>
 		<br>
 		Nhà sản xuất
-		<select name="id_manufactures"> 
+		<select name="id_manufacturers"> 
 			<?php foreach ($result_nsx as $key => $each) { ?>
 
 				<option value="<?php echo $each['id']?>">

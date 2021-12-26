@@ -1,7 +1,7 @@
 <?php
 require '../connect.php';
 $id=$_GET['id'];
-$sql="delete from manufactures where id='$id'";
+$sql="delete from manufacturers where id='$id'";
 mysqli_query($connect,$sql);
 
 mysqli_close($connect);

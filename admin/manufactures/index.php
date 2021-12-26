@@ -8,7 +8,7 @@
 
 require '../connect.php'; 
 
-$sql="select * from manufactures";
+$sql="select * from manufacturers";
 $result=mysqli_query($connect,$sql);	
 
 ?>

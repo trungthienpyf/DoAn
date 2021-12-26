@@ -21,12 +21,12 @@ if($img_new['size']>0){
 }
 
 $description=$_POST['description'];
-$id_manufactures=$_POST['id_manufactures'];
+$id_manufacturers=$_POST['id_manufacturers'];
 $id_category=$_POST['id_category'];
 require '../connect.php';
 
 if(empty($name) || empty($price) || empty($description)
- || empty($id_manufactures) || empty($id_category) ){
+ || empty($id_manufacturers) || empty($id_category) ){
 	header('location:form_insert.php?error=Hãy nhập đầy đủ thông tin');
 exit();
 }
@@ -37,8 +37,8 @@ name='$name',
 price='$price',
 img='$file_name',
 description='$description',
-id_manufactures='$id_manufactures',
-id_category='$id_category'
+manufacturers_id='$manufacturers',
+category_id='$id_category'
 where id='$id'
 ";
 

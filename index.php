@@ -48,6 +48,7 @@
                         <img src="admin/product/photos/<?php echo $each['img'] ?>" alt="">
                         <h6><?php echo $each['name'] ?></h6>
                         <p> <?php echo $each['price'] ?> </p>
+                        <a href="product_detail.php?id=<?php echo $each['id']?>">Xem chi tiết</a>
                     </li>
                 <?php
                     if ($count >= 4) {

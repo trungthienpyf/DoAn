@@ -1,11 +1,12 @@
-<!-- Footer start -->
+<link rel="stylesheet" href="assets/css/footer.css">
+
 <footer>
         <div class="footer">
             <table class="tbf">
                 <tr>
                     <td>
                         <div class="footer_logo">
-                            <label for="" class="logo">Logo</label>
+                            <label for="" class="logo"><h2>Logo</h2></label>
 
                         </div>
                     </td>
@@ -36,4 +37,3 @@
 
         </div>
     </footer>
-    <!-- Footer end -->

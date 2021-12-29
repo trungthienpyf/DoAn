@@ -19,7 +19,7 @@
      from product
      join manufacturers ON product.manufacturers_id=manufacturers.id;";
     $result = mysqli_query($connect, $sql);
-    
+
     ?>
     <!-- Connect end-->
 
@@ -41,22 +41,21 @@
         <div class="main_001">
             <h3>Sản phẩm mới</h3>
             <ul>
-                <?php $count = 0;
-                foreach ($result as $each) :
-                ?>
+                <?php $count = 0; ?>
+                <?php foreach ($result as $each) : ?>
                     <li>
-                        <img src="admin/product/photos/<?php echo $each['img'] ?>" alt="">
-                        <h6><?php echo $each['name'] ?></h6>
+                        <a href="">
+                            <img src="admin/product/photos/<?php echo $each['img'] ?>" alt="">
+                        </a>
+                        <a href=""><?php echo $each['name'] ?></a>
                         <p> <?php echo $each['price'] ?> </p>
-                        <a href="product_detail.php?id=<?php echo $each['id']?>">Xem chi tiết</a>
                     </li>
-                <?php
+                    <?php
                     if ($count >= 4) {
                         break;
                     }
-                    $count++;
-                endforeach
-                ?>
+                    $count++; ?>
+                <?php endforeach ?>
             </ul>
             <a href="products.php"><button>Xem thêm</button></a>
 

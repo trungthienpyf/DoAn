@@ -3,7 +3,7 @@
 
 $sql="select * from category ";
 
-$result=mysqli_query($connect,$sql);
+$result_category=mysqli_query($connect,$sql);
 
 ?>
 
@@ -29,7 +29,7 @@ $result=mysqli_query($connect,$sql);
                     <a href="products.php">Cửa hàng</a>
                 </li>
 
-                <?php  foreach ($result as $key => $each) {?>
+                <?php  foreach ($result_category as $key => $each) {?>
                    
                 
                 <li>

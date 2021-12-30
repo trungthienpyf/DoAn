@@ -1,3 +1,12 @@
+
+<?php require 'admin/connect.php';
+
+$sql="select * from category ";
+
+$result=mysqli_query($connect,$sql);
+
+?>
+
 <link rel="stylesheet" href="assets/css/header.css">
 <header>
     <nav class="header">
@@ -19,8 +28,12 @@
                 <li>
                     <a href="products.php">Cửa hàng</a>
                 </li>
+
+                <?php  foreach ($result as $key => $each) {?>
+                   
+                
                 <li>
-                    <a href="products.php">Áo</a>
+                    <a href="products_category.php?id=<?php echo $each['id']?>"><?php echo $each['name']?></a>
                     <div class="sub_menu">
                         <ul>
                             <li> <a href="">Áo thun</a></li>
@@ -30,18 +43,8 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="products.php">Quần</a>
-                    <div class="sub_menu">
-                        <ul>
-                            <li><a href="">Quần short</a></li>
-                            <li><a href="">Quần dài</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="products.php">Phụ kiện</a>
-                </li>
+                 <?php }?>
+                
             </ul>
 
         </div>

@@ -38,7 +38,7 @@ price='$price',
 img='$file_name',
 description='$description',
 manufacturers_id='$id_manufacturers',
-category_id='$id_category'
+category_detail_id='$id_category'
 where id='$id'
 ";
 

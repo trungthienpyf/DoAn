@@ -85,7 +85,12 @@
 			<ul class="navbar-body">
 				<li class="navbar-list"><a href="" class="navbar-item">Trang Chủ</a></li>
 				<li class="navbar-list"><a href="../manufactures" class="navbar-item">Quản lý nhà sản xuất</a></li>
-				<li class="navbar-list"><a href="../category" class="navbar-item">Quản lý danh mục</a></li>
+				<li class="navbar-list"><a href="../category" class="navbar-item">Quản lý danh mục</a>
+					<ul class="navbar-body">
+						<li class="navbar-list"><a href="../category_sub" class="navbar-item">Quản lý danh mục phụ</a></li>
+					</ul>
+				</li>
+				
 				<li class="navbar-list"><a href="../product" class="navbar-item">Sản phẩm</a></li>
 				<li class="navbar-list"><a href="" class="navbar-item">Đơn hàng</a></li>
 			</ul>

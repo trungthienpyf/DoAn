@@ -24,7 +24,7 @@ move_uploaded_file($img["tmp_name"], $path_file);
 
 
 
-$sql="insert into product(name,description,img,price,manufacturers_id,category_id) 
+$sql="insert into product(name,description,img,price,manufacturers_id,category_detail_id) 
 values('$name','$description','$file_name','$price','$id_manufacturers','$id_category')";
 
 

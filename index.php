@@ -47,7 +47,9 @@
                             <img src="admin/product/photos/<?php echo $each['img'] ?>">
                         </a>
                         <a href=""><?php echo $each['name'] ?></a>
-                        <p> <?php echo $each['price'] ?> </p>
+                        <p> <?php echo number_format($each['price'], 0, '', ',');?> vnđ</p>
+                        <a href="add_cart.php?id=<?php echo $each['id']?>">Thêm vào giỏ hàng</a>
+
                     </li>
                     <?php
                     if ($count >= 4) {

@@ -49,7 +49,7 @@ $result_category=mysqli_query($connect,$sql);
 
         </div>
         <div class="icon">
-            <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+            <a href="view_cart.php"><i class="fas fa-shopping-cart"></i></a>
             <a href=""><i class="fas fa-user"></i></a>
         </div>
     </nav>

@@ -36,7 +36,7 @@
 		<div class="navbar">
 			<ul class="navbar-body">
 				
-				<li class="navbar-list pointer " id="category"><a class="navbar-item head_color">Danh mục <i id="toggle_icon" class="fas fa-sort-down icon_padding"></i></a>
+				<li class="navbar-list pointer " id="category"><a class="navbar-item head_color">Danh mục <i id="toggle_icon" class="fas fa-chevron-right icon_padding"></i></a>
 				</li>
 				<div id="category_sub" class="display_click">
 				<li class="navbar-list_sub  animation_nav "><a href="../category" class="navbar-item">Quản lý danh mục chính</a></li>	

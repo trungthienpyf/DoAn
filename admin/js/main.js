@@ -6,5 +6,7 @@ category.onclick= function (e) {
 	console.log('1');
 	document.getElementById('category_sub').classList.toggle('display_click');
 	
-	document.getElementById('toggle_icon').classList.toggle('fa-sort-down');
+	document.getElementById('toggle_icon').classList.toggle('fa-chevron-right');
+	document.getElementById('toggle_icon').classList.toggle('fa-chevron-down');
+	
 }

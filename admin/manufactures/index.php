@@ -14,8 +14,8 @@ $result=mysqli_query($connect,$sql);
 ?>
 	<table  width="100%">
 		<tr>
-			<th>id</th>
-			<th>tên</th>
+			<th>ID</th>
+			<th>Tên</th>
 			<!-- <th>Sửa</th>
 			<th>Xóa</th> -->
 		</tr>

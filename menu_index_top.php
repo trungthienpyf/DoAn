@@ -31,10 +31,5 @@
 
 
     <!-- Main start -->
-    <div>
-        <div>
-            <img src="assets/img/pexels-pixabay-325876.jpg" alt="" class="img_banner">
-        </div>
-    </div>
-
+    
     <div class="main">

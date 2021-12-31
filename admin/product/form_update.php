@@ -11,7 +11,7 @@ $each=mysqli_fetch_array($result);
 $sql_nsx="select * from manufacturers";
 $result_nsx=mysqli_query($connect,$sql_nsx);
 
-$sql_the_loai="select * from category";
+$sql_the_loai="select * from category_detail";
 $result_the_loai=mysqli_query($connect,$sql_the_loai);
 ?>
 	<form action="process_update.php" method="post" enctype="multipart/form-data">
@@ -57,7 +57,7 @@ $result_the_loai=mysqli_query($connect,$sql_the_loai);
 			<?php foreach ($result_the_loai as $key => $categorys) { ?>
 
 				<option value="<?php echo $categorys['id']?>"
-					<?php if($categorys['id'] == $each['category_id']) { ?>
+					<?php if($categorys['id'] == $each['category_detail_id']) { ?>
 						selected
 					<?php } ?>
 					>

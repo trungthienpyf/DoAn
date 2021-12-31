@@ -4,7 +4,7 @@
 $sql_nsx="select * from manufacturers";
 $result_nsx=mysqli_query($connect,$sql_nsx);
 
-$sql_the_loai="select * from category";
+$sql_the_loai="select * from category_detail";
 $result_the_loai=mysqli_query($connect,$sql_the_loai);
 ?>
 	<form action="process_insert.php" method="post" enctype="multipart/form-data">

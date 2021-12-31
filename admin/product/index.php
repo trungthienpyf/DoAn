@@ -7,10 +7,10 @@ $result=mysqli_query($connect,$sql);
 
 
 ?>
-	<a style="float:right;" href="form_insert.php">Thêm sản phẩm</a>
+	<a class="create_title" href="form_insert.php">Thêm sản phẩm</a>
 	<table border="1" width="100%">
 		<tr>
-		<th >id</th>
+		<th >ID</th>
 		<th >Tên</th>
 		<th >Mô tả</th>
 		<th >Ảnh</th>
@@ -26,12 +26,12 @@ $result=mysqli_query($connect,$sql);
 				<td>
 					<img width="80" src="photos/<?php echo $each['img'] ?>" alt="">
 				</td> 
-				<td><?php echo $each['price'] ?> đ</td> 
-				<td>
-					<a href="form_update.php?id=<?php echo $each['id']?>">Sửa</a>
+				<td><?php echo number_format($each['price'] , 0, '', ','); ?> đ</td> 
+				<td >
+					<a class="delete_style" href="form_update.php?id=<?php echo $each['id']?>">Sửa</a>
 				</td> 
 			 	<td>
-					<a href="process_delete.php?id=<?php echo $each['id']?>">Xóa</a>
+					<a class="delete_style" href="process_delete.php?id=<?php echo $each['id']?>">Xóa</a>
 				</td> 
 			</tr>
 		<?php } ?> 

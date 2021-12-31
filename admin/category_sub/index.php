@@ -3,7 +3,7 @@
 
 <?php require '../connect.php';
 
-$sql="select * from category";
+$sql="select * from category_detail";
 $result=mysqli_query($connect,$sql);
 ?>
 		<a class="create_title" href="form_insert.php">Thêm thể loại</a>

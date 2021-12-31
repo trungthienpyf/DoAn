@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2021 at 11:08 AM
+-- Generation Time: Dec 31, 2021 at 09:23 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -88,11 +88,11 @@ INSERT INTO `category_detail` (`id`, `name`, `category_id`) VALUES
 (16, 'Jacket', 1),
 (17, 'Hoodie / sweater', 1),
 (18, 'Áo sơmi', 1),
-(19, 'Quần dài', 1),
-(20, 'Quần short', 1),
-(21, 'Mũ / nón', 1),
-(22, 'Tát  ', 1),
-(23, 'Balo / túi', 1),
+(19, 'Quần dài', 2),
+(20, 'Quần short', 2),
+(21, 'Mũ / nón', 5),
+(22, 'Tát  ', 5),
+(23, 'Balo / túi', 5),
 (27, 'Áo ba lỗ', 1),
 (28, 'Quần sịp', 2),
 (33, '$quan dai', 2),
@@ -196,9 +196,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `img`, `price`, `manufacturers_id`, `category_detail_id`) VALUES
-(40, 'depge', 'dep ghe', '1640855994.jpg', 11111, 50, 34),
-(41, '123123', '111', '1640857805.jpg', 11, 48, 34),
-(42, 'ao', 'ao', '1640857902.jpg', 11, 48, 15);
+(43, '11', '1111', '1640859383.jpg', 111, 48, 15),
+(44, '123123', '123123', '1640859568.jpg', 123123, 48, 18),
+(45, '123123', '123123', '1640859575.jpg', 12312, 48, 15);
 
 --
 -- Indexes for dumped tables
@@ -319,7 +319,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Constraints for dumped tables

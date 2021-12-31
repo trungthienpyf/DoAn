@@ -1,7 +1,7 @@
 
 <?php include'../menu_top.php'; ?>
 	
-	<a style="float: right;" href="form_insert.php">Thêm nhà sản xuất</a>
+	<a class="create_title" href="form_insert.php">Thêm nhà sản xuất</a>
 	
 
 <?php 
@@ -12,7 +12,7 @@ $sql="select * from manufacturers";
 $result=mysqli_query($connect,$sql);	
 
 ?>
-	<table border="1" width="100%">
+	<table  width="100%">
 		<tr>
 			<th>id</th>
 			<th>tên</th>

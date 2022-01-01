@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 31, 2021 at 09:23 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Host: localhost:3306
+-- Generation Time: Jan 01, 2022 at 11:14 AM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,7 +65,7 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id`, `name`) VALUES
 (1, 'Áo'),
 (2, 'Quần'),
-(5, 'Phụ kiện');
+(3, 'Phụ kiện');
 
 -- --------------------------------------------------------
 
@@ -84,19 +84,17 @@ CREATE TABLE `category_detail` (
 --
 
 INSERT INTO `category_detail` (`id`, `name`, `category_id`) VALUES
-(15, 'Áo thun', 1),
-(16, 'Jacket', 1),
-(17, 'Hoodie / sweater', 1),
-(18, 'Áo sơmi', 1),
+(1, 'Áo thun', 1),
+(2, 'Jacket', 1),
+(3, 'Hoodie', 1),
+(4, 'Sweater', 1),
+(5, 'Áo sơmi', 1),
+(6, 'Áo ba lỗ', 1),
 (19, 'Quần dài', 2),
 (20, 'Quần short', 2),
-(21, 'Mũ / nón', 5),
-(22, 'Tát  ', 5),
-(23, 'Balo / túi', 5),
-(27, 'Áo ba lỗ', 1),
-(28, 'Quần sịp', 2),
-(33, '$quan dai', 2),
-(34, 'dep le', 5);
+(21, 'Mũ / nón', 3),
+(22, 'Tất ', 3),
+(23, 'Balo / túi', 3);
 
 -- --------------------------------------------------------
 
@@ -107,7 +105,7 @@ INSERT INTO `category_detail` (`id`, `name`, `category_id`) VALUES
 CREATE TABLE `comment_product` (
   `id` int(11) NOT NULL,
   `content` text NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -166,7 +164,7 @@ INSERT INTO `manufacturers` (`id`, `name`) VALUES
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `name_receive` varchar(50) NOT NULL,
   `phone_receive` varchar(11) NOT NULL,
   `address_receive` text NOT NULL,
@@ -196,9 +194,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `img`, `price`, `manufacturers_id`, `category_detail_id`) VALUES
-(43, '11', '1111', '1640859383.jpg', 111, 48, 15),
-(44, '123123', '123123', '1640859568.jpg', 123123, 48, 18),
-(45, '123123', '123123', '1640859575.jpg', 12312, 48, 15);
+(43, '11', 'Mang vẻ ngoài bụi bặm, mộc mạc và được lấy cảm hứng từ những bộ quân phục của nhiều binh chủng trong quân đội, Vintas \"The New Military\" đem lại một \"chất lính\" rất riêng cho những ai yêu phong cách \"Military\" và những tâm hồn điềm đạm, kiên cường đầy tinh tế.', '1640859383.jpg', 111, 48, 22),
+(44, '123123', 'Mang vẻ ngoài bụi bặm, mộc mạc và được lấy cảm hứng từ những bộ quân phục của nhiều binh chủng trong quân đội, Vintas \"The New Military\" đem lại một \"chất lính\" rất riêng cho những ai yêu phong cách \"Military\" và những tâm hồn điềm đạm, kiên cường đầy tinh tế.', '1640859568.jpg', 123123, 48, 22),
+(45, '123123', 'Mang vẻ ngoài bụi bặm, mộc mạc và được lấy cảm hứng từ những bộ quân phục của nhiều binh chủng trong quân đội, Vintas \"The New Military\" đem lại một \"chất lính\" rất riêng cho những ai yêu phong cách \"Military\" và những tâm hồn điềm đạm, kiên cường đầy tinh tế.', '1640859575.jpg', 12312, 48, 22);
 
 --
 -- Indexes for dumped tables
@@ -283,13 +281,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category_detail`
 --
 ALTER TABLE `category_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `comment_product`

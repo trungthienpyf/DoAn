@@ -1,3 +1,6 @@
+<!-- Connect start -->
+<?php require 'admin/connect.php'; ?>
+<!-- Connect end-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,49 +61,43 @@
             <div class="cate_item">
                 <h5>Áo</h5>
                 <ul>
-                    <li>
-                        <a href="">Áo thun</a>
-                    </li>
-                    <li>
-                        <a href="">Jacket</a>
-                    </li>
-                    <li>
-                        <a href="">Hoodie / Sweater</a>
-                    </li>
-                    <li>
-                        <a href="">Áo sơmi</a>
-                    </li>
+                    <?php
+                    $sql_top = "select * from category_detail where category_id=1";
+                    $result_top = mysqli_query($connect, $sql_top);
+                    ?>
+                    <?php foreach ($result_top as $each) { ?>
+                        <li> <a href=""><?php echo $each['name'] ?></a></li>
+
+                    <?php } ?>
                 </ul>
             </div>
             <div class="cate_item">
                 <h5>Quần</h5>
                 <ul>
-                    <li>
-                        <a href="">Quần short</a>
-                    </li>
-                    <li>
-                        <a href="">Quần dài</a>
-                    </li>
+                    <?php
+                    $sql_top = "select * from category_detail where category_id=2";
+                    $result_top = mysqli_query($connect, $sql_top);
+                    ?>
+                    <?php foreach ($result_top as $each) { ?>
+                        <li> <a href=""><?php echo $each['name'] ?></a></li>
+                    <?php } ?>
                 </ul>
             </div>
             <div class="cate_item">
                 <h5>Phụ kiện</h5>
                 <ul>
-                    <li>
-                        <a href="">Mũ</a>
-                    </li>
-                    <li>
-                        <a href="">Tất / vớ</a>
-                    </li>
-                    <li>
-                        <a href="">Balo / túi</a>
-                    </li>
+                    <?php
+                    $sql_top = "select * from category_detail where category_id=3";
+                    $result_top = mysqli_query($connect, $sql_top);
+                    ?>
+                    <?php foreach ($result_top as $each) { ?>
+                        <li> <a href=""><?php echo $each['name'] ?></a></li>
+                    <?php } ?>
                 </ul>
             </div>
 
         </div>
         <div class="products">
-
             <div class="header_product">
                 <div class="title_product">
                     <h3>Tất cả sản phẩm</h3>
@@ -119,13 +116,13 @@
                 <?php foreach ($show_product as $each) { ?>
                     <div class="thumbnail">
                         <div class="image">
-                            <a href="product-detail">
+                            <a href="product_detail.php?id=<?php echo $each['id'] ?>">
                                 <img class="img_thumb" src="admin/product/photos/<?php echo $each['img'] ?>">
                             </a>
                         </div>
                         <div class="caption">
                             <a href=""><?php echo $each['name'] ?></a>
-                            <p class="price"><?php echo $each['price'] ?>đ</p>
+                            <p class="price"><?php echo number_format($each['price'], 0, '', '.'); ?> đ</p>
                         </div>
                     </div>
                 <?php } ?>
@@ -135,12 +132,10 @@
                 <hr>
                 <br>
                 <div class="number">
-
                     <?php
                     if ($page > 1) { ?>
                         <a id="arrow_left" href="?page=<?php echo $page - 1 ?>"><i class="fas fa-angle-double-left"></i></a>
                     <?php } ?>
-
 
                     <?php for ($i = 1; $i <= $number_page; $i++) { ?>
                         <?php if ($i == $page) { ?>
@@ -154,19 +149,16 @@
                         <?php } ?>
                     <?php  } ?>
 
-
                     <?php
                     if ($page < $number_page) { ?>
                         <a id="arrow_right" href="?page=<?php echo $page + 1 ?>"><i class="fas fa-angle-double-right"></i></a>
                     <?php } ?>
-
                 </div>
             </div>
         </div>
 
     </div>
     <!-- Main end -->
-    <p id="number_page"><?php echo $number_page ?></p>
 
     <!-- Footer start -->
     <?php include 'footer.php' ?>

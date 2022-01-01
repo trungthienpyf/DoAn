@@ -1,11 +1,4 @@
-
-<?php require 'admin/connect.php';
-
-$sql="select * from category ";
-
-$result_category=mysqli_query($connect,$sql);
-
-?>
+<?php require 'admin/connect.php'; ?>
 
 <link rel="stylesheet" href="assets/css/header.css">
 <header>
@@ -28,23 +21,49 @@ $result_category=mysqli_query($connect,$sql);
                 <li>
                     <a href="products.php">Cửa hàng</a>
                 </li>
-
-                <?php  foreach ($result_category as $key => $each) {?>
-                   
-                
                 <li>
-                    <a href="products_category.php?id=<?php echo $each['id']?>"><?php echo $each['name']?></a>
+                    <a href="products.php">Áo <i class="fas fa-caret-down"></i></a>
                     <div class="sub_menu">
+                        <?php
+                        $sql_category = "select * from category_detail where category_id=1";
+                        $result_category = mysqli_query($connect, $sql_category);
+                        ?>
                         <ul>
-                            <li> <a href="">Áo thun</a></li>
-                            <li><a href="">Jacket</a></li>
-                            <li><a href="">Hoodie</a></li>
-                            <li><a href="">Somi</a></li>
+                            <?php foreach ($result_category as $each) { ?>
+                                <li><a href=""><?php echo $each['name'] ?></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </li>
-                 <?php }?>
-                
+                <li>
+                    <a href="products.php">Quần <i class="fas fa-caret-down"></i></a>
+                    <div class="sub_menu">
+                        <?php
+                        $sql_category = "select * from category_detail where category_id=2";
+                        $result_category = mysqli_query($connect, $sql_category);
+                        ?>
+                        <ul>
+                            <?php foreach ($result_category as $each) { ?>
+                                <li><a href=""><?php echo $each['name'] ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="products.php">Phụ kiện <i class="fas fa-caret-down"></i></a>
+                    <div class="sub_menu">
+                        <?php
+                        $sql_category = "select * from category_detail where category_id=3";
+                        $result_category = mysqli_query($connect, $sql_category);
+                        ?>
+                        <ul>
+                            <?php foreach ($result_category as $each) { ?>
+                                <li><a href=""><?php echo $each['name'] ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </li>
+
             </ul>
 
         </div>

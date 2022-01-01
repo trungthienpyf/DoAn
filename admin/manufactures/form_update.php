@@ -1,12 +1,17 @@
+<?php require '../check_super_admin_login.php';?>
+
 <?php include'../menu_top.php'; ?>
 <?php 
- 	if(empty($_GET['id'])){
+ 	
+
+require '../connect.php';
+$id=$_GET['id'];
+if(empty($_GET['id'])){
  		header('location:index.php?error=Phải điền mã');
 		exit();
  	}
 
-require '../connect.php';
-$id=$_GET['id'];
+
 $sql="select * from manufacturers where id='$id'";
 $result=mysqli_query($connect,$sql);
 $each=mysqli_fetch_array($result);

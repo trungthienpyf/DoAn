@@ -67,7 +67,7 @@ $result = mysqli_fetch_array($result_sql, MYSQLI_ASSOC);
 					<p class="price_word"><?php echo number_format($result['price'], 0, '', '.');  ?> ₫</p>
 				</div>
 				<div class="button">
-					<a href="" class="add_cart"><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng </a>
+					<a href="add_cart.php?id=<?php echo $result['id']?>" class="add_cart"><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng </a>
 					<a href="">Mua ngay</a>
 				</div>
 				<div class="description">

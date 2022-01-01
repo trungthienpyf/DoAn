@@ -1,3 +1,5 @@
+<?php require '../check_super_admin_login.php';?>
+
 <?php
 require '../connect.php';
 $id=$_GET['id'];

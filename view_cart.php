@@ -6,6 +6,8 @@ session_start();
 $cart=$_SESSION['cart'];
 $key=1;
 $sum=0;
+
+
 ?>
 	<div class="title_product" style="padding-bottom: 15px; margin-left: -150px;"><h3>Giỏ hàng</h3></div>
 

@@ -1,6 +1,16 @@
+
+
+<?php require '../check_admin_login.php';?>
+
 <?php require'../menu_top.php'?>
 
 <?php require '../connect.php';
+
+if(empty($_GET['id'])){
+	header('location:index.php?error=Phải truyền mã');
+	exit();
+}
+
 
 $id=$_GET['id'];
 

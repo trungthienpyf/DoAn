@@ -1,3 +1,6 @@
+<?php require '../check_admin_login.php';?>
+
+
 <?php require'../menu_top.php'?>
 <?php require '../connect.php';
 

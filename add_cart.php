@@ -17,5 +17,6 @@ if(empty($_SESSION['cart'][$id])){
 	$_SESSION['cart'][$id]['quantity']++;
 }
 
-print_r($_SESSION['cart']);
+
+header('location:product_detail.php?id='.$id);
 	

@@ -3,6 +3,10 @@
 
 session_start();
 
+// if(empty($_GET['id'])){
+// 	header('location:view_cart.php');
+// 	exit();
+// }
 $id=$_GET['id'];
 $type=$_GET['type'];
 if($type==='decrease'){

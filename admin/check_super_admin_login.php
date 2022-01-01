@@ -1,7 +1,6 @@
 <?php 
-
 session_start();
 
-if(!empty($_SESSION['level'])){
+if(empty($_SESSION['level'])){
 	header('location:../index.php');
 }

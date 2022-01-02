@@ -3,6 +3,7 @@
 <?php 
 session_start();
 
+if(isset($_SESSION['cart'])){
 $cart=$_SESSION['cart'];
 $key=1;
 $sum=0;
@@ -10,19 +11,19 @@ $sum=0;
 
 ?>
 	<div class="title_product" style="padding-bottom: 15px; margin-left: -150px;"><h3>Giỏ hàng</h3></div>
-
+	<?php foreach ($cart as $id => $each) { ?>
 	<table border="1" width="100%">
 		<tr>
-			<th>id</th>
-			<th>ten</th>
-			<th>img</th>
-			<th>giá</th>
-			<th>số lượng</th>
-			<th>tiền</th>
+			<th>ID</th>
+			<th>Tên</th>
+			<th>Hình ảnh</th>
+			<th>Giá</th>
+			<th>Số lượng</th>
+			<th>Tiền</th>
 			<th>Xóa</th>
 			
 		</tr>
-		<?php foreach ($cart as $id => $each) {?>
+		
 			<tr>
 				<td><?php echo $key++ ?></td>
 
@@ -45,10 +46,14 @@ $sum=0;
 				<td><a href="delete_product.php?id=<?php echo $id ?>">X</a></td>
 
 			</tr>
-		<?php } ?>
+	
 
 	</table>
+
 		<div><h5>Tổng tiền: <?php echo  number_format($sum, 0, '', ',');?> vnđ</h5></div>
+	<?php } ?>
+<?php  }?>
+
 
 	
 

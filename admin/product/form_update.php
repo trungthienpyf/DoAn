@@ -5,14 +5,17 @@
 <?php require'../menu_top.php'?>
 
 <?php require '../connect.php';
-
-if(empty($_GET['id'])){
+$id=$_GET['id'];
+$sql="select * from product where id ='$id'";
+$check=mysqli_query($connect,$sql);
+$checkrows=mysqli_num_rows($check);
+if(empty($_GET['id']) || $checkrows!==1){
 	header('location:index.php?error=Phải truyền mã');
 	exit();
 }
 
 
-$id=$_GET['id'];
+
 
 $sql="select * from product where id='$id'";
 $result=mysqli_query($connect,$sql);

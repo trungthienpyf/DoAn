@@ -27,7 +27,7 @@ $id_manufacturers=$_POST['id_manufacturers'];
 $id_category=$_POST['id_category'];
 require '../connect.php';
 
-if(empty($name) || empty($price) || empty($description)
+if(empty($id) ||empty($name) || empty($price) || empty($description)
  || empty($id_manufacturers) || empty($id_category) ){
 	header('location:form_insert.php?error=Hãy nhập đầy đủ thông tin');
 exit();
@@ -44,10 +44,9 @@ category_detail_id='$id_category'
 where id='$id'
 ";
 
-
 mysqli_query($connect,$sql);
 
 
 mysqli_close($connect);
 
-	header('location:index.php?success=Sửa thành công');
+header('location:index.php?success=Sửa thành công');

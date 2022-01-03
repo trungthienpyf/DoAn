@@ -27,7 +27,8 @@ $result_nsx=mysqli_query($connect,$sql_nsx);
 $sql_the_loai="select * from category_detail";
 $result_the_loai=mysqli_query($connect,$sql_the_loai);
 ?>
-	<form action="process_update.php" method="post" enctype="multipart/form-data">
+	<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Sửa sản phẩm</h2>
+	<form  style="padding:20px;" action="process_update.php" method="post" enctype="multipart/form-data">
 		Tên sản phẩm 
 		<br>
 		<input type="hidden" name="id" value="<?php echo $each['id']?>">
@@ -81,6 +82,9 @@ $result_the_loai=mysqli_query($connect,$sql_the_loai);
 			<?php }  ?>
 		</select>
 		<br>
-		<button>Sửa</button>
+		<div>
+		<button class="btn">Sửa</button>
+			
+		</div>
 	</form>
 <?php require'../menu_bottom.php'?>

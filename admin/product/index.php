@@ -9,7 +9,7 @@ $result=mysqli_query($connect,$sql);
 
 
 
-?>
+?>	<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Sản phẩm</h2>
 	<a class="create_title" href="form_insert.php">Thêm sản phẩm</a>
 	<table border="1" width="100%">
 		<tr>

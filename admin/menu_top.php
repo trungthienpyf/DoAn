@@ -26,7 +26,7 @@
 				<li class="header-list "><a href="" class="header-item header-item--effect" >Hello <?php echo $each['name']?> 
 				 <!-- <i id="toggle_icon" class="fas fa-sort-down "></i> -->
 				</a></li>
-				<li class="header-list"><a href="log_out.php" class="header-item " >Đăng xuất
+				<li class="header-list"><a href="../log_out.php" class="header-item " >Đăng xuất
 				 <!-- <i id="toggle_icon" class="fas fa-sort-down "></i> -->
 				</a></li>
 			</ul>

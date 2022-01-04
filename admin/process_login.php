@@ -5,6 +5,8 @@ require 'connect.php';
 $email=$_POST['email'];
 
 $password=$_POST['password'];
+$password=stripcslashes($password);
+$password=mysqli_real_escape_string($connect,$password);
 
 $sql="select * from admin where email='$email' and password='$password'";
 

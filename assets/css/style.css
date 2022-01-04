@@ -46,17 +46,17 @@ a:hover {
 button {
     font-size: 14px;
     padding: 7px 23px;
-    border-radius: 5px;
+    border-radius: none;
     border: none;
-    color: #2e4c6d;
-    background-color: #77c0fc;
+    color: #fff;
+    background-color: #457b9d;
     display: block;
     margin: auto;
     font-weight: 600;
     cursor: pointer;
 }
 button:hover {
-    background-color: #a8dadc;
+    background-color: #6ca4c7;
     transition: 0.15s;
 }
 
@@ -66,4 +66,7 @@ select {
 }
 select:focus-visible {
     outline: none;
+}
+i {
+    color: #457b9d;
 }

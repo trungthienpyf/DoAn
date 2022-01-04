@@ -1,3 +1,15 @@
+.header .logo {
+    width: 25%;
+}
+.header .menu {
+    width: 50%;
+    text-align: center;
+}
+.header .icon {
+    width: 25%;
+    padding-right: 100px;
+    text-align: center;
+}
 /*  header */
 .header {
     background-color: #fff;
@@ -20,9 +32,7 @@
     cursor: pointer;
     display: none;
 }
-.header .logo {
-    width: 15%;
-}
+/*logo*/
 .header .logo > a {
     color: #457b9d;
     font-size: 45px;
@@ -33,11 +43,7 @@
 .header .logo > a:hover {
     text-decoration: none;
 }
-
-.header .menu {
-    width: 70%;
-    text-align: center;
-}
+/*menu*/
 .header .menu ul.ul_1 {
     height: 80px;
     display: flex;
@@ -60,6 +66,7 @@
     text-decoration: none;
 }
 
+/*submenu*/
 .header .sub_menu {
     display: none;
     background-color: #fff;
@@ -69,7 +76,7 @@
     display: block;
     position: absolute;
     margin-left: -2%;
-    margin-top: 8px;
+    padding-top: 8px;
 }
 
 .header .menu ul.ul_1 li:hover .sub_menu ul {
@@ -91,20 +98,59 @@
     border: none;
 }
 
-.header .icon {
-    width: 15%;
-    padding-right: 100px;
-    text-align: end;
+.header .icon ul.ul_2 li:hover .sub_menu {
+    display: block;
+    position: absolute;
+    border: #457b9d 1px solid;
+    margin-top: -5px;
+}
+.header .icon ul.ul_2 li:hover .sub_menu ul {
+    display: block;
+}
+.header .icon ul.ul_2 li:hover .sub_menu ul li {
+    padding: 3px;
+    border-bottom: #457b9d 1px solid;
+}
+.header .icon ul.ul_2 li:hover .sub_menu ul li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.header .icon ul.ul_2 li:hover .sub_menu ul li a:hover {
+    transition: 0.25s;
+    color: #e63946;
+    text-decoration: none;
+    border: none;
+}
+
+/*icon*/
+.header .icon ul.ul_2 {
+    display: flex;
+    justify-content: end;
+}
+.header .icon ul.ul_2 li {
+    margin: 0 20px;
+}
+.header .icon a {
+    color: #457b9d;
+}
+.header .icon a:hover {
+    color: #e63946;
+    text-decoration: none;
 }
 .header .icon a i {
-    font-size: 25px;
-    color: #457b9d;
+    font-size: 22px;
     line-height: 80px;
     border-radius: 3px;
-    padding: 0 15px;
+    padding: 0 5px 0;
 }
 .header .icon a i:hover {
     color: #e63946;
+}
+.header .icon .profile {
+    border: #457b9d 1px solid;
+    padding: 12px 10px 12px;
+    border-radius: 5px;
+    line-height: 80px;
 }
 
 @media (max-width: 952px) {

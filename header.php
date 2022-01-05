@@ -1,6 +1,7 @@
 <?php require 'admin/connect.php'; ?>
 
 <link rel="stylesheet" href="assets/css/header.css">
+<link rel="stylesheet" href="assets/css/style.css">
 <header>
     <nav class="header">
 
@@ -68,8 +69,30 @@
 
         </div>
         <div class="icon">
-            <a href="view_cart.php"><i class="fas fa-shopping-cart"></i></a>
-            <a href=""><i class="fas fa-user"></i></a>
+            <ul class="ul_2">
+                <li>
+                    <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+                </li>
+                <li>
+                    <?php
+                    session_start();
+                    if (empty($_SESSION['id'])) {
+                    ?>
+                        <a href="signin.php" class="profile"> Đăng nhập </a>
+                    <?php } else { ?>
+                        <a href="profile.php" class="profile"><i class="fas fa-user"></i>
+                            <?php echo $_SESSION['name']; ?>
+                        </a>
+                        <div class="sub_menu">
+                            <ul>
+                                <li><a href="profile.php">Tài khoản</a></li>
+                                <li><a href="cart.php">Đơn hàng</a></li>
+                                <li><a href="signout.php">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    <?php } ?>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>

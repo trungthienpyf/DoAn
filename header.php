@@ -71,7 +71,7 @@
         <div class="icon">
             <ul class="ul_2">
                 <li>
-                    <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="view_cart.php"><i class="fas fa-shopping-cart"></i></a>
                 </li>
                 <li>
                     <?php

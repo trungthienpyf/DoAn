@@ -22,4 +22,4 @@ if(mysqli_num_rows($result)==1){
 }
 
 
-header('location:index.php');
+header('location:index.php?error=Email hoặc password không chính xác');

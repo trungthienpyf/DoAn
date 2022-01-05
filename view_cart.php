@@ -1,7 +1,7 @@
 <?php require 'menu_index_top.php'; ?>
 
 <?php 
-session_start();
+
 
 if(isset($_SESSION['cart'])){
 $cart=$_SESSION['cart'];

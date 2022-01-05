@@ -15,14 +15,11 @@
 </head>
 
 <body>
-    <!-- Connect start -->
     <?php
-    require 'admin/connect.php';
     $sql = "select product.*, manufacturers.name as manufacturer_name
      from product
      join manufacturers ON product.manufacturers_id=manufacturers.id;";
     $result = mysqli_query($connect, $sql);
-
 
     $page = 1;
     if (isset($_GET['page'])) {

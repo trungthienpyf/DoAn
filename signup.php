@@ -1,6 +1,25 @@
 <!-- Connect start -->
 <?php require 'admin/connect.php'; ?>
 <!-- Connect end -->
+<?php
+if (isset($_COOKIE['remember'])) {
+    $token = $_COOKIE['remember'];
+    $sql = "select * from customer
+         where token = '$token'
+         limit 1";
+    $result = mysqli_query($connect, $sql);
+    $number_rows = mysqli_num_rows($result);
+    if ($number_rows == 1) {
+        $each = mysqli_fetch_array($result);
+        $_SESSION['id'] = $each['id'];
+        $_SESSION['name'] = $each['name'];
+    }
+}
+if (isset($_SESSION['id'])) {
+    header('location:profile.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,9 +35,7 @@
 
 <body>
     <!-- Header start -->
-    <?php
-    require 'header.php';
-    ?>
+    <?php require 'header.php'; ?>
     <!-- Header end -->
 
 
@@ -36,8 +53,9 @@
                     <h6>Email
                         <span id="email_error" class="error">
                             <?php
-                            if (isset($_GET['error'])) {
-                                echo $_GET['error'];
+                            if (isset($_SESSION['error'])) {
+                                echo $_SESSION['error'];
+                                unset($_SESSION['error']);
                             }
                             ?>
                         </span>
@@ -52,7 +70,6 @@
                     <h6>Nhập lại mật khẩu <span id="repassword_error" class="error"></span></h6>
                     <input type="password" id="repassword">
                 </div>
-
                 <div class="row">
                     <div class="row_10">
                         <div class="row_4">

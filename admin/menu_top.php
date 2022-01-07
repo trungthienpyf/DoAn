@@ -19,7 +19,7 @@
 		
 		<div class="header-compoment">
 			<div class="header-logo">
-			    <img style="padding-left: 10px;" height="65px" src="https://im2.ezgif.com/tmp/ezgif-2-6030482c66.gif" alt="">
+			    <img style="padding-left: 10px;" height="65px" src="../photos_logo/logo_da.gif" alt="">
 			</div>
 			<ul class="header-container ">
 				

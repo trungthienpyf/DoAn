@@ -9,3 +9,6 @@ category.onclick= function (e) {
 	document.getElementById('toggle_icon').classList.toggle('fa-chevron-down');
 	
 }
+
+
+

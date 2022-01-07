@@ -19,7 +19,7 @@
 		
 		<div class="header-compoment">
 			<div class="header-logo">
-			    <img src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=height:60/https://file-uploads.teachablecdn.com/b9a1df092250467bb2a4c2950413e9a1/ee1a0cfc513f4153bcbc1a4f7f879592" alt="">
+			    <img style="padding-left: 10px;" height="65px" src="https://im2.ezgif.com/tmp/ezgif-2-6030482c66.gif" alt="">
 			</div>
 			<ul class="header-container ">
 				
@@ -49,13 +49,4 @@
 			</ul>
 		</div>
 		<div class="main-body">
-	<?php if(isset($_GET['error'])){ ?>
-		<span style="color: red;">
-		<?php echo $_GET['error']; ?>
-		</span>
-	<?php } else  ?>
-	<?php if(isset($_GET['success'])){ ?>
-		<span style="color: green;">
-		<?php echo $_GET['success']; ?>
-		</span>
-	<?php } else  ?>
+	

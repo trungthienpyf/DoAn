@@ -164,3 +164,6 @@ input ,textarea ,select{
 	padding: 4px;
 	margin: 4px;
 }
+input{
+	outline: none;
+}

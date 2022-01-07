@@ -1,4 +1,6 @@
-<?php require 'admin/connect.php'; ?>
+<?php require 'admin/connect.php'; 
+   session_start();
+?>
 
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/style.css">
@@ -75,7 +77,7 @@
                 </li>
                 <li>
                     <?php
-                    session_start();
+                 
                     if (empty($_SESSION['id'])) {
                     ?>
                         <a href="signin.php" class="profile"> Đăng nhập </a>

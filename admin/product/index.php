@@ -1,16 +1,27 @@
 <?php require '../check_admin_login.php';?>
-
-
 <?php require'../menu_top.php'?>
 <?php require '../connect.php';
 
-$sql="select * from product";
+
+$tim_kiem='';
+if(isset($_GET['search'])){
+	$tim_kiem=$_GET['search'];
+}
+$sql="select * from product where name like '%$tim_kiem%' 
+or description like '%$tim_kiem%' 
+";
 $result=mysqli_query($connect,$sql);
 
-
-
-?>	<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Sản phẩm</h2>
+?>	
+	
+	<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Sản phẩm</h2>
 	<a class="create_title" href="form_insert.php">Thêm sản phẩm</a>
+	<div style="padding: 10px 10px;">
+
+		<form action="">
+			<span style="font-size: 24px;">Tìm kiếm</span>
+		<input style="margin: 0 0 0 16px;" type="search" name="search" value="<?php echo $tim_kiem?>" placeholder="Tìm kiếm sản phẩm">
+	</form></div>
 	<table border="1" width="100%">
 		<tr>
 		<th >ID</th>

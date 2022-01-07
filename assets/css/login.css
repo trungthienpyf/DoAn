@@ -48,6 +48,17 @@
     color: #e63946;
     padding-left: 10px;
 }
+.form .check{
+    display: flex;
+    cursor: pointer;
+    line-height: 18px;
+}
+.form .check .checkbox{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
 
 /*Form end*/
 

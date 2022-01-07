@@ -54,10 +54,10 @@ if (isset($_SESSION['id'])) {
                     <h6>Mật khẩu</h6>
                     <input type="password" name="password">
                 </div>
-                <div class="row">
+                <label class="check">
+                    <input type="checkbox" name="remember" class="checkbox">
                     <p>Ghi nhớ đăng nhập</p>
-                    <input type="checkbox" name="remember">
-                </div>
+                </label>
                 <span class="error">
                     <?php
                     if (isset($_GET['error'])) {

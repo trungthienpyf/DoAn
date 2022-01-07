@@ -145,12 +145,17 @@
 }
 .header .icon a i:hover {
     color: #e63946;
+    transition: 0.25s;
 }
 .header .icon .profile {
     border: #457b9d 1px solid;
     padding: 12px 10px 12px;
     border-radius: 5px;
     line-height: 80px;
+}
+.header .icon .profile:hover{
+    border: #e63946 1px solid;
+    transition: 0.25s;
 }
 
 @media (max-width: 952px) {

@@ -167,7 +167,7 @@
     <p id="number_page"><?php echo $number_page ?></p>
 
     <!-- Footer start -->
-    <?php include 'footer.php' ?>
+    <?php require 'footer.php' ?>
     <!-- Footer end -->
 </body>
 

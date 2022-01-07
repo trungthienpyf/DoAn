@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
 <header>
     <nav class="header">
 
@@ -78,6 +79,9 @@
                 <li>
                     <?php
                  
+                    if (empty($_SESSION)) {
+                        session_start();
+                    }
                     if (empty($_SESSION['id'])) {
                     ?>
                         <a href="signin.php" class="profile"> Đăng nhập </a>

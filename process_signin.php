@@ -20,6 +20,7 @@ if ($number_rows == 1) {
     $id = $each['id'];
     $_SESSION['id'] = $id;
     $_SESSION['name'] = $each['name'];
+    
     if ($remember) {
         $token = uniqid('user_', true);
         $sql = "update customer

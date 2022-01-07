@@ -1,0 +1,72 @@
+.main_account {
+    width: 1280px;
+    margin: 0 auto;
+    display: flex;
+}
+.main_account .menu_left{
+    width: 20%;
+    padding-right: 40px;
+}
+.main_account .content_right{
+    width: 80%;
+    display: flexbox;
+}
+
+/* menu start */
+.menu_left ul li{
+    padding: 10px 0;
+    border-bottom: 1px #1d3557 dotted;
+}
+.menu_left ul li .account{
+    display: flex;
+    height: 40px;
+}
+.menu_left ul li .account i{
+    width: 25%;
+    font-size: 40px;
+    line-height: 100%;
+}
+.menu_left ul li a{
+    font-size: 16px;
+}
+.menu_left ul li a:hover{
+    text-decoration: none;
+}
+.menu_left ul li a.active{
+    color: #e63946;
+}
+
+/* menu end */
+
+/* Content start */
+.content_right .info .title{
+    padding: 10px;
+    border-bottom: #1d3557 1px solid;
+}
+.content_right .info .content{
+    width: 100%;
+}
+.content_right .info .content .row{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin: 10px;
+}
+.content_right .info .content .row .mod_title{
+    width: 10%;
+    text-align: end;
+    margin-right: 10px;
+}
+.content_right .info .content .row .mod_title label{
+    color: #457b9d ;
+}
+.content_right .info .content .row .input{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 10px
+}
+
+
+
+/* Content end */

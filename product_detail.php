@@ -1,12 +1,6 @@
 <!-- Connect start -->
 <?php require 'admin/connect.php'; ?>
 <!-- Connect end-->
-<?php
-$id = $_GET['id'];
-$sql = "select * from product where id = $id";
-$result_sql = mysqli_query($connect, $sql);
-$result = mysqli_fetch_array($result_sql, MYSQLI_ASSOC);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +11,12 @@ $result = mysqli_fetch_array($result_sql, MYSQLI_ASSOC);
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/product_detail.css">
 	<script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
-	<title><?php echo $result['name'] ?> </title>
+	<title><?php
+			$id = $_GET['id'];
+			$sql = "select * from product where id = $id";
+			$result_sql = mysqli_query($connect, $sql);
+			$result = mysqli_fetch_array($result_sql);
+			echo $result['name'] ?> </title>
 </head>
 
 <body>
@@ -28,11 +27,15 @@ $result = mysqli_fetch_array($result_sql, MYSQLI_ASSOC);
 	<!-- Header end -->
 
 	<!-- Main start -->
-
 	<div class="main_product_detail">
 		<div class="breadcrumbs">
 			<ol>
 				<?php
+				$id = $_GET['id'];
+				$sql = "select * from product where id = $id";
+				$result_sql = mysqli_query($connect, $sql);
+				$result = mysqli_fetch_array($result_sql);
+
 				$id_category_detail = $result['category_detail_id'];
 				$sql_category_detail = "select * from category_detail where id = $id_category_detail";
 				$result_sql_category_detail = mysqli_query($connect, $sql_category_detail);
@@ -67,7 +70,7 @@ $result = mysqli_fetch_array($result_sql, MYSQLI_ASSOC);
 					<p class="price_word"><?php echo number_format($result['price'], 0, '', '.');  ?> ₫</p>
 				</div>
 				<div class="button">
-					<a href="add_cart.php?id=<?php echo $result['id']?>" class="add_cart"><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng </a>
+					<a href="add_cart.php?id=<?php echo $result['id'] ?>" class="add_cart"><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng </a>
 					<a href="">Mua ngay</a>
 				</div>
 				<div class="description">
@@ -106,8 +109,6 @@ $result = mysqli_fetch_array($result_sql, MYSQLI_ASSOC);
 		</div>
 	</div>
 	<!-- Main end -->
-
-
 
 	<!-- Footer start -->
 	<?php include 'footer.php' ?>

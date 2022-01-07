@@ -30,7 +30,6 @@ if ($number_rows == 1) {
         mysqli_query($connect, $sql);
         setcookie('remember', $token, time() + 60 * 60 * 24 * 30);
     }
-
     header('location:index.php');
     exit;
 }

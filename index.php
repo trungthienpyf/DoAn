@@ -14,13 +14,6 @@
 </head>
 
 <body>
-
-    <?php
-    $sql = "select * from product
-    limit 5";
-    $result = mysqli_query($connect, $sql);
-    ?>
-
     <!-- Header start -->
     <?php
     require 'header.php';
@@ -37,7 +30,12 @@
             <h3>Sản phẩm mới</h3>
             <ul>
                 <?php $count = 0; ?>
-                <?php foreach ($result as $each) { ?>
+                <?php
+                $sql = "select * from product
+                 limit 5";
+                $result = mysqli_query($connect, $sql);
+                foreach ($result as $each) {
+                ?>
                     <li>
                         <a href="product_detail.php?id=<?php echo $each['id'] ?>">
                             <img src="admin/product/photos/<?php echo $each['img'] ?>">
@@ -48,7 +46,7 @@
                     </li>
                 <?php } ?>
             </ul>
-            <a href="products.php"><button>Xem thêm</button></a>
+            <a href="products.php" class="button"><button>Xem thêm</button></a>
         </div>
     </div>
     <!-- Main end -->

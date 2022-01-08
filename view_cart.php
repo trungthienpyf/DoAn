@@ -1,16 +1,18 @@
+
 <?php require 'menu_index_top.php'; ?>
+	<div class="title_product" style="padding-bottom: 15px; margin-left: 150px;"><h3>Giỏ hàng</h3></div>
 
 <?php 
 
 $sum=0;
 
+
+
 if(isset($_SESSION['cart'])){
 $cart=$_SESSION['cart'];
 $key=1; 
 ?>
-	<div class="title_product" style="padding-bottom: 15px; margin-left: -150px;"><h3>Giỏ hàng</h3></div>
-	<?php foreach ($cart as $id => $each) {  ?>
-	
+
 	<table border="1" width="100%">
 		<tr>
 			<th>ID</th>
@@ -22,32 +24,29 @@ $key=1;
 			<th>Xóa</th>
 			
 		</tr>
-		
-			<tr>
-				<td><?php echo $key++ ?></td>
+		<?php foreach ($cart as $id => $each) {  ?>
+		<tr>
+			<td><?php echo $key++ ?></td>
 
-				<td><?php echo $each['name']?></td>
-				<td><img width="200" src="admin/product/photos/<?php echo $each['img']?>" alt=""></td>
-				<td><?php echo $each['price']?></td>
-				<td> <a href="update_quantity.php?id=<?php echo $id ?>&type=decrease">-</a>
-					<?php echo $each['quantity']?>
-					<a href="update_quantity.php?id=<?php echo $id ?>&type=increase">+</a>
-					</td>
-					<td>
-					<?php $result=$each['price'] * $each['quantity'];
-
-						echo number_format($result, 0, '', ',');
-						$sum+=$result;
-						
-					?> 
-					vnđ
-					</td>
-				
-				<td><a href="delete_product.php?id=<?php echo $id ?>">X</a></td>
-
-			</tr>
-	</table>
+			<td><?php echo $each['name']?></td>
+			<td><img width="200" src="admin/product/photos/<?php echo $each['img']?>" alt=""></td>
+			<td><?php echo $each['price']?></td>
+			<td><a href="update_quantity.php?id=<?php echo $id ?>&type=decrease">-</a>
+				<?php echo $each['quantity']?>
+				<a href="update_quantity.php?id=<?php echo $id ?>&type=increase">+</a>
+				</td>
+				<td>
+				<?php $result=$each['price'] * $each['quantity'];
+					echo number_format($result, 0, '', ',');
+					$sum+=$result;
+				?> 
+				vnđ
+				</td>
+			<td><a href="delete_product.php?id=<?php echo $id ?>">X</a></td>
+		</tr>
 		<?php } ?>
+	</table>
+		
 	
 <?php  }?>
 
@@ -62,7 +61,7 @@ $key=1;
 			<input type="text" name="name">
 			<br>
 			Số điện thoại người nhận
-			<input type="text" name="phone">
+			<input type="number" name="phone">
 			<br>
 			Địa chỉ người nhận
 			<input type="text" name="address">
@@ -78,7 +77,7 @@ $key=1;
 </form>
 
 <?php  } else{ ?>	
-		<h3>Giỏ hàng của bạn đang rỗng</h3>  
+		<h3 style="text-align:center">Giỏ hàng của bạn đang rỗng</h3>  
 	<?php }?>
 <?php if(isset($_GET['success'])){?>
 		<h3 style="color:green; text-align: center;"><?php echo $_GET['success'] ?></h3>

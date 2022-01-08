@@ -47,8 +47,9 @@ if (isset($_SESSION['id'])) {
                 </label>
                 <span class="error">
                     <?php
-                    if (isset($_GET['error'])) {
-                        echo $_GET['error'];
+                     if (isset($_SESSION['error'])) {
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
                     }
                     ?>
                 </span>
@@ -58,7 +59,7 @@ if (isset($_SESSION['id'])) {
                 </div>
             </form>
         </div>
-         1
+        1
     </div>
     <!-- Footer start -->
     <?php include 'footer.php' ?>

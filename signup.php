@@ -49,6 +49,11 @@ if (isset($_SESSION['id'])) {
                         </span>
                     </h6>
                     <input type="email" name="email" id="email">
+                    
+                </div>
+                <div class="row">
+                    <h6>Số điện thoại<span id="phone_error" class="error"></span></h6>
+                    <input type="text" name="phone" id="phone">
                 </div>
                 <div class="row">
                     <h6>Mật khẩu <span id="password_error" class="error"></span></h6>

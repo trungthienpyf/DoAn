@@ -45,7 +45,7 @@
 				
 				<li class="navbar-list"><a href="../manufactures" class="navbar-item">Quản lý nhà sản xuất</a></li>
 				<li class="navbar-list"><a href="../product" class="navbar-item">Sản phẩm</a></li>
-				<li class="navbar-list"><a href="" class="navbar-item">Đơn hàng</a></li>
+				<li class="navbar-list"><a href="../orders" class="navbar-item">Đơn hàng</a></li>
 			</ul>
 		</div>
 		<div class="main-body">

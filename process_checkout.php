@@ -1,5 +1,4 @@
 <?php 
-
 $phone_receive=$_POST['phone'];
 $name_receive=$_POST['name'];
 $address_receive=$_POST['address'];
@@ -14,7 +13,11 @@ if(empty($_POST['phone'])||empty($_POST['name'])|| empty($_POST['address'])){
 
 
 $cart=$_SESSION['cart'];
-$customer_id=$_SESSION['id'];
+if(isset($_SESSION['id'])){
+	$customer_id=$_SESSION['id'];
+}else{
+	$customer_id=18;
+}
 
 $total_price=0;
 
@@ -33,13 +36,15 @@ $orders_id=mysqli_fetch_array($result)['max(id)'];
 $quantity=0;
 foreach ($cart as $product_id => $each) {
 	$quantity=$each['quantity'];
-	$sql="insert into detail_orders(orders_id, product_id, quantily) 
+	$sql="insert into detail_orders(orders_id, product_id, quantity) 
 	values('$orders_id','$product_id','$quantity')";
+
+
 	mysqli_query($connect,$sql);
 }
 
 unset($_SESSION['cart']);
-mysqli_close($connect);
+
 header('location:view_cart.php?success=Đặt hàng thành công');
 
 

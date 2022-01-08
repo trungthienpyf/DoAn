@@ -2,7 +2,6 @@
 <?php require'../menu_top.php'?>
 <?php require '../connect.php';
 
-
 $tim_kiem='';
 if(isset($_GET['search'])){
 	$tim_kiem=$_GET['search'];
@@ -33,7 +32,7 @@ $result=mysqli_query($connect,$sql);
 		<th >Xóa</th>
 		</tr>
 		<?php foreach ($result as $key => $each) { ?>
-			<tr>
+			<tr style="text-align:center;">
 				<td><?php echo $key+1 ?></td>
 				<td><?php echo $each['name'] ?></td> 
 				<td><?php echo $each['description'] ?></td> 

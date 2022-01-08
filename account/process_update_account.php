@@ -6,7 +6,7 @@ $password = $_POST['password'];
 $gender = $_POST['gender'];
 $birthday = $_POST['birthday'];
 
-require 'admin/connect.php';
+require '../admin/connect.php';
 $sql = "select count(*) from customer
 where email = '$email'";
 $result = mysqli_query($connect, $sql);
@@ -31,5 +31,5 @@ session_start();
 $_SESSION['id'] = $id;
 $_SESSION['name'] = $name;
 
-header('location:index.php');
+header('location:../index.php');
 mysqli_close($connect);

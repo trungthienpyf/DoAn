@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2022 at 09:16 AM
+-- Generation Time: Jan 08, 2022 at 11:38 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -44,8 +44,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `phone`, `address`, `gender`, `birthday`, `email`, `password`, `level`) VALUES
-(1, 'Admin', 0, '', 0, '0000-00-00', 'admin@gmail.com', '123', 0),
-(2, 'Super Admin', 0, '', 0, '0000-00-00', 'superadmin@gmail.com', '123', 1);
+(99999999, 'Admin', 0, '', 0, '0000-00-00', 'admin@gmail.com', '123', 0),
+(888888888, 'Super Admin', 0, '', 0, '0000-00-00', 'superadmin@gmail.com', '123', 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `name`, `gender`, `birthday`, `email`, `password`, `token`, `phone`, `address`) VALUES
-(2, 'thien', NULL, NULL, '456@gmail.com', '456', 'user_61d5647d8a7757.26499859', 0, ''),
+(2, 'thien', NULL, NULL, '456@gmail.com', '456', 'user_61d5647d8a7757.26499859', 11111, 'phu yen'),
 (3, 'user1', NULL, NULL, 'user123@gmail.com', '123', NULL, 0, ''),
 (6, 'ha', 0, '2002-02-10', '123@gmail.com', '123', 'user_61d5742a10bc48.59755064', 0, ''),
 (7, 'hoang', 1, '2002-01-01', 'hoang@gmail.com', '123456a', NULL, 0, ''),
@@ -142,7 +142,8 @@ INSERT INTO `customer` (`id`, `name`, `gender`, `birthday`, `email`, `password`,
 (10, 'hai', 1, '2002-01-03', 'hai@gmail.com', '123456a', NULL, 0, ''),
 (13, 'hung', 1, '2002-01-01', 'hung@gmail.com', '123456a', NULL, 0, ''),
 (14, 'truong', 1, '2002-01-01', 'truong@gmail.com', '123456a', NULL, 0, ''),
-(17, 'anh', 1, '2002-01-01', 'anh@gmail.com', '123456a', NULL, 0, '');
+(17, 'anh', 1, '2002-01-01', 'anh@gmail.com', '123456a', NULL, 0, ''),
+(18, 'User', NULL, NULL, '', '', NULL, 0, '');
 
 -- --------------------------------------------------------
 
@@ -153,8 +154,18 @@ INSERT INTO `customer` (`id`, `name`, `gender`, `birthday`, `email`, `password`,
 CREATE TABLE `detail_orders` (
   `orders_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantily` int(11) NOT NULL
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_orders`
+--
+
+INSERT INTO `detail_orders` (`orders_id`, `product_id`, `quantity`) VALUES
+(31, 52, 1),
+(31, 53, 1),
+(32, 52, 2),
+(33, 52, 1);
 
 -- --------------------------------------------------------
 
@@ -193,6 +204,15 @@ CREATE TABLE `orders` (
   `total_price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `time`, `name_receive`, `phone_receive`, `address_receive`, `note`, `status`, `customer_id`, `total_price`) VALUES
+(31, '2022-01-08 09:31:10', 'thien dep trai', '123123', '12312312', '', 1, 2, 322221),
+(32, '2022-01-08 09:33:29', 'qaaa', '123123', '123', '2', 2, 18, 444444),
+(33, '2022-01-08 10:35:46', '12312', '-1123123', '123123', '1231', 0, 2, 222222);
+
 -- --------------------------------------------------------
 
 --
@@ -214,9 +234,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `img`, `price`, `manufacturers_id`, `category_detail_id`) VALUES
-(43, '11', 'Mang vẻ ngoài bụi bặm, mộc mạc và được lấy cảm hứng từ những bộ quân phục của nhiều binh chủng trong quân đội, Vintas \"The New Military\" đem lại một \"chất lính\" rất riêng cho những ai yêu phong cách \"Military\" và những tâm hồn điềm đạm, kiên cường đầy tinh tế.', '1640859383.jpg', 111, 48, 22),
-(44, '123123', 'Mang vẻ ngoài bụi bặm, mộc mạc và được lấy cảm hứng từ những bộ quân phục của nhiều binh chủng trong quân đội, Vintas \"The New Military\" đem lại một \"chất lính\" rất riêng cho những ai yêu phong cách \"Military\" và những tâm hồn điềm đạm, kiên cường đầy tinh tế.', '1640859568.jpg', 123123, 48, 22),
-(45, '123123', 'Mang vẻ ngoài bụi bặm, mộc mạc và được lấy cảm hứng từ những bộ quân phục của nhiều binh chủng trong quân đội, Vintas \"The New Military\" đem lại một \"chất lính\" rất riêng cho những ai yêu phong cách \"Military\" và những tâm hồn điềm đạm, kiên cường đầy tinh tế.', '1640859575.jpg', 12312, 48, 22);
+(52, 'Áo', 'áo', '1641634067.jpg', 222222, 48, 1),
+(53, 'Quần', 'Quần', '1641634077.jpg', 99999, 48, 1);
 
 --
 -- Indexes for dumped tables
@@ -295,7 +314,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=888888889;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -319,7 +338,7 @@ ALTER TABLE `comment_product`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`
@@ -331,13 +350,13 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Constraints for dumped tables

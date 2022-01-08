@@ -1,9 +1,25 @@
-<?php require 'admin/connect.php'; 
-   session_start();
+<?php
+require 'admin/connect.php';
+if (isset($_COOKIE['remember'])) {
+    $token = $_COOKIE['remember'];
+    $sql = "select * from customer
+         where token = '$token'
+         limit 1";
+    $result = mysqli_query($connect, $sql);
+    $number_rows = mysqli_num_rows($result);
+    if ($number_rows == 1) {
+        $each = mysqli_fetch_array($result);
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION['id'] = $each['id'];
+        $_SESSION['name'] = $each['name'];
+    }
+}
 ?>
-
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/style.css">
+<script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
 <header>
     <nav class="header">
 
@@ -77,18 +93,22 @@
                 </li>
                 <li>
                     <?php
-                 
+                    if (!isset($_SESSION)) {
+                        session_start();
+                        
+                    }
+
                     if (empty($_SESSION['id'])) {
                     ?>
                         <a href="signin.php" class="profile"> Đăng nhập </a>
                     <?php } else { ?>
-                        <a href="profile.php" class="profile"><i class="fas fa-user"></i>
+                        <label class="profile"><i class="fas fa-user"></i>
                             <?php echo $_SESSION['name']; ?>
-                        </a>
+                        </label>
                         <div class="sub_menu">
                             <ul>
-                                <li><a href="profile.php">Tài khoản</a></li>
-                                <li><a href="cart.php">Đơn hàng</a></li>
+                                <li><a href="account">Tài khoản</a></li>
+                                <li><a href="view_cart.php">Đơn hàng</a></li>
                                 <li><a href="signout.php">Đăng xuất</a></li>
                             </ul>
                         </div>

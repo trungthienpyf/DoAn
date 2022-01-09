@@ -20,6 +20,7 @@ if ($number_rows == 1) {
     $id = $each['id'];
     $_SESSION['id'] = $id;
     $_SESSION['name'] = $each['name'];
+
     if ($remember) {
         $token = uniqid('user_', true);
         $sql = "update customer
@@ -29,9 +30,10 @@ if ($number_rows == 1) {
         mysqli_query($connect, $sql);
         setcookie('remember', $token, time() + 60 * 60 * 24 * 30);
     }
-
     header('location:index.php');
+    mysqli_close($connect);
     exit;
 }
-
-header('location:signin.php?error=Sai email hoặc mật khẩu');
+session_start();
+$_SESSION['error'] = "Sai email hoặc mật khẩu";
+header('location:signin.php');

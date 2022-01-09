@@ -1,5 +1,4 @@
 <?php
-require 'admin/connect.php';
 if (isset($_COOKIE['remember'])) {
     $token = $_COOKIE['remember'];
     $sql = "select * from customer
@@ -17,8 +16,9 @@ if (isset($_COOKIE['remember'])) {
     }
 }
 ?>
-<link rel="stylesheet" href="assets/css/header.css">
-<link rel="stylesheet" href="assets/css/style.css">
+<?php require '../admin/connect.php'; ?>
+<link rel="stylesheet" href="../assets/css/header.css">
+<link rel="stylesheet" href="../assets/css/style.css">
 <script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
 <header>
     <nav class="header">
@@ -29,19 +29,19 @@ if (isset($_COOKIE['remember'])) {
         </label>
 
         <div class="logo">
-            <a href="index.php">Logo</a>
+            <a href="../index.php">Logo</a>
         </div>
 
         <div class="menu">
             <ul class="ul_1">
                 <li>
-                    <a href="index.php">Trang chủ </a>
+                    <a href="../index.php">Trang chủ </a>
                 </li>
                 <li>
-                    <a href="products.php">Cửa hàng</a>
+                    <a href="../products.php">Cửa hàng</a>
                 </li>
                 <li>
-                    <a href="products.php">Áo <i class="fas fa-caret-down"></i></a>
+                    <a href="../products.php">Áo <i class="fas fa-caret-down"></i></a>
                     <div class="sub_menu">
                         <?php
                         $sql_category = "select * from category_detail where category_id=1";
@@ -55,7 +55,7 @@ if (isset($_COOKIE['remember'])) {
                     </div>
                 </li>
                 <li>
-                    <a href="products.php">Quần <i class="fas fa-caret-down"></i></a>
+                    <a href="../products.php">Quần <i class="fas fa-caret-down"></i></a>
                     <div class="sub_menu">
                         <?php
                         $sql_category = "select * from category_detail where category_id=2";
@@ -69,7 +69,7 @@ if (isset($_COOKIE['remember'])) {
                     </div>
                 </li>
                 <li>
-                    <a href="products.php">Phụ kiện <i class="fas fa-caret-down"></i></a>
+                    <a href="../products.php">Phụ kiện <i class="fas fa-caret-down"></i></a>
                     <div class="sub_menu">
                         <?php
                         $sql_category = "select * from category_detail where category_id=3";
@@ -89,26 +89,25 @@ if (isset($_COOKIE['remember'])) {
         <div class="icon">
             <ul class="ul_2">
                 <li>
-                    <a href="view_cart.php">Giỏ hàng<i class="fas fa-shopping-cart"></i></a>
+                    <a href="../view_cart.php"><i class="fas fa-shopping-cart"></i></a>
                 </li>
                 <li>
                     <?php
                     if (!isset($_SESSION)) {
                         session_start();
                     }
-
                     if (empty($_SESSION['id'])) {
                     ?>
-                        <a href="signin.php" class="profile"> Đăng nhập </a>
+                        <a href="../signin.php" class="profile"> Đăng nhập </a>
                     <?php } else { ?>
                         <label class="profile"><i class="fas fa-user"></i>
                             <?php echo $_SESSION['name']; ?>
                         </label>
                         <div class="sub_menu">
                             <ul>
-                                <li><a href="account">Tài khoản</a></li>
-                                <li><a href="view_cart.php">Đơn hàng</a></li>
-                                <li><a href="signout.php">Đăng xuất</a></li>
+                                <li><a href="../account">Tài khoản</a></li>
+                                <li><a href="../view_cart.php">Đơn hàng</a></li>
+                                <li><a href="../signout.php">Đăng xuất</a></li>
                             </ul>
                         </div>
                     <?php } ?>

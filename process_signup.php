@@ -31,5 +31,5 @@ session_start();
 $_SESSION['id'] = $id;
 $_SESSION['name'] = $name;
 
-header('location:profile.php');
+header('location:index.php');
 mysqli_close($connect);

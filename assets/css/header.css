@@ -54,7 +54,7 @@
     color: #457b9d;
     font-size: 16px;
     font-weight: 500;
-    padding: 7px 13px;
+    padding: 17px 23px;
     border-radius: 3px;
     text-transform: uppercase;
 }
@@ -81,44 +81,18 @@
 
 .header .menu ul.ul_1 li:hover .sub_menu ul {
     display: block;
-    margin: 10px;
 }
 
 .header .menu ul.ul_1 li:hover .sub_menu ul li {
     padding: 3px;
-    border-bottom: #457b9d 1px dotted;
+    border: #457b9d 1px solid;
 }
 .header .menu ul.ul_1 li:hover .sub_menu ul li:last-child {
     padding-bottom: 0;
-    border-bottom: none;
 }
 .header .menu ul.ul_1 li:hover .sub_menu ul li a:hover {
     transition: 0.25s;
     color: #e63946;
-    border: none;
-}
-
-.header .icon ul.ul_2 li:hover .sub_menu {
-    display: block;
-    position: absolute;
-    border: #457b9d 1px solid;
-    margin-top: -5px;
-}
-.header .icon ul.ul_2 li:hover .sub_menu ul {
-    display: block;
-}
-.header .icon ul.ul_2 li:hover .sub_menu ul li {
-    padding: 3px;
-    border-bottom: #457b9d 1px solid;
-}
-.header .icon ul.ul_2 li:hover .sub_menu ul li:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-}
-.header .icon ul.ul_2 li:hover .sub_menu ul li a:hover {
-    transition: 0.25s;
-    color: #e63946;
-    text-decoration: none;
     border: none;
 }
 
@@ -145,12 +119,50 @@
 }
 .header .icon a i:hover {
     color: #e63946;
+    transition: 0.25s;
 }
 .header .icon .profile {
     border: #457b9d 1px solid;
     padding: 12px 10px 12px;
     border-radius: 5px;
     line-height: 80px;
+    cursor: pointer;
+}
+.header .icon .profile:hover{
+    border: #e63946 1px solid;
+    color: #e63946;
+    transition: 0.25s;
+}
+.header .icon .profile:hover i {
+    color: #e63946;
+}
+
+.header .icon ul.ul_2 li:hover .sub_menu {
+    display: block;
+    position: absolute;
+    border: #457b9d 1px solid;
+    margin-top: -5px;
+}
+.header .icon ul.ul_2 li:hover .sub_menu ul {
+    display: block;
+}
+.header .icon ul.ul_2 li:hover .sub_menu ul li {
+    margin: 0;
+    border-bottom: #457b9d 1px solid;
+}
+.header .icon ul.ul_2 li:hover .sub_menu ul li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.header .icon ul.ul_2 li:hover .sub_menu ul li a{
+    padding: 5px 10px ;
+    display: block;
+}
+.header .icon ul.ul_2 li:hover .sub_menu ul li a:hover {
+    transition: 0.25s;
+    color: #e63946;
+    text-decoration: none;
+    border: none;
 }
 
 @media (max-width: 952px) {

@@ -1,5 +1,5 @@
 	<?php if(isset($_GET['error'])){ ?>
-		<span  style="color: red; float: right">
+		<span  style="color: red;">
 		<?php echo $_GET['error']; ?>
 		</span>
 	<?php } else  ?>

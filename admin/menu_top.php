@@ -29,7 +29,6 @@
 	<div id="container">
 		<div class="navbar">
 			<ul class="navbar-body">
-				
 				<li class="navbar-list pointer " id="category"><a class="navbar-item head_color">Danh mục <i id="toggle_icon" class="fas fa-chevron-right icon_padding"></i></a>
 				</li>
 				<div id="category_sub" class="display_click">
@@ -38,6 +37,7 @@
 				</div>
 				
 				<li class="navbar-list"><a href="../manufactures" class="navbar-item">Quản lý nhà sản xuất</a></li>
+				<li class="navbar-list"><a href="../staff" class="navbar-item">Quản lý nhân viên</a></li>
 				<li class="navbar-list"><a href="../product" class="navbar-item">Sản phẩm</a></li>
 				<li class="navbar-list"><a href="../orders" class="navbar-item">Đơn hàng</a></li>
 			</ul>

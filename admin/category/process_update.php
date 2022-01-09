@@ -4,14 +4,13 @@
 
 require '../connect.php';
 
-$id=$_POST['id'];
-$name=$_POST['name'];
-
 if(empty($_POST['id']) || empty($_POST['name'])){
 	header('location:form_update.php?id='.$id.'&error=Phải điền tên danh mục');
 	exit();
 }
 
+$id=$_POST['id'];
+$name=$_POST['name'];
 
 $check=mysqli_query($connect,"select * from category where name='$name'");
 $checkrows=mysqli_num_rows($check);

@@ -1,19 +1,20 @@
 <?php require '../check_admin_login.php';?>
 
 <?php
+
+require '../connect.php';
+if(empty($_POST['name']) || empty($_FILES['img_new']['size']) || empty($_POST['price']) || empty($_POST['description'])
+ || empty($_POST['id_manufacturers']) || empty($_POST['id_category']) ){
+	header('location:form_insert.php?error=Hãy nhập đầy đủ thông tin');
+exit();
+}
 $name=$_POST['name'];
 $price=$_POST['price'];
 $img=$_FILES['img'];
 $description=$_POST['description'];
 $id_manufacturers=$_POST['id_manufacturers'];
 $id_category=$_POST['id_category'];
-require '../connect.php';
 
-if(empty($name) || empty($img) || empty($price) || empty($description)
- || empty($id_manufacturers) || empty($id_category) ){
-	header('location:form_insert.php?error=Hãy nhập đầy đủ thông tin');
-exit();
-}
 
 $folder = "photos/";
 

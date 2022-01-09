@@ -55,43 +55,49 @@ if (empty($_SESSION['id'])) {
                 <div class="title">
                     <h3>Thông tin cá nhân</h3>
                 </div>
-                <div>
-                    <div class="content">
-                        <form method="post" action="process_update_account.php">
-                            <input type="hidden" name="id" style="display: none;" value="<?php echo $each['id'] ?>">
-                            <div class="row">
-                                <div class="mod_title"> Tên</div>
-                                <input type="text" name="name" value="<?php echo $each['name'] ?>" class="input">
-                            </div>
-                            <div class="row">
-                                <div class="mod_title"> Email</div>
-                                <input type="text" name="email" value="<?php echo $each['email'] ?>" class="input">
-                            </div>
-                            <div class="row">
-                                <div class="mod_title"> Số điện thoại</div>
-                                <input type="text" name="phone" value="<?php echo $each['phone'] ?>" class="input">
-                            </div>
-                            <div class="col">
-                                <div class="row_6">
-                                    <div class="mod_title">Ngày sinh</div>
-                                    <input type="date" name="birthday" value="<?php echo $each['birthday'] ?>" class="input_2">
-                                </div>
-                                <div class="row_4">
-                                    <div class="mod_title_2" class="input">Giới tính </div>
-                                    <select name="gender" id="gender">
-                                        <option value="1" id="male">Nam</option>
-                                        <option value="0" id="female">Nữ</option>
-                                        <option value="null" id="other">Khác</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="mod_title"> Địa chỉ</div>
-                                <textarea name="address" id="address" class="input"><?php echo $each['address'] ?></textarea>
-                            </div>
-                            <button>Lưu thông tin</button>
-                        </form>
-                    </div>
+                <div class="content">
+                    <form method="post" action="process_update_account.php">
+                        <input type="hidden" name="id" style="display: none;" value="<?php echo $each['id'] ?>">
+                        <div class="row">
+                            <div class="mod_title"> Tên</div>
+                            <input type="text" name="name" value="<?php echo $each['name'] ?>" class="input" id="name">
+                            <span id="name_error" class="error"></span>
+                        </div>
+                        <div class="row">
+                            <div class="mod_title"> Email</div>
+                            <input type="text" name="email" value="<?php echo $each['email'] ?>" class="input" id="email">
+                            <span id="email_error" class="error">
+                                <?php
+                                if (isset($_SESSION['error'])) {
+                                    echo $_SESSION['error'];
+                                    unset($_SESSION['error']);
+                                }
+                                ?>
+                            </span>
+                        </div>
+                        <div class="row">
+                            <div class="mod_title"> Số điện thoại</div>
+                            <input type="text" name="phone" value="<?php echo $each['phone'] ?>" class="input" id="phone">
+                            <span id="phone_error" class="error"></span>
+                        </div>
+                        <div class="row">
+                            <div class="mod_title">Ngày sinh</div>
+                            <input type="date" name="birthday" value="<?php echo $each['birthday'] ?>" class="input">
+                        </div>
+                        <div class="row">
+                            <div class="mod_title" class="input">Giới tính </div>
+                            <select name="gender" id="gender">
+                                <option value="1" id="male">Nam</option>
+                                <option value="0" id="female">Nữ</option>
+                                <option value="null" id="other">Khác</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="mod_title"> Địa chỉ</div>
+                            <textarea name="address" id="address" class="input"><?php echo $each['address'] ?></textarea>
+                        </div>
+                        <button onclick="return check_update_account()">Lưu thông tin</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -115,5 +121,6 @@ if (empty($_SESSION['id'])) {
         document.getElementById("gender").options.selectedIndex = 2;
     }
 </script>
+<script src="../assets/js/account.js"></script>
 
 </html>

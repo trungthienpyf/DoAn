@@ -59,7 +59,7 @@ if (isset($_SESSION['id'])) {
                 </div>
             </form>
         </div>
-        1
+        
     </div>
     <!-- Footer start -->
     <?php include 'footer.php' ?>

@@ -7,7 +7,9 @@
 $sql="select * from category_detail";
 $result=mysqli_query($connect,$sql);
 	
-?>		<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Thể loại phụ</h2>
+?>		<h2 style="padding: 10px 10px 10px 20px; display: inline-block; color: #0c2d68;" >Thể loại phụ</h2>
+		<br>
+		<?php require '../check_error_success.php'; ?>
 		<a class="create_title" href="form_insert.php">Thêm thể loại</a>
 		<table border="1" width="100%">
 			<tr>

@@ -1,7 +1,8 @@
 
 <?php require 'menu_index_top.php'; ?>
+	<div style="min-height: 600px; margin:0 40px;">
 	<div class="title_product" style="padding-bottom: 15px; margin-left: 150px;"><h3>Giỏ hàng</h3></div>
-
+	
 <?php 
 
 $sum=0;
@@ -42,7 +43,7 @@ $key=1;
 				?> 
 				vnđ
 				</td>
-			<td><a href="delete_product.php?id=<?php echo $id ?>">X</a></td>
+			<td><a class="delete" href="delete_product.php?id=<?php echo $id ?>">X</a></td>
 		</tr>
 		<?php } ?>
 	</table>
@@ -84,5 +85,5 @@ $key=1;
 	<?php } ?>
 
 
-
+</div>
 <?php require 'menu_index_bottom.php'?>

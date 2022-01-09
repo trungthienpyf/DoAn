@@ -1,7 +1,9 @@
 <?php require '../check_super_admin_login.php';?>
 
 <?php include'../menu_top.php'; ?>
-	<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Nhà sản xuất</h2>
+	<h2 style="padding: 10px 10px 10px 20px; display: inline-block; color: #0c2d68;" >Nhà sản xuất</h2>
+	<br>
+	<?php require '../check_error_success.php'; ?>
 	<a class="create_title" href="form_insert.php">Thêm nhà sản xuất</a>
 	
 

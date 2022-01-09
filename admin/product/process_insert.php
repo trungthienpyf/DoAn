@@ -3,10 +3,10 @@
 <?php
 
 require '../connect.php';
-if(empty($_POST['name']) || empty($_FILES['img_new']['size']) || empty($_POST['price']) || empty($_POST['description'])
+if(empty($_POST['name']) || $_FILES['img']['size'] ==0 || empty($_POST['price']) || empty($_POST['description'])
  || empty($_POST['id_manufacturers']) || empty($_POST['id_category']) ){
 	header('location:form_insert.php?error=Hãy nhập đầy đủ thông tin');
-exit();
+	exit();
 }
 $name=$_POST['name'];
 $price=$_POST['price'];

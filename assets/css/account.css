@@ -3,96 +3,84 @@
     margin: 0 auto;
     display: flex;
 }
-.main_account .menu_left{
+.main_account .menu_left {
     width: 20%;
     padding-right: 40px;
 }
-.main_account .content_right{
+.main_account .content_right {
     width: 80%;
     display: flexbox;
 }
 
 /* menu start */
-.menu_left ul li{
+.menu_left ul li {
     padding: 10px 0;
     border-bottom: 1px #1d3557 dotted;
 }
-.menu_left ul li .account{
+.menu_left ul li .account {
     display: flex;
     height: 40px;
 }
-.menu_left ul li .account i{
+.menu_left ul li .account i {
     width: 25%;
     font-size: 40px;
     line-height: 100%;
 }
-.menu_left ul li a{
+.menu_left ul li a {
     font-size: 16px;
 }
-.menu_left ul li a:hover{
+.menu_left ul li a:hover {
     text-decoration: none;
 }
-.menu_left ul li a.active{
+.menu_left ul li a.active {
     color: #e63946;
 }
 
 /* menu end */
 
 /* Content start */
-.content_right .info .title{
+.content_right .info .title {
     padding: 10px;
     border-bottom: #1d3557 1px solid;
 }
-.content_right .info .content{
+.content_right .info .content {
     width: 750px;
-    margin: 0 auto;
+    margin: 30px auto 100px;
 }
-.content_right .info .content .col{
-    display: flex;
-    height: 40px;
-    margin: 10px;
-}
-.content_right .info .content .row{
+.content_right .info .content .row {
     display: flex;
     align-items: center;
     height: 40px;
     margin: 10px;
 }
-.content_right .info .content .row_4{
-    display: flex;
-    align-items: center;
-}
-.content_right .info .content .row_6{
-    display: flex;
-    align-items: center;
-    /* width: 60%; */
-}
-.content_right .info .content .mod_title{
-    width: 150px;
+.content_right .info .content .mod_title {
+    width: 20%;
     margin-right: 10px;
     text-align: end;
-    color: #457b9d ;
+    color: #457b9d;
 }
-.content_right .info .content .mod_title_2{
-    width: 50px;
-    margin-right: 10px;
-    text-align: end;
-    color: #457b9d ;
-}
-.content_right .info .content .input{
-    width: 340px;
+.content_right .info .content .input {
+    width: 60%;
     height: 40px;
-    padding: 10px
+    padding: 10px;
 }
-.content_right .info .content .input_2{
+.content_right .info .content .error {
+    width: 20%;
+    color: #e63946;
+    text-align: start;
+    margin-left: 10px;
+    font-size: 12px;
+}
+.content_right .info .content .mod_title_2 {
+    width: 20%;
+    margin-right: 10px;
+    text-align: end;
+    color: #457b9d;
+}
+.content_right .info .content .input_2 {
     width: 200px;
     height: 40px;
-    padding: 10px
+    padding: 10px;
 }
-
-.error{
-    display: none;
-}
-
 
 /* Content end */

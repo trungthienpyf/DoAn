@@ -31,6 +31,21 @@ function check_sign_up() {
             check_error = false;
         }
     }
+    //Phone
+    let phone = document.getElementById('phone').value;
+    if (phone.length == 0) {
+        document.getElementById('phone_error').innerHTML = 'Không được để trống.';
+        check_error = true;
+    } else {
+        let regex_phone = /^(84|0[3|5|7|8|9])+([0-9]{8})$/;
+        if (!regex_phone.test(phone)) {
+            document.getElementById('phone_error').innerHTML = 'Số điện thoại không hợp lệ.';
+            check_error = true;
+        } else {
+            document.getElementById('phone_error').innerHTML = '';
+            check_error = false;
+        }
+    }
     //Mật khẩu
     let password = document.getElementById('password').value;
     if (password.length == 0) {

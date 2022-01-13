@@ -49,7 +49,7 @@ if (isset($_SESSION['id'])) {
                         </span>
                     </h6>
                     <input type="email" name="email" id="email">
-                    
+
                 </div>
                 <div class="row">
                     <h6>Số điện thoại<span id="phone_error" class="error"></span></h6>
@@ -78,6 +78,10 @@ if (isset($_SESSION['id'])) {
                             <input type="date" name="birthday" value="2002-01-01">
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <h6>Địa chỉ<span id="address" class="error"></span></h6>
+                    <input type="text" name="address" id="address">
                 </div>
                 <button onclick="return check_sign_up()">Đăng kí</button>
                 <div class="ask">

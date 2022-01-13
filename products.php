@@ -127,7 +127,6 @@
 
             <div class="page">
                 <hr>
-                <br>
                 <div class="number">
                     <?php
                     if ($page > 1) { ?>

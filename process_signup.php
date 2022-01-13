@@ -5,6 +5,8 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $gender = $_POST['gender'];
 $birthday = $_POST['birthday'];
+$phone = $_POST['phone'];
+$address = $_POST['address'];
 
 require 'admin/connect.php';
 $sql = "select count(*) from customer
@@ -18,8 +20,8 @@ if ($number_rows == 1) {
     header('location:signup.php');
     exit;
 }
-$sql = "insert into customer(name,gender,birthday, email,password)
-value('$name','$gender','$birthday','$email','$password')";
+$sql = "insert into customer(name,gender,birthday,email,password,phone,address)
+value('$name','$gender','$birthday','$email','$password','$phone','$address')";
 mysqli_query($connect, $sql);
 
 $sql = "select id from customer
@@ -31,5 +33,5 @@ session_start();
 $_SESSION['id'] = $id;
 $_SESSION['name'] = $name;
 
-header('location:index.php');
 mysqli_close($connect);
+// header('location:index.php');

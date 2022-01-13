@@ -32,7 +32,8 @@
                 <?php $count = 0; ?>
                 <?php
                 $sql = "select * from product
-                 limit 5";
+                ORDER BY RAND()
+                LIMIT 5";
                 $result = mysqli_query($connect, $sql);
                 foreach ($result as $each) {
                 ?>
@@ -42,7 +43,6 @@
                         </a>
                         <a href="product_detail.php?id=<?php echo $each['id'] ?>"><?php echo $each['name'] ?></a>
                         <p> <?php echo number_format($each['price'], 0, '', '.'); ?> ₫</p>
-                        <!-- <a href="add_cart.php?id=<?php echo $each['id'] ?>">Thêm vào giỏ hàng</a> -->
                     </li>
                 <?php } ?>
             </ul>

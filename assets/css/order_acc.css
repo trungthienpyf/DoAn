@@ -1,0 +1,61 @@
+.order .order_each{
+    box-shadow: 0px 4px 10px rgba(146, 146, 146, 0.25);
+    padding: 10px 10px 10px 10px;
+    margin: 10px 0;
+}
+.order .title {
+    padding: 10px;
+    border-bottom: #1d3557 1px solid;
+}
+.order .row{
+    display: flex;
+    width: 100%;
+}
+.order .header_order{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: #8a9eba 1px dotted;
+}
+.order .header_order p{
+    padding-right: 5px;
+}
+.order .header_order p::after {
+    content: "|";
+    padding: 0 5px;
+    color: #1d3557;
+}
+.order .header_order p:last-child::after {
+    content: "";
+}
+.order .item_flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.order .image {
+    width: 120px;
+}
+.order .image img{
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    object-position: 50% 20%;
+}
+.order .name{
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.order .price{
+width: 120px;
+}
+.order .quantity{
+    width: 120px;
+}
+
+.order .delete{
+    background-color: #dbe3ee;
+    padding: 3px 10px;
+    border-radius: 10px;
+}

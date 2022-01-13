@@ -15,7 +15,7 @@
     <!-- Connect start -->
     <?php
     require 'admin/connect.php';
-    $id=$_GET['id'];
+    $id = $_GET['id'];
 
     $page = 1;
     if (isset($_GET['page'])) {
@@ -25,7 +25,7 @@
     $sql_number_of_product = "select count(*) from product join category_detail ON product.category_detail_id=category_detail.id JOIN category on category_detail.category_id=category.id  where category.id='$id'";
     $product_array = mysqli_query($connect, $sql_number_of_product);
     $product_array_result = mysqli_fetch_array($product_array);
-    
+
     $number_of_product = $product_array_result['count(*)'];
 
     $product_in_page = 15;
@@ -56,49 +56,43 @@
             <div class="cate_item">
                 <h5>Áo</h5>
                 <ul>
-                    <li>
-                        <a href="">Áo thun</a>
-                    </li>
-                    <li>
-                        <a href="">Jacket</a>
-                    </li>
-                    <li>
-                        <a href="">Hoodie / Sweater</a>
-                    </li>
-                    <li>
-                        <a href="">Áo sơmi</a>
-                    </li>
+                    <?php
+                    $sql_category = "select * from category_detail where category_id=1";
+                    $result_category = mysqli_query($connect, $sql_category);
+                    ?>
+                    <ul>
+                        <?php foreach ($result_category as $each) { ?>
+                            <li><a href=""><?php echo $each['name'] ?></a></li>
+                        <?php } ?>
+                    </ul>
                 </ul>
             </div>
             <div class="cate_item">
                 <h5>Quần</h5>
+                <?php
+                $sql_category = "select * from category_detail where category_id=2";
+                $result_category = mysqli_query($connect, $sql_category);
+                ?>
                 <ul>
-                    <li>
-                        <a href="">Quần short</a>
-                    </li>
-                    <li>
-                        <a href="">Quần dài</a>
-                    </li>
+                    <?php foreach ($result_category as $each) { ?>
+                        <li><a href=""><?php echo $each['name'] ?></a></li>
+                    <?php } ?>
                 </ul>
             </div>
             <div class="cate_item">
                 <h5>Phụ kiện</h5>
+                <?php
+                $sql_category = "select * from category_detail where category_id=3";
+                $result_category = mysqli_query($connect, $sql_category);
+                ?>
                 <ul>
-                    <li>
-                        <a href="">Mũ</a>
-                    </li>
-                    <li>
-                        <a href="">Tất / vớ</a>
-                    </li>
-                    <li>
-                        <a href="">Balo / túi</a>
-                    </li>
+                    <?php foreach ($result_category as $each) { ?>
+                        <li><a href=""><?php echo $each['name'] ?></a></li>
+                    <?php } ?>
                 </ul>
             </div>
-
         </div>
         <div class="products">
-
             <div class="header_product">
                 <div class="title_product">
                     <h3>Tất cả sản phẩm</h3>
@@ -108,7 +102,6 @@
                         <option value="Sản phẩm mới" selected><a href="">Sản phẩm mới </a></option>
                         <option value="Từ thấp lên cao">Từ thấp lên cao</option>
                         <option value="Từ cao xuống thấp">Từ cao xuống thấp</option>
-
                     </select>
                 </div>
             </div>
@@ -133,12 +126,10 @@
                 <hr>
                 <br>
                 <div class="number">
-
                     <?php
                     if ($page > 1) { ?>
                         <a id="arrow_left" href="?page=<?php echo $page - 1 ?>"><i class="fas fa-angle-double-left"></i></a>
                     <?php } ?>
-
 
                     <?php for ($i = 1; $i <= $number_page; $i++) { ?>
                         <?php if ($i == $page) { ?>
@@ -152,12 +143,10 @@
                         <?php } ?>
                     <?php  } ?>
 
-
                     <?php
                     if ($page < $number_page) { ?>
                         <a id="arrow_right" href="?page=<?php echo $page + 1 ?>"><i class="fas fa-angle-double-right"></i></a>
                     <?php } ?>
-
                 </div>
             </div>
         </div>

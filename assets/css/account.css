@@ -83,4 +83,12 @@
     padding: 10px;
 }
 
+/*table*/
+.content_right .order_content {
+    width: 80%;
+    margin: 0 auto;
+}
+.content_right .order_content .table{
+    width: 100%;
+}
 /* Content end */

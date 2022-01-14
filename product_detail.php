@@ -32,7 +32,9 @@
 			<ol>
 				<?php
 				$id = $_GET['id'];
-				$sql = "select * from product where id = $id";
+				$sql = "select product.*,category_detail.name from product
+				join category_detail on product.category_detail_id = category_detail.id
+				where product.id = $id";
 				$result_sql = mysqli_query($connect, $sql);
 				$result = mysqli_fetch_array($result_sql);
 
@@ -71,7 +73,7 @@
 				</div>
 				<div class="button">
 					<a href="add_cart.php?id=<?php echo $result['id'] ?>" class="add_cart"><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng </a>
-					<a href="">Mua ngay</a>
+					<a href="view_cart.php">Mua ngay</a>
 				</div>
 				<div class="description">
 					<h6>Thông tin sản phẩm:</h6>
@@ -90,7 +92,9 @@
 				<h4>Sản phẩm khác</h4>
 				<?php
 
-				$sql_other = "select * from product where id != $id limit 5";
+				$sql_other = "select * from product where id != $id 
+				ORDER BY RAND()
+				LIMIT 5";
 				$result_other = mysqli_query($connect, $sql_other);
 				?>
 				<ul>

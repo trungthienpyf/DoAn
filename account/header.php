@@ -106,7 +106,7 @@ if (isset($_COOKIE['remember'])) {
                         <div class="sub_menu">
                             <ul>
                                 <li><a href="../account">Tài khoản</a></li>
-                                <li><a href="../view_cart.php">Đơn hàng</a></li>
+                                <li><a href="order.php">Đơn hàng</a></li>
                                 <li><a href="../signout.php">Đăng xuất</a></li>
                             </ul>
                         </div>

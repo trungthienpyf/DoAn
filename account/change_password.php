@@ -46,7 +46,7 @@ if (empty($_SESSION['id'])) {
                     </div>
                 </li>
                 <li><a href="index.php">Thông tin cá nhân</a></li>
-                <li><a href="">Đơn hàng</a></li>
+                <li><a href="order.php">Đơn hàng</a></li>
                 <li><a href="" class="active">Đổi mật khẩu</a></li>
             </ul>
         </div>

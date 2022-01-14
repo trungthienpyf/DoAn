@@ -46,7 +46,7 @@ if (empty($_SESSION['id'])) {
                     </div>
                 </li>
                 <li><a href="" class="active">Thông tin cá nhân</a></li>
-                <li><a href="">Đơn hàng</a></li>
+                <li><a href="order.php">Đơn hàng</a></li>
                 <li><a href="change_password.php">Đổi mật khẩu</a></li>
             </ul>
         </div>
@@ -77,7 +77,7 @@ if (empty($_SESSION['id'])) {
                         </div>
                         <div class="row">
                             <div class="mod_title"> Số điện thoại</div>
-                            <input type="text" name="phone" value="<?php echo $each['phone'] ?>" class="input" id="phone">
+                            <input type="text" name="phone" value="0<?php echo $each['phone'] ?>" class="input" id="phone">
                             <span id="phone_error" class="error"></span>
                         </div>
                         <div class="row">

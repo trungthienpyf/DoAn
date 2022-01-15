@@ -54,37 +54,56 @@
 
 		<?php
 		if (isset($_SESSION['id'])) {
-
 			$id = $_SESSION['id'];
-
 			require 'admin/connect.php';
 			$sql = "select * from customer where id ='$id'";
 			$result = mysqli_query($connect, $sql);
 			$each = mysqli_fetch_array($result);
-		}
 		?>
-		<form style="padding-left: 60px;" action="process_checkout.php" method="post">
-			<br>
-			<br>
-			Tên người nhận
-			<input type="text" name="name" value="<?php echo $each['name'] ?>">
-			<br>
-			Số điện thoại người nhận
-			<input type=" number" name="phone" value='<?php echo $each['phone'] ?>'>
-			<br>
-			Địa chỉ người nhận
-			<input type="text" name="address" value='<?php echo $each['address'] ?>'>
+			<form style="padding-left: 60px;" action="process_checkout.php" method="post">
+				<br>
+				<br>
+				Tên người nhận
+				<input type="text" name="name" value="<?php echo $each['name'] ?>">
+				<br>
+				Số điện thoại người nhận
+				<input type=" number" name="phone" value='<?php echo $each['phone'] ?>'>
+				<br>
+				Địa chỉ người nhận
+				<input type="text" name="address" value='<?php echo $each['address'] ?>'>
+				<br>
+				Ghi chú
+				<br>
+				<textarea name="note"></textarea>
+				<br>
+				<?php if (isset($_GET['error'])) { ?>
+					<span style="color:red;"><?php echo $_GET['error'] ?></span>
+				<?php } ?>
+				<button style="margin:0">Đặt hàng</button>
+			</form>
+		<?php } else { ?>
+			<form style="padding-left: 60px;" action="process_checkout.php" method="post">
+				<br>
+				<br>
+				Tên người nhận
+				<input type="text" name="name">
+				<br>
+				Số điện thoại người nhận
+				<input type=" number" name="phone">
+				<br>
+				Địa chỉ người nhận
+				<input type="text" name="address>
 			<br>
 			Ghi chú
 			<br>
-			<textarea name="note"></textarea>
-			<br>
-			<?php if (isset($_GET['error'])) { ?>
-				<span style="color:red;"><?php echo $_GET['error'] ?></span>
-			<?php } ?>
-			<button style="margin:0">Đặt hàng</button>
-		</form>
-
+			<textarea name=" note"></textarea>
+				<br>
+				<?php if (isset($_GET['error'])) { ?>
+					<span style="color:red;"><?php echo $_GET['error'] ?></span>
+				<?php } ?>
+				<button style="margin:0">Đặt hàng</button>
+			</form>
+		<?php } ?>
 	<?php  } else { ?>
 		<h3 style="text-align:center">Giỏ hàng của bạn đang rỗng</h3>
 	<?php } ?>

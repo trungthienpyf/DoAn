@@ -49,7 +49,7 @@ if (isset($_COOKIE['remember'])) {
                         ?>
                         <ul>
                             <?php foreach ($result_category as $each) { ?>
-                                <li><a href=""><?php echo $each['name'] ?></a></li>
+                                <li> <a href="products.php?category=<?php echo $each['name'] ?>"><?php echo $each['name'] ?></a></li>
                             <?php } ?>
                         </ul>
                     </div>
@@ -63,7 +63,7 @@ if (isset($_COOKIE['remember'])) {
                         ?>
                         <ul>
                             <?php foreach ($result_category as $each) { ?>
-                                <li><a href=""><?php echo $each['name'] ?></a></li>
+                                <li> <a href="products.php?category=<?php echo $each['name'] ?>"><?php echo $each['name'] ?></a></li>
                             <?php } ?>
                         </ul>
                     </div>
@@ -77,7 +77,7 @@ if (isset($_COOKIE['remember'])) {
                         ?>
                         <ul>
                             <?php foreach ($result_category as $each) { ?>
-                                <li><a href=""><?php echo $each['name'] ?></a></li>
+                                <li> <a href="products.php?category=<?php echo $each['name'] ?>"><?php echo $each['name'] ?></a></li>
                             <?php } ?>
                         </ul>
                     </div>

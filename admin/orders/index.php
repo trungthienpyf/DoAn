@@ -2,7 +2,7 @@
 <?php require'../menu_top.php'?>
 <?php require '../connect.php'; 
 
-$sql="select orders.*,customer.name,customer.phone,customer.address
+$sql="select orders.*,customer.name,customer.phone,customer.address,LPAD(phone_receive, 10, '0') AS phone
 from orders 
 join customer on orders.customer_id=customer.id";
 $result=mysqli_query($connect,$sql);
@@ -72,7 +72,7 @@ $result=mysqli_query($connect,$sql);
 						<span style="color:rgb(120, 120, 120);">Duyệt</span>
 					<br>
 						<span style="color:rgb(120, 120, 120);">Hủy</span>
-					</td>
+				</td>
 				<?php } ?>
 			</tr>
 		<?php } ?>

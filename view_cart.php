@@ -67,7 +67,7 @@
 				<input type="text" name="name" value="<?php echo $each['name'] ?>">
 				<br>
 				Số điện thoại người nhận
-				<input type=" number" name="phone" value='<?php echo $each['phone'] ?>'>
+				<input type="number" name="phone" value='<?php echo $each['phone'] ?>'>
 				<br>
 				Địa chỉ người nhận
 				<input type="text" name="address" value='<?php echo $each['address'] ?>'>
@@ -89,14 +89,14 @@
 				<input type="text" name="name">
 				<br>
 				Số điện thoại người nhận
-				<input type=" number" name="phone">
+				<input type="number" name="phone">
 				<br>
 				Địa chỉ người nhận
-				<input type="text" name="address>
+				<input type="text" name="address">
 			<br>
 			Ghi chú
 			<br>
-			<textarea name=" note"></textarea>
+			<textarea name="note"></textarea>
 				<br>
 				<?php if (isset($_GET['error'])) { ?>
 					<span style="color:red;"><?php echo $_GET['error'] ?></span>

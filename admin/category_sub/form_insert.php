@@ -22,6 +22,8 @@
 			</select>
 			<br>
 			<div>
+			<?php require '../check_error.php'; ?>
+			
 			<button class="btn">Thêm</button>
 				
 			</div>

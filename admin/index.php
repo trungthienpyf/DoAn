@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if(isset($_SESSION['id_admin'])){
+	header('location:root/index.php');
+	exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +99,7 @@
 			
 		</div>
 		<div>
-		<button   id="btn" class="btn" >Đăng nhập</button>
+		<button id="btn" class="btn" >Đăng nhập</button>
 		</div>
 	</form>
 	</div>

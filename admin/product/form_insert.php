@@ -49,8 +49,10 @@ $result_the_loai=mysqli_query($connect,$sql_the_loai);
 
 			<?php }  ?>
 		</select>
-		<br>
+		<?php require '../check_error.php'; ?>
 		<div>
+		
+		
 		<button class="btn">Thêm</button>
 			
 		</div>

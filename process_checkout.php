@@ -1,16 +1,19 @@
 <?php 
-$phone_receive=$_POST['phone'];
-$name_receive=$_POST['name'];
-$address_receive=$_POST['address'];
-$note=$_POST['note'];
+
 require 'admin/connect.php';
 session_start();
 
-if(empty($_POST['phone'])||empty($_POST['name'])|| empty($_POST['address'])){
+
+if(empty($_POST['phone'])||empty($_POST['name'])|| empty($_POST['address']) ){
 	header('location:view_cart.php?error=Vui lòng điền thông tin cụ thể');
 	exit;
 }
 
+
+$phone_receive=$_POST['phone'];
+$name_receive=$_POST['name'];
+$address_receive=$_POST['address'];
+$note=$_POST['note'];
 
 $cart=$_SESSION['cart'];
 if(isset($_SESSION['id'])){

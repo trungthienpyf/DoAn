@@ -7,6 +7,8 @@
 		Tên nhà sản xuất
 		<input type="text" name="name" placeholder="Tên nhà sản xuất">
 		<div>
+		<?php require '../check_error.php'; ?>
+		
 		<button class="btn">Thêm</button>
 			
 		</div>

@@ -3,7 +3,7 @@
 <?php 
 require '../connect.php';
 
-if(empty($_POST['id']))
+if(empty($_GET['id']))
 {
 	header('location:index.php');
 	exit();
@@ -12,7 +12,7 @@ $id=$_GET['id'];
 $sql="select * from detail_orders where product_id='$id'";
 $result_orders=mysqli_query($connect,$sql);
 $checkrows=mysqli_num_rows($result_orders);
-if($checkrows>1){
+if($checkrows>=1){
 	header('location:index.php?error=Sản phẩm đang được bán không thể xóa');
 	exit();
 }

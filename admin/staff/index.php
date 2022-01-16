@@ -50,14 +50,21 @@ $result=mysqli_query($connect,$sql);
         </td>
          <?php }else{?>
         <td>
-            <a class="delete_style" href="form_update.php?id=<?php echo $each['id']?>">Sửa</a>
+            <a class="alter_style" href="form_update.php?id=<?php echo $each['id']?>">Sửa</a>
         </td>
         <td>
-            <a class="delete_style" href="process_delete.php?id=<?php echo $each['id']?>">Xóa</a>
+            <button class="delete_style" onClick="delete_product(<?php echo $each['id'];?>,'<?php echo $each['name'];?>')">Xóa</button>
         </td>
          <?php } ?>
       </tr>
     <?php } ?>
     </table>
-
+    <script type="text/javascript">
+        function delete_product(id,name){
+            if(confirm("Bạn có chắc chắn muốn xóa "+name+" ?")){
+                window.location.href='process_delete.php?id='+id;
+               
+            }
+        }
+    </script>
 <?php include '../menu_bottom.php'; ?>

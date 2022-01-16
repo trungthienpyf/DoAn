@@ -2,7 +2,7 @@
 
 <?php
 require '../connect.php';
-if(empty($_POST['id']))
+if(empty($_GET['id']))
 {
 	header('location:index.php');
 	exit();

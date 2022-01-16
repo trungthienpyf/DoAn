@@ -39,7 +39,8 @@
 						?>
 						vnđ
 					</td>
-					<td><a class="delete" href="delete_product.php?id=<?php echo $id ?>">X</a></td>
+					<td><button class="delete" 
+						onClick="delete_product(<?php echo $id ?>,'<?php echo $each['name']?>')">X</button></td>
 				</tr>
 			<?php } ?>
 		</table>
@@ -70,7 +71,7 @@
 				<input type="number" name="phone" value='<?php echo $each['phone'] ?>'>
 				<br>
 				Địa chỉ người nhận
-				<input type="text" name="address" value='<?php echo $each['address'] ?>'>
+				<input type="text" name="address" value='<?php echo $each['address']?>'>
 				<br>
 				Ghi chú
 				<br>
@@ -113,4 +114,12 @@
 
 
 </div>
+	<script type="text/javascript">
+		function delete_product(id,name){
+			if(confirm("Bạn chắc chắn muốn xóa sản phẩm "+ name +" ?")){
+				window.location.href="delete_product.php?id="+id;
+
+			}
+		}
+	</script>
 <?php require 'menu_index_bottom.php' ?>

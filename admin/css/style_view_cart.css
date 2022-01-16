@@ -34,5 +34,8 @@ h5{
 .delete{
 	padding: 4px 10px;
 	text-decoration: none;
+	background-color: white;
 	border: 1px solid black;
+	color: black;
+	cursor: pointer;
 }

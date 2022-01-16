@@ -58,13 +58,13 @@ $result=mysqli_query($connect,$sql);
 					<?php echo number_format($each['total_price'], 0, '', '.')?> VNĐ 
 				</td>
 				<td>
-					<a class="delete_style" href="detail.php?id=<?php echo $each['id']?>">Xem</a>
+					<a class="alter_style" href="detail.php?id=<?php echo $each['id']?>">Xem</a>
 				</td>
 				<?php if($each['status']==0){?>
 				<td>
-					<a  class="delete_style" href="update.php?id=<?php echo $each['id']?>&status=1">Duyệt</a>
+					<a  class="alter_style" href="update.php?id=<?php echo $each['id']?>&status=1">Duyệt</a>
 					<br>
-					<a class="delete_style" href="update.php?id=<?php echo $each['id']?>&status=2">Hủy</a>
+					<a class="alter_style" href="update.php?id=<?php echo $each['id']?>&status=2">Hủy</a>
 				</td>
 					
 				<?php }else{  ?>

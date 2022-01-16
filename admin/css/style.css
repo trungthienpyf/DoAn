@@ -131,11 +131,19 @@ table, td{
 	border-bottom: 1px solid #ccc;
 	padding: 10px;
 }
-.delete_style {
+.alter_style {
 
  text-decoration: none;
  color: black;
  font-weight: bold;
+}
+.delete_style{
+	border: none;
+	color: black;
+ font-weight: 550;
+ font-size: 18px;
+ background-color: white;
+ cursor: pointer;
 }
 .create_title{
 	padding: 10px 30px 10px 10px;

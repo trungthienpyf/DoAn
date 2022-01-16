@@ -51,7 +51,7 @@ $result=mysqli_query($connect,$sql);
 		<th >Xóa</th>
 		</tr>
 		<?php foreach ($result as $key => $each) { ?>
-			<tr style="text-align:center;">
+			<tr style="text-align:center;" >
 				<td><?php echo $key+1 ?></td>
 				<td><?php echo $each['name'] ?></td> 
 				<td><?php echo $each['description'] ?></td> 
@@ -60,10 +60,10 @@ $result=mysqli_query($connect,$sql);
 				</td> 
 				<td><?php echo number_format($each['price'] , 0, '', ','); ?> đ</td> 
 				<td >
-					<a class="delete_style" href="form_update.php?id=<?php echo $each['id']?>">Sửa</a>
+					<a class="alter_style" href="form_update.php?id=<?php echo $each['id']?>">Sửa</a>
 				</td> 
-			 	<td>
-					<a class="delete_style" href="process_delete.php?id=<?php echo $each['id']?>">Xóa</a>
+			 	<td >
+					<button onClick="delete_product(<?php echo $each['id'];?>,'<?php echo $each['name'];?>')" class="delete_style">Xóa</button>
 				</td> 
 			</tr>
 		<?php } ?> 
@@ -86,5 +86,13 @@ $result=mysqli_query($connect,$sql);
 		<a href="?page=<?php echo $next ?>&search=<?php echo $search?>">></a>
 		<?php } ?> 
 	</div>
-	
+	<script type="text/javascript">
+		function delete_product(id,name) {
+		 	if(confirm ("Bạn có chắc chắn muốn xóa "+name+" ?")){
+		 		window.location.href='process_delete.php?id='+id;
+		 	}		 
+		
+		}
+		
+	</script>
 <?php require'../menu_bottom.php'?>

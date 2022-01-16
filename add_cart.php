@@ -2,7 +2,10 @@
 <?php
 session_start();
 require 'admin/connect.php';
-
+if(empty($_GET['id'])){
+	header('location:products.php');
+	exit;
+}
 $id = $_GET['id'];
 
 if (empty($_SESSION['cart'][$id])) {

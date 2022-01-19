@@ -103,5 +103,15 @@
 .content .description p{
     padding: 10px;
 }
-
+.add_cart_new{
+    min-width: 120px;
+    height: 40px;
+    line-height: 20px;
+    background-color: #e63946;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    margin-left: 10px;
+}
 /* Content product end*/

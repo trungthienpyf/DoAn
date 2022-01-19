@@ -26,10 +26,12 @@ $total_price=0;
 
 $status=0;
 
-foreach ($cart as $key => $each) {
-	$total_price+=$each['quantity']*$each['price'];
+foreach ($cart as $key2 => $each2) {
+	foreach ($each2 as $key => $each) {
+		$total_price+=$each['quantity']*$each['price'];
+	}
 }
-$sql="insert into orders( name_receive, phone_receive, address_receive, note, status, customer_id, total_price) values('$name_receive', '$phone_receive', '$address_receive', '$note', '$status', '$customer_id', '$total_price')";
+$sql="insert into orders(name_receive, phone_receive, address_receive, note, status, customer_id, total_price) values('$name_receive', '$phone_receive', '$address_receive', '$note', '$status', '$customer_id', '$total_price')";
 mysqli_query($connect,$sql);
 
 $sql="select max(id) from orders where customer_id='$customer_id'";
@@ -37,13 +39,13 @@ $result=mysqli_query($connect,$sql);
 
 $orders_id=mysqli_fetch_array($result)['max(id)'];
 $quantity=0;
-foreach ($cart as $product_id => $each) {
+foreach ($cart as $product_id => $each2) {
+	foreach ($each2 as $key => $each) {
 	$quantity=$each['quantity'];
-	$sql="insert into detail_orders(orders_id, product_id, quantity) 
-	values('$orders_id','$product_id','$quantity')";
-
-
+	$sql="insert into detail_orders(orders_id, product_id, quantity,size) 
+	values('$orders_id','$product_id','$quantity','$key')";
 	mysqli_query($connect,$sql);
+	}
 }
 
 unset($_SESSION['cart']);

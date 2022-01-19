@@ -6,8 +6,10 @@
 
 	<?php
 	$sum = 0;
+
 	if (isset($_SESSION['cart'])) {
 		$cart = $_SESSION['cart'];
+		
 		$key = 1;
 	?>
 		<table border="1" width="100%">
@@ -21,16 +23,18 @@
 				<th>Xóa</th>
 
 			</tr>
-			<?php foreach ($cart as $id => $each) {  ?>
+			<?php foreach ($cart as $id2 => $each2) {  ?>
+			<?php foreach ($each2 as $id => $each) {  ?>
+
 				<tr>
 					<td><?php echo $key++ ?></td>
 
-					<td><?php echo $each['name'] ?></td>
+					<td><?php echo $each['name']. ' - '. $each['size'] ?></td>
 					<td><img width="200" src="admin/product/photos/<?php echo $each['img'] ?>"></td>
 					<td><?php echo   number_format($each['price'], 0, '', ',') ?></td>
-					<td><a href="update_quantity.php?id=<?php echo $id ?>&type=decrease">-</a>
+					<td><a href="update_quantity.php?id=<?php echo $id2 ?>&size=<?php echo $id?>&type=decrease">-</a>
 						<?php echo $each['quantity'] ?>
-						<a href="update_quantity.php?id=<?php echo $id ?>&type=increase">+</a>
+						<a href="update_quantity.php?id=<?php echo $id2 ?>&size=<?php echo $id?>&type=increase">+</a>
 					</td>
 					<td>
 						<?php $result = $each['price'] * $each['quantity'];
@@ -40,8 +44,11 @@
 						vnđ
 					</td>
 					<td><button class="delete" 
-						onClick="delete_product(<?php echo $id ?>,'<?php echo $each['name']?>')">X</button></td>
+						onClick="
+						delete_product(<?php echo $id2 ?>,'<?php echo $each['name']?>','<?php echo $id?>')
+						">X</button></td>
 				</tr>
+			<?php } ?>
 			<?php } ?>
 		</table>
 
@@ -115,9 +122,9 @@
 
 </div>
 	<script type="text/javascript">
-		function delete_product(id,name){
+		function delete_product(id,name,size){
 			if(confirm("Bạn chắc chắn muốn xóa sản phẩm "+ name +" ?")){
-				window.location.href="delete_product.php?id="+id;
+				window.location.href="delete_product.php?id="+id+"&size="+size;;
 
 			}
 		}

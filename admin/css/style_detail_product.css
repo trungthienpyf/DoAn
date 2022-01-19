@@ -1,0 +1,21 @@
+.btn_size{
+	padding: 4px 8px;
+	border: 1px solid #ccc;
+	margin-left: 8px;
+}
+.btn_size.selected{
+	border-color: black;
+}
+div.selectbtn {
+  display : inline-block;
+  background-color : #f9f9f9;
+  border : 1px solid #ddd;
+  padding : 3px 5px;
+  margin-right : 5px;
+  margin-bottom : 5px;
+  cursor: pointer;
+}
+div.selectbtn.selected {
+  background-color : #9bd4ef;
+  border : 1px solid #000;
+}

@@ -5,6 +5,7 @@ session_start();
 
 require 'admin/connect.php';
 $id=$_GET['id'];
+$size=$_GET['size'];
 $type=$_GET['type'];
 $sql="select * from product where id ='$id'";
 $check=mysqli_query($connect,$sql);
@@ -16,13 +17,13 @@ if($checkrows!==1){
 }
 
 if($type==='decrease'){
-	if($_SESSION['cart'][$id]['quantity'] > 1 ){
-	$_SESSION['cart'][$id]['quantity']--;
+	if($_SESSION['cart'][$id][$size]['quantity'] > 1 ){
+	$_SESSION['cart'][$id][$size]['quantity']--;
 	}else{
-		unset($_SESSION['cart'][$id]);
+		unset($_SESSION['cart'][$id][$size]);
 	}
 }else{
-	$_SESSION['cart'][$id]['quantity']++;
+	$_SESSION['cart'][$id][$size]['quantity']++;
 }
 
 

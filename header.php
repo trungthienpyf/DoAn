@@ -20,6 +20,7 @@ if (isset($_COOKIE['remember'])) {
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="admin/css/style_detail_product.css">
 <header>
     <nav class="header">
 

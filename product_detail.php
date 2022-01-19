@@ -17,6 +17,7 @@
 			$result = mysqli_query($connect, $sql);
 			$each = mysqli_fetch_array($result);
 			echo $each['name'] ?> </title>
+	
 </head>
 
 <body>
@@ -63,10 +64,19 @@
 				<div class="price">
 					<p class="price_word"><?php echo number_format($each['price'], 0, '', '.');  ?> ₫</p>
 				</div>
-				<div class="button">
-					<a href="add_cart.php?id=<?php echo $each['id'] ?>" class="add_cart"><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng </a>
+				<form  action="post">
+					<input type="hidden" id="id"  value="<?php echo $each['id'] ?>">
+					<select id="test" name="size">
+					     <option value="S">S</option>
+					     <option value="M">M</option>
+					     <option value="L">L</option>
+					</select>
+					<div class="button">
+					<button id="form_insert" class="add_cart_new" ><i class="fas fa-shopping-cart"></i>Thêm vào giỏ hàng </button>
 					<a href="view_cart.php">Mua ngay</a>
-				</div>
+					</div>
+				</form>
+				
 				<div class="description">
 					<h6>Thông tin sản phẩm:</h6>
 					<p>
@@ -76,7 +86,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div class="other_product">
 		<link rel="stylesheet" href="assets/css/index.css">
 		<div class="main">
@@ -108,6 +117,66 @@
 	<!-- Footer start -->
 	<?php include 'footer.php' ?>
 	<!-- Footer end -->
-</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		function ReplaceSelectWithButtons(selectField) {
+		    // get the basics
+		    var selectValue = selectField.val();
+		    var selectId = selectField.attr('id')
+		    
+		    // get all options and create buttons
+		    $(selectField).find('option').each(function() {
+		      if ($(this).val()) {
+		        var btn = $('<div data-value="' + $(this).val() + '" data-target="' + selectId  + '" class="selectbtn">' + $(this).text() + '</div>');
+		        if ($(this).val() == selectValue) {
+		          btn.addClass('selected');
+		        }
+		        btn.insertBefore(selectField);
+		      }
+		    });    
+		    // hide the select field
+		    selectField.hide();
+		    // map click event to buttons
+		    $(document).on('click', '.selectbtn', function() {
+		      var target = $(this).data('target');
+		      $('.selectbtn[data-target="' + target + '"]').removeClass('selected');
+		      $(this).addClass('selected');
+		     
+		      // deselect everything, select the selected 
+		      var selectorAll = '#' + target + ' option';
+		      $(selectorAll).removeAttr('selected');
+		      var selectorSingle = '#' + target + ' option[value="' + $(this).data('value') + '"]';
+		      $(selectorSingle).attr('selected', 'selected');
+		      $(selectorSingle).change();
 
+		    });
+		  }
+		  
+		  // change selects
+		  ReplaceSelectWithButtons($('#test'));
+
+		$("#form_insert").click(function(e) {
+			e.preventDefault()
+			let id=$('#id').val();
+			let size=$('#test').val();
+			$.ajax({
+				url: 'add_cart.php',
+				type: 'post',
+				dataType: 'html',
+				data: {id:id,size:size},
+			})
+			.done(function(response) {
+
+				if(response==1){
+					alert('Đặt hàng thành công hãy kiểm tra giỏ hàng')
+				}else{
+					alert(response)
+				}
+			})
+			
+			
+		})
+	</script>
+</body>
+	
 </html>

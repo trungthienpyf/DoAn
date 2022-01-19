@@ -34,6 +34,14 @@
     padding: 5px;
     font-size: 18px;
 }
+.category .cate{
+    text-decoration: none;
+}
+.category .cate h5:hover{
+    color: #e63946;
+    transition: 0.15s;
+}
+
 /*Category end*/
 
 /*Products start*/

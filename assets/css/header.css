@@ -7,7 +7,6 @@
 }
 .header .icon {
     width: 25%;
-    padding-right: 100px;
     text-align: center;
 }
 /*  header */
@@ -50,11 +49,15 @@
     align-items: center;
     justify-content: center;
 }
+.header .menu ul.ul_1 li{
+    width: 130px;
+}
 .header .menu ul.ul_1 li a {
+    display: block;
     color: #457b9d;
     font-size: 16px;
     font-weight: 500;
-    padding: 17px 23px;
+    /* padding: 17px 23px; */
     border-radius: 3px;
     text-transform: uppercase;
 }
@@ -75,7 +78,6 @@
 .header .menu ul.ul_1 li:hover .sub_menu {
     display: block;
     position: absolute;
-    margin-left: -2%;
     padding-top: 8px;
 }
 
@@ -84,7 +86,7 @@
 }
 
 .header .menu ul.ul_1 li:hover .sub_menu ul li {
-    padding: 3px;
+    line-height: 40px;
     border: #457b9d 1px solid;
 }
 .header .menu ul.ul_1 li:hover .sub_menu ul li:last-child {
@@ -99,7 +101,7 @@
 /*icon*/
 .header .icon ul.ul_2 {
     display: flex;
-    justify-content: end;
+    justify-content: start;
 }
 .header .icon ul.ul_2 li {
     margin: 0 20px;
@@ -122,11 +124,14 @@
     transition: 0.25s;
 }
 .header .icon .profile {
+    width: 120px;
+    height: 40px;
+    display: inline-block;
     border: #457b9d 1px solid;
     padding: 12px 10px 12px;
     border-radius: 5px;
-    line-height: 80px;
     cursor: pointer;
+    text-align: center;
 }
 .header .icon .profile:hover{
     border: #e63946 1px solid;
@@ -146,19 +151,22 @@
 .header .icon ul.ul_2 li:hover .sub_menu ul {
     display: block;
 }
-.header .icon ul.ul_2 li:hover .sub_menu ul li {
+.header .icon ul.ul_2 li:hover .sub_menu ul .sub_profile {
     margin: 0;
     border-bottom: #457b9d 1px solid;
+    width: 120px;
+    line-height: 40px;
+    
 }
-.header .icon ul.ul_2 li:hover .sub_menu ul li:last-child {
+.header .icon ul.ul_2 li:hover .sub_menu ul .sub_profile:last-child {
     padding-bottom: 0;
     border-bottom: none;
 }
-.header .icon ul.ul_2 li:hover .sub_menu ul li a{
+.header .icon ul.ul_2 li:hover .sub_menu ul li.sub_profile a{
     padding: 5px 10px ;
     display: block;
 }
-.header .icon ul.ul_2 li:hover .sub_menu ul li a:hover {
+.header .icon ul.ul_2 li:hover .sub_menu ul .sub_profile a:hover {
     transition: 0.25s;
     color: #e63946;
     text-decoration: none;

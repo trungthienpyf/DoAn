@@ -29,7 +29,9 @@
                 <h4>Bộ lọc</h4>
             </div>
             <div class="cate_item">
-                <h5>Áo</h5>
+                <a href="products.php?category=Áo" class="cate">
+                    <h5>Áo</h5>
+                </a>
                 <ul>
                     <?php
                     $sql_top = "select * from category_detail where category_id=1";
@@ -42,7 +44,9 @@
                 </ul>
             </div>
             <div class="cate_item">
-                <h5>Quần</h5>
+                <a href="products.php?category=Quần" class="cate">
+                    <h5>Quần</h5>
+                </a>
                 <ul>
                     <?php
                     $sql_top = "select * from category_detail where category_id=2";
@@ -54,7 +58,9 @@
                 </ul>
             </div>
             <div class="cate_item">
-                <h5>Phụ kiện</h5>
+                <a href="products.php?category=Phụ kiện" class="cate">
+                    <h5>Phụ kiện</h5>
+                </a>
                 <ul>
                     <?php
                     $sql_top = "select * from category_detail where category_id=3";
@@ -102,13 +108,23 @@
                 $number_page = ceil($number_of_product / $product_in_page);
                 $skip = $product_in_page * ($page - 1);
 
-                $sql_show_product = "select product.*, category_detail.name as category_name
+                $sql_show_product = "select product.*, category_detail.name
                 from product
                 join category_detail on product.category_detail_id = category_detail.id
                 where category_detail.name = '$category'
                 limit $product_in_page offset $skip";
-
                 $show_product = mysqli_query($connect, $sql_show_product);
+
+                if (mysqli_num_rows($show_product) == 0) {
+                    $sql_show_product = "select product.*, category.name as cate 
+                    from product
+                    join category_detail on product.category_detail_id = category_detail.id
+                    JOIN category ON category_detail.category_id = category.id
+                    WHERE category.name = '$category'
+                    limit $product_in_page offset $skip";
+                    $show_product = mysqli_query($connect, $sql_show_product);
+                }
+
                 ?>
                 <div class="table">
                     <?php foreach ($show_product as $each) { ?>

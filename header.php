@@ -42,7 +42,7 @@ if (isset($_COOKIE['remember'])) {
                     <a href="products.php">Cửa hàng</a>
                 </li>
                 <li>
-                    <a href="products.php">Áo <i class="fas fa-caret-down"></i></a>
+                    <a href="products.php?category=Áo">Áo <i class="fas fa-caret-down"></i></a>
                     <div class="sub_menu">
                         <?php
                         $sql_category = "select * from category_detail where category_id=1";
@@ -56,7 +56,7 @@ if (isset($_COOKIE['remember'])) {
                     </div>
                 </li>
                 <li>
-                    <a href="products.php">Quần <i class="fas fa-caret-down"></i></a>
+                    <a href="products.php?category=Quần">Quần <i class="fas fa-caret-down"></i></a>
                     <div class="sub_menu">
                         <?php
                         $sql_category = "select * from category_detail where category_id=2";
@@ -70,7 +70,7 @@ if (isset($_COOKIE['remember'])) {
                     </div>
                 </li>
                 <li>
-                    <a href="products.php">Phụ kiện <i class="fas fa-caret-down"></i></a>
+                    <a href="products.php?category=Phụ kiện">Phụ kiện <i class="fas fa-caret-down"></i></a>
                     <div class="sub_menu">
                         <?php
                         $sql_category = "select * from category_detail where category_id=3";
@@ -92,7 +92,7 @@ if (isset($_COOKIE['remember'])) {
                 <li>
                     <a href="view_cart.php">Giỏ hàng<i class="fas fa-shopping-cart"></i></a>
                 </li>
-                <li>
+                <li style="margin-top: 20px;">
                     <?php
                     if (!isset($_SESSION)) {
                         session_start();
@@ -102,14 +102,15 @@ if (isset($_COOKIE['remember'])) {
                     ?>
                         <a href="signin.php" class="profile"> Đăng nhập </a>
                     <?php } else { ?>
-                        <label class="profile"><i class="fas fa-user"></i>
-                            <?php echo $_SESSION['name']; ?>
-                        </label>
+                        <div class="profile"><i class="fas fa-user"></i>
+                        <?php echo $_SESSION['name']; ?>
+                           
+                    </div>
                         <div class="sub_menu">
                             <ul>
-                                <li><a href="account">Tài khoản</a></li>
-                                <li><a href="account/order.php">Đơn hàng</a></li>
-                                <li><a href="signout.php">Đăng xuất</a></li>
+                                <li class="sub_profile"><a href="account">Tài khoản</a></li>
+                                <li class="sub_profile"><a href="account/order.php">Đơn hàng</a></li>
+                                <li class="sub_profile"><a href="signout.php">Đăng xuất</a></li>
                             </ul>
                         </div>
                     <?php } ?>

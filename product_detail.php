@@ -1,6 +1,16 @@
 <!-- Connect start -->
 <?php require 'admin/connect.php'; ?>
 <!-- Connect end-->
+<?php
+$id = $_GET['id'];
+$sql = "select * FROM product where id = '$id'";
+$result = mysqli_query($connect, $sql);
+if (mysqli_num_rows($result) == 0) {
+	header('location:404.html');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

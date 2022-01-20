@@ -60,7 +60,8 @@ if (empty($_SESSION['id'])) {
                 $sql = "select 
                 orders.*,customer.name,customer.phone,customer.address from orders
                 join customer on customer.id = orders.customer_id
-                where customer_id = '$id'";
+                where customer_id = '$id'
+                ORDER BY id DESC";
                 $result = mysqli_query($connect, $sql);
                 ?>
                 <?php if (mysqli_num_rows($result) != 0) { ?>
@@ -99,9 +100,9 @@ if (empty($_SESSION['id'])) {
                                 <?php
                                 $order_id = $each['id'];
                                 $sql = "select * from detail_orders
-                         join product on product.id = detail_orders.product_id
-                          join orders on orders.id = detail_orders.orders_id
-                          where orders_id = '$order_id'";
+                                        join product on product.id = detail_orders.product_id
+                                        join orders on orders.id = detail_orders.orders_id
+                                        where orders_id = '$order_id'";
                                 $result_order = mysqli_query($connect, $sql);
                                 ?>
 
@@ -109,7 +110,7 @@ if (empty($_SESSION['id'])) {
                                     <?php foreach ($result_order  as $each_order) { ?>
                                         <div class="row">
                                             <div class="image item_flex">
-                                                <img src="../admin/product/photos/<?php echo $each_order['img'] ?>" alt="">
+                                                <img src="../admin/product/photos/<?php echo $each_order['img'] ?>">
                                             </div>
                                             <div class="name ">
                                                 <?php echo $each_order['name'] ?>
@@ -120,19 +121,22 @@ if (empty($_SESSION['id'])) {
                                             <div class="quantity item_flex">
                                                 Qty: <?php echo $each_order['quantity'] ?>
                                             </div>
+                                            <div class="quantity item_flex">
+                                                <?php
+                                                if ($each_order['size']) {
+                                                    echo "Size: " . ($each_order['size']);
+                                                }
+                                                ?>
+                                            </div>
                                         </div>
 
                                     <?php } ?>
                                 </div>
                                 <div class="row" style="justify-content: space-between;">
                                     <p>Tổng giá trị đơn hàng: <?php echo number_format($each_order['total_price'], 0, '', '.') ?> ₫</p>
-                                    <?php
-                                    if ($each['status'] == 0) {
-                                    ?>
-                                        <a href="delete.php?order_id=<?php echo $each['id'] ?>" class="delete">Huỷ đơn hàng</a>
-                                    <?php
-                                    }
-                                    ?>
+                                    <?php if ($each['status'] == 0) { ?>
+                                        <a href="cancel.php?order_id=<?php echo $each['id'] ?>" class="delete">Huỷ đơn hàng</a>
+                                    <?php } ?>
                                 </div>
                                 <div><a href="" style="text-decoration: none;"><button>Xem chi tiết</button></a></div>
                             </div>

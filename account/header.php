@@ -91,7 +91,7 @@ if (isset($_COOKIE['remember'])) {
                 <li>
                     <a href="../view_cart.php"><i class="fas fa-shopping-cart"></i></a>
                 </li>
-                <li>
+                <li  style="margin-top: 20px;">
                     <?php
                     if (!isset($_SESSION)) {
                         session_start();
@@ -100,14 +100,14 @@ if (isset($_COOKIE['remember'])) {
                     ?>
                         <a href="../signin.php" class="profile"> Đăng nhập </a>
                     <?php } else { ?>
-                        <label class="profile"><i class="fas fa-user"></i>
+                        <div class="profile"><i class="fas fa-user"></i>
                             <?php echo $_SESSION['name']; ?>
-                        </label>
+                        </div>
                         <div class="sub_menu">
                             <ul>
-                                <li><a href="../account">Tài khoản</a></li>
-                                <li><a href="order.php">Đơn hàng</a></li>
-                                <li><a href="../signout.php">Đăng xuất</a></li>
+                                <li class="sub_profile"><a href="../account">Tài khoản</a></li>
+                                <li class="sub_profile"><a href="order.php">Đơn hàng</a></li>
+                                <li class="sub_profile"><a href="../signout.php">Đăng xuất</a></li>
                             </ul>
                         </div>
                     <?php } ?>

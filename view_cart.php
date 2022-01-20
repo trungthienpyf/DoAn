@@ -9,7 +9,6 @@
 
 	if (isset($_SESSION['cart'])) {
 		$cart = $_SESSION['cart'];
-
 		$key = 1;
 	?>
 		<table border="1" width="100%">
@@ -23,32 +22,35 @@
 				<th>Xóa</th>
 
 			</tr>
-				<?php foreach ($cart as $id => $each) {  ?>
+
+			<?php foreach ($cart as $id => $each) {
+				foreach ($each as $size => $each2) {  ?>
 					<tr>
 						<td><?php echo $key++ ?></td>
-						<td><?php echo $each['name'] ;
-							if (isset($each['size'] )) {
-								echo  ' - ' . $each['size'] ;
+						<td><?php echo $each2['name'];
+							if ($size) {
+								echo  ' - ' . $size;
 							}
-						?></td>
-						<td><img width="200" src="admin/product/photos/<?php echo $each['img'] ?>"></td>
-						<td><?php echo   number_format($each['price'], 0, '', ',') ?></td>
-						<td><a href="update_quantity.php?id=<?php echo $id2 ?>&size=<?php echo $id ?>&type=decrease">-</a>
-							<?php echo $each['quantity'] ?>
-							<a href="update_quantity.php?id=<?php echo $id2 ?>&size=<?php echo $id ?>&type=increase">+</a>
+							?></td>
+						<td><img width="200" src="admin/product/photos/<?php echo $each2['img'] ?>"></td>
+						<td><?php echo   number_format($each2['price'], 0, '', ',') ?></td>
+						<td><a href="update_quantity.php?id=<?php echo $id ?>&size=<?php echo $size ?>&type=decrease">-</a>
+							<?php echo $each2['quantity'] ?>
+							<a href="update_quantity.php?id=<?php echo $id ?>&size=<?php echo $size ?>&type=increase">+</a>
 						</td>
 						<td>
-							<?php $result = $each['price'] * $each['quantity'];
+							<?php $result = $each2['price'] * $each2['quantity'];
 							echo number_format($result, 0, '', ',');
 							$sum += $result;
 							?>
 							vnđ
 						</td>
 						<td><button class="delete" onClick="
-						delete_product(<?php echo $id2 ?>,'<?php echo $each['name'] ?>','<?php echo $id ?>')
+						delete_product(<?php echo $id ?>,'<?php echo $each2['name'] ?>','<?php echo $size ?>')
 						">X</button></td>
 					</tr>
 				<?php } ?>
+			<?php } ?>
 		</table>
 	<?php  } ?>
 

@@ -103,9 +103,8 @@ if (isset($_COOKIE['remember'])) {
                         <a href="signin.php" class="profile"> Đăng nhập </a>
                     <?php } else { ?>
                         <div class="profile"><i class="fas fa-user"></i>
-                        <?php echo $_SESSION['name']; ?>
-                           
-                    </div>
+                            <?php echo $_SESSION['name']; ?>
+                        </div>
                         <div class="sub_menu">
                             <ul>
                                 <li class="sub_profile"><a href="account">Tài khoản</a></li>

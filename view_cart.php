@@ -9,7 +9,7 @@
 
 	if (isset($_SESSION['cart'])) {
 		$cart = $_SESSION['cart'];
-		
+
 		$key = 1;
 	?>
 		<table border="1" width="100%">
@@ -23,36 +23,33 @@
 				<th>Xóa</th>
 
 			</tr>
-			<?php foreach ($cart as $id2 => $each2) {  ?>
-			<?php foreach ($each2 as $id => $each) {  ?>
-
-				<tr>
-					<td><?php echo $key++ ?></td>
-
-					<td><?php echo $each['name']. ' - '. $each['size'] ?></td>
-					<td><img width="200" src="admin/product/photos/<?php echo $each['img'] ?>"></td>
-					<td><?php echo   number_format($each['price'], 0, '', ',') ?></td>
-					<td><a href="update_quantity.php?id=<?php echo $id2 ?>&size=<?php echo $id?>&type=decrease">-</a>
-						<?php echo $each['quantity'] ?>
-						<a href="update_quantity.php?id=<?php echo $id2 ?>&size=<?php echo $id?>&type=increase">+</a>
-					</td>
-					<td>
-						<?php $result = $each['price'] * $each['quantity'];
-						echo number_format($result, 0, '', ',');
-						$sum += $result;
-						?>
-						vnđ
-					</td>
-					<td><button class="delete" 
-						onClick="
-						delete_product(<?php echo $id2 ?>,'<?php echo $each['name']?>','<?php echo $id?>')
+				<?php foreach ($cart as $id => $each) {  ?>
+					<tr>
+						<td><?php echo $key++ ?></td>
+						<td><?php echo $each['name'] ;
+							if (isset($each['size'] )) {
+								echo  ' - ' . $each['size'] ;
+							}
+						?></td>
+						<td><img width="200" src="admin/product/photos/<?php echo $each['img'] ?>"></td>
+						<td><?php echo   number_format($each['price'], 0, '', ',') ?></td>
+						<td><a href="update_quantity.php?id=<?php echo $id2 ?>&size=<?php echo $id ?>&type=decrease">-</a>
+							<?php echo $each['quantity'] ?>
+							<a href="update_quantity.php?id=<?php echo $id2 ?>&size=<?php echo $id ?>&type=increase">+</a>
+						</td>
+						<td>
+							<?php $result = $each['price'] * $each['quantity'];
+							echo number_format($result, 0, '', ',');
+							$sum += $result;
+							?>
+							vnđ
+						</td>
+						<td><button class="delete" onClick="
+						delete_product(<?php echo $id2 ?>,'<?php echo $each['name'] ?>','<?php echo $id ?>')
 						">X</button></td>
-				</tr>
-			<?php } ?>
-			<?php } ?>
+					</tr>
+				<?php } ?>
 		</table>
-
-
 	<?php  } ?>
 
 	<?php if (isset($_SESSION['cart']) && sizeof($_SESSION['cart']) > 0) { ?>
@@ -78,7 +75,7 @@
 				<input type="number" name="phone" value='<?php echo $each['phone'] ?>'>
 				<br>
 				Địa chỉ người nhận
-				<input type="text" name="address" value='<?php echo $each['address']?>'>
+				<input type="text" name="address" value='<?php echo $each['address'] ?>'>
 				<br>
 				Ghi chú
 				<br>
@@ -101,10 +98,10 @@
 				<br>
 				Địa chỉ người nhận
 				<input type="text" name="address">
-			<br>
-			Ghi chú
-			<br>
-			<textarea name="note"></textarea>
+				<br>
+				Ghi chú
+				<br>
+				<textarea name="note"></textarea>
 				<br>
 				<?php if (isset($_GET['error'])) { ?>
 					<span style="color:red;"><?php echo $_GET['error'] ?></span>
@@ -121,12 +118,12 @@
 
 
 </div>
-	<script type="text/javascript">
-		function delete_product(id,name,size){
-			if(confirm("Bạn chắc chắn muốn xóa sản phẩm "+ name +" ?")){
-				window.location.href="delete_product.php?id="+id+"&size="+size;;
+<script type="text/javascript">
+	function delete_product(id, name, size) {
+		if (confirm("Bạn chắc chắn muốn xóa sản phẩm " + name + " ?")) {
+			window.location.href = "delete_product.php?id=" + id + "&size=" + size;;
 
-			}
 		}
-	</script>
+	}
+</script>
 <?php require 'menu_index_bottom.php' ?>

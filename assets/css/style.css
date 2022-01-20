@@ -40,7 +40,10 @@ a:hover {
     transition: 0.25s;
     color: #e63946;
     text-decoration: underline;
-    transition: 0.25s;
+}
+.none:hover {
+    text-decoration: none;
+    color: #1d3557;
 }
 
 button {
@@ -59,7 +62,18 @@ button:hover {
     background-color: #6ca4c7;
     transition: 0.15s;
 }
-
+.mini {
+    padding: 2px 5px;
+    text-decoration: none;
+    background-color: rgb(241, 241, 241);
+    border: 1px solid #6ca4c7;
+    color: #1d3557;
+    cursor: pointer;
+}
+.mini:hover {
+    transition: 0.15s;
+    background-color: #e7e7e7;
+}
 select {
     border: none;
     border-bottom: #1d3557 1px solid;

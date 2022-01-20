@@ -5,58 +5,65 @@
 	</div>
 
 	<?php
-	$sum = 0;
-
+	$total = 0;
 	if (isset($_SESSION['cart'])) {
 		$cart = $_SESSION['cart'];
 		$key = 1;
 	?>
 		<table border="1" width="100%">
 			<tr>
-				<th>ID</th>
-				<th>Tên</th>
-				<th>Hình ảnh</th>
-				<th>Giá</th>
-				<th>Số lượng</th>
-				<th>Tiền</th>
-				<th>Xóa</th>
-
+				<th style="width: 5%;">ID</th>
+				<th style="width: 25%;">Tên</th>
+				<th style="width: 15%;">Hình ảnh</th>
+				<th style="width: 15%;">Giá</th>
+				<th style="width: 15%;">Số lượng</th>
+				<th style="width: 15%;">Tiền</th>
+				<th style="width: 10%;">Xóa</th>
 			</tr>
-
 			<?php foreach ($cart as $id => $each) {
 				foreach ($each as $size => $each2) {  ?>
 					<tr>
 						<td><?php echo $key++ ?></td>
-						<td><?php echo $each2['name'];
-							if ($size) {
-								echo  ' - ' . $size;
-							}
-							?></td>
-						<td><img width="200" src="admin/product/photos/<?php echo $each2['img'] ?>"></td>
-						<td><?php echo   number_format($each2['price'], 0, '', ',') ?></td>
-						<td><a href="update_quantity.php?id=<?php echo $id ?>&size=<?php echo $size ?>&type=decrease">-</a>
-							<?php echo $each2['quantity'] ?>
-							<a href="update_quantity.php?id=<?php echo $id ?>&size=<?php echo $size ?>&type=increase">+</a>
+						<td>
+							<a href="product_detail.php?id=<?php echo $id ?>" class="none">
+								<?php echo $each2['name'];
+								if ($size) {
+									echo  ' - ' . $size;
+								}
+								?>
+							</a>
 						</td>
 						<td>
-							<?php $result = $each2['price'] * $each2['quantity'];
-							echo number_format($result, 0, '', ',');
-							$sum += $result;
-							?>
-							vnđ
+							<a href="product_detail.php?id=<?php echo $id ?>" class="none">
+								<img width="200" src="admin/product/photos/<?php echo $each2['img'] ?>">
+							</a>
 						</td>
-						<td><button class="delete" onClick="
-						delete_product(<?php echo $id ?>,'<?php echo $each2['name'] ?>','<?php echo $size ?>')
-						">X</button></td>
+						<td><span class="span-price"><?php echo   $each2['price'] ?></span></td>
+						<td>
+							<div style="line-height: 20px; width: 60px;height: 20px;margin: 0 auto;">
+								<button style="float: left;" class="btn-quantity_in_cart mini" data-type="0" data-id="<?php echo $id ?>" data-size="<?php echo $size ?>">-</button>
+								<span style=" width: 20px;float: left;" class="span-quantity"><?php echo $each2['quantity'] ?></span>
+								<button style="float: right;" class="btn-quantity_in_cart mini" data-type="1" data-id="<?php echo $id ?>" data-size="<?php echo $size ?>">+</button>
+							</div>
+						</td>
+						<td>
+							<span class="span-sum">
+								<?php $sum = $each2['price'] * $each2['quantity'];
+								echo $sum;
+								$total += $sum;
+								?>
+							</span>vnđ
+						</td>
+						<td><button class="delete btn-delete" data-id="<?php echo $id ?>" data-size="<?php echo $size ?>" onClick="
+					delete_product(<?php echo $id ?>,'<?php echo $each2['name'] ?>','<?php echo $size ?>')
+					">X</button></td>
 					</tr>
 				<?php } ?>
 			<?php } ?>
 		</table>
-	<?php  } ?>
 
-	<?php if (isset($_SESSION['cart']) && sizeof($_SESSION['cart']) > 0) { ?>
 		<div>
-			<h5 style="float:right;">Tổng tiền: <?php echo  number_format($sum, 0, '', ','); ?> vnđ</h5>
+			<h5 style="float:right;">Tổng tiền: <span id="span-total"><?php echo  $total; ?></span> vnđ</h5>
 		</div>
 
 		<?php
@@ -66,51 +73,36 @@
 			$sql = "select * from customer where id ='$id'";
 			$result = mysqli_query($connect, $sql);
 			$each = mysqli_fetch_array($result);
+			$name = $each['name'];
+			$phone = $each['phone'];
+			$address = $each['address'];
+		} else {
+			$name = "";
+			$phone = "";
+			$address = "";
+		}
 		?>
-			<form style="padding-left: 60px;" action="process_checkout.php" method="post">
-				<br>
-				<br>
-				Tên người nhận
-				<input type="text" name="name" value="<?php echo $each['name'] ?>">
-				<br>
-				Số điện thoại người nhận
-				<input type="number" name="phone" value='<?php echo $each['phone'] ?>'>
-				<br>
-				Địa chỉ người nhận
-				<input type="text" name="address" value='<?php echo $each['address'] ?>'>
-				<br>
-				Ghi chú
-				<br>
-				<textarea name="note"></textarea>
-				<br>
-				<?php if (isset($_GET['error'])) { ?>
-					<span style="color:red;"><?php echo $_GET['error'] ?></span>
-				<?php } ?>
-				<button style="margin:0">Đặt hàng</button>
-			</form>
-		<?php } else { ?>
-			<form style="padding-left: 60px;" action="process_checkout.php" method="post">
-				<br>
-				<br>
-				Tên người nhận
-				<input type="text" name="name">
-				<br>
-				Số điện thoại người nhận
-				<input type="number" name="phone">
-				<br>
-				Địa chỉ người nhận
-				<input type="text" name="address">
-				<br>
-				Ghi chú
-				<br>
-				<textarea name="note"></textarea>
-				<br>
-				<?php if (isset($_GET['error'])) { ?>
-					<span style="color:red;"><?php echo $_GET['error'] ?></span>
-				<?php } ?>
-				<button style="margin:0">Đặt hàng</button>
-			</form>
-		<?php } ?>
+		<form style="padding-left: 60px;" action="process_checkout.php" method="post">
+			<br>
+			<br>
+			Tên người nhận
+			<input type="text" name="name" value="<?php echo $name ?>">
+			<br>
+			Số điện thoại người nhận
+			<input type="number" name="phone" value='<?php echo $phone ?>'>
+			<br>
+			Địa chỉ người nhận
+			<input type="text" name="address" value='<?php echo $address ?>'>
+			<br>
+			Ghi chú
+			<br>
+			<textarea name="note"></textarea>
+			<br>
+			<?php if (isset($_GET['error'])) { ?>
+				<span style="color:red;"><?php echo $_GET['error'] ?></span>
+			<?php } ?>
+			<button style="margin:0">Đặt hàng</button>
+		</form>
 	<?php  } else { ?>
 		<h3 style="text-align:center">Giỏ hàng của bạn đang rỗng</h3>
 	<?php } ?>
@@ -120,10 +112,67 @@
 
 
 </div>
-<script type="text/javascript">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$(".btn-quantity_in_cart").click(function() {
+			let btn = $(this);
+			let id = btn.data('id');
+			let type = parseInt(btn.data('type'));
+			let size = btn.data('size');
+			$.ajax({
+					type: "POST",
+					url: "update_quantity.php",
+					data: {
+						id,
+						type,
+						size
+					}
+				})
+				.done(function() {
+					let parent_tr = btn.parents('tr');
+					let price = parent_tr.find('.span-price').text();
+					let quantity = parent_tr.find('.span-quantity').text();
+					if (type == 1) {
+						quantity++;
+					} else {
+						quantity--;
+					}
+					if (quantity == 0) {
+						parent_tr.remove();
+					} else {
+						parent_tr.find('.span-quantity').text(quantity);
+						let sum = price * quantity;
+						parent_tr.find('.span-sum').text(sum);
+					}
+					let total = 0;
+					$(".span-sum").each(function() {
+						total += parseFloat($(this).text());
+					})
+					$('#span-total').text(total);
+				})
+		});
+		$(".btn-delete").click(function() {
+			let btn = $(this);
+			let id = btn.data('id');
+			let size = btn.data('size');
+			$.ajax({
+					type: "POST",
+					url: "delete_product.php",
+					data: {
+						id,
+						size
+					}
+				})
+				.done(function() {
+					btn.parents('tr').remove();
+				})
+		});
+	});
+
 	function delete_product(id, name, size) {
 		if (confirm("Bạn chắc chắn muốn xóa sản phẩm " + name + " ?")) {
-			window.location.href = "delete_product.php?id=" + id + "&size=" + size;;
+			// window.location.href = "delete_product.php?id=" + id + "&size=" + size;;
 
 		}
 	}

@@ -32,7 +32,6 @@ $result=mysqli_query($connect,$sql);
 	
 	<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Sản phẩm</h2>
 	<div style="padding: 10px 20px;">
-
 		<form action="">
 			<span style="font-size: 24px; ">Tìm kiếm</span>
 		<input style="margin: 0 0 0 16px;" type="search" name="search" value="<?php echo $search?>" placeholder="Tìm kiếm sản phẩm">

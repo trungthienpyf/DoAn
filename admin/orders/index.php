@@ -2,12 +2,44 @@
 <?php require'../menu_top.php'?>
 <?php require '../connect.php'; 
 
+$search='';
+if(isset($_GET['search'])){
+	$search=$_GET['search'];
+}
+$count_orders="select count(*) from orders join customer on orders.customer_id=customer.id
+where  phone like '%$search%' or name like '%$search%'
+or customer.phone like '%$search%' or customer.name like '%$search%'";
+$array_orders=mysqli_query($connect,$count_orders);
+$result_orders=mysqli_fetch_array($array_orders);
+$number_orders=$result_orders['count(*)'];
+$orders_number_in_page=10;
+
+$page=ceil($number_orders/$orders_number_in_page);
+
+
+
+$get_page=1;
+if(isset($_GET['page'])){
+	$get_page=$_GET['page'];
+}
+$passed=$orders_number_in_page*($get_page-1);
+
 $sql="select orders.*,customer.name,customer.phone,customer.address,LPAD(phone_receive, 10, '0') AS phone
 from orders 
-join customer on orders.customer_id=customer.id";
+join customer on orders.customer_id=customer.id
+where  phone like '%$search%' or name like '%$search%'
+or customer.phone like '%$search%' or customer.name like '%$search%' 
+limit $orders_number_in_page offset $passed";
 $result=mysqli_query($connect,$sql);
 ?>
 	<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Đơn hàng</h2>
+	<div style="padding: 10px 20px;">
+		<form action="">
+			<span style="font-size: 24px; ">Tìm kiếm</span>
+		<input style="margin: 0 0 0 16px; width: 300px; height: 30px;"  type="search" name="search"
+		value="<?php echo $search?>"  placeholder="Tìm kiếm đơn hàng theo tên, điện thoại">
+	</form></div>
+	</form>
 	<table>
 		<tr>
 			<th>ID</th>
@@ -78,6 +110,22 @@ $result=mysqli_query($connect,$sql);
 		<?php } ?>
 		
 	</table>
+<div class="pagination">
+	<?php if($get_page>1){ 
+		$back=$get_page-1; ?>	
+		<a href="?page=<?php echo $back ?>&search=<?php echo $search?>"><</a>
+		<?php } ?> 
+		<?php for($i=1;$i<=$page;$i++){ ?>
 
+			<a href="?page=<?php echo $i?>&search=<?php echo $search?>">
+				<?php echo $i?>
+				</a>
+		<?php } ?>
+		
+		<?php if($get_page<$page){ 
+			$next=$get_page+1; ?>
+		<a href="?page=<?php echo $next ?>&search=<?php echo $search?>">></a>
+		<?php } ?>
+</div>
 
 <?php require'../menu_bottom.php'?>

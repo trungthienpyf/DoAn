@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 19, 2022 lúc 09:28 AM
+-- Thời gian đã tạo: Th1 21, 2022 lúc 03:41 PM
 -- Phiên bản máy phục vụ: 5.7.33
 -- Phiên bản PHP: 7.4.19
 
@@ -122,7 +122,7 @@ CREATE TABLE `customer` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `token` varchar(50) DEFAULT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` varchar(11) NOT NULL,
   `address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -131,17 +131,18 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `name`, `gender`, `birthday`, `email`, `password`, `token`, `phone`, `address`) VALUES
-(2, 'thien', NULL, NULL, '456@gmail.com', '456', 'user_61d5647d8a7757.26499859', 11111, 'phu yen'),
-(3, 'user1', NULL, NULL, 'user123@gmail.com', '123', NULL, 0, ''),
-(6, 'ha', 0, '2002-02-10', '123@gmail.com', '123', 'user_61d5742a10bc48.59755064', 0, ''),
-(7, 'hoang', 1, '2002-01-01', 'hoang@gmail.com', '123456a', NULL, 0, ''),
-(8, 'ah', 1, '2002-01-01', 'maioi@gmail.com', '123456a', NULL, 0, ''),
-(9, 'hong', 0, '2002-02-02', 'hong123@gmail.com', '123456a', NULL, 0, ''),
-(10, 'hai', 1, '2002-01-03', 'hai@gmail.com', '123456a', NULL, 0, ''),
-(13, 'hung', 1, '2002-01-01', 'hung@gmail.com', '123456a', NULL, 0, ''),
-(14, 'truong', 1, '2002-01-01', 'truong@gmail.com', '123456a', NULL, 0, ''),
-(17, 'anh', 1, '2002-01-01', 'anh@gmail.com', '123456a', NULL, 0, ''),
-(18, 'User', NULL, NULL, 'iou@gmail.com', '123', NULL, 0, 'null');
+(2, 'thien', NULL, NULL, '456@gmail.com', '456', 'user_61d5647d8a7757.26499859', '11111', 'phu yen'),
+(3, 'user1', NULL, NULL, 'user123@gmail.com', '123', NULL, '0', ''),
+(6, 'ha', 0, '2002-02-10', '123@gmail.com', '123', 'user_61d5742a10bc48.59755064', '0123456789', 'asdasd'),
+(7, 'hoang', 1, '2002-01-01', 'hoang@gmail.com', '123456a', NULL, '0', ''),
+(8, 'ah', 1, '2002-01-01', 'maioi@gmail.com', '123456a', NULL, '0', ''),
+(9, 'hong', 0, '2002-02-02', 'hong123@gmail.com', '123456a', NULL, '0', ''),
+(10, 'hai', 1, '2002-01-03', 'hai@gmail.com', '123456a', NULL, '0', ''),
+(13, 'hung', 1, '2002-01-01', 'hung@gmail.com', '123456a', NULL, '0', ''),
+(14, 'truong', 1, '2002-01-01', 'truong@gmail.com', '123456a', NULL, '0', ''),
+(17, 'anh', 1, '2002-01-01', 'anh@gmail.com', '123456a', NULL, '0', ''),
+(18, 'User', NULL, NULL, 'iou@gmail.com', '123', 'user_61e82cf205c7c2.66480280', '0', 'null'),
+(25, 'Ha Nguyen', 1, '2002-01-01', 'manhha584224@gmail.com', '123456a', NULL, '0451264102', 'a');
 
 -- --------------------------------------------------------
 
@@ -183,7 +184,33 @@ INSERT INTO `detail_orders` (`orders_id`, `product_id`, `quantity`, `size`) VALU
 (48, 52, 1, 'L'),
 (48, 52, 1, 'M'),
 (49, 53, 1, 'L'),
-(49, 53, 1, 'S');
+(49, 53, 1, 'S'),
+(50, 54, 1, 'S'),
+(50, 55, 1, 'S'),
+(51, 53, 5, 'S'),
+(51, 80, 2, ''),
+(56, 53, 2, 'S'),
+(56, 74, 1, ''),
+(57, 68, 2, 'S'),
+(59, 53, 1, 'L'),
+(59, 53, 1, 'S'),
+(60, 53, 1, 'S'),
+(60, 73, 1, ''),
+(61, 54, 1, 'L'),
+(61, 54, 1, 'S'),
+(61, 80, 1, '');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `forgot_password`
+--
+
+CREATE TABLE `forgot_password` (
+  `customer_id` int(11) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -245,7 +272,16 @@ INSERT INTO `orders` (`id`, `time`, `name_receive`, `phone_receive`, `address_re
 (46, '2022-01-19 08:56:37', '123123', '1231231', '123123', '123123', 0, 18, 199998),
 (47, '2022-01-19 08:58:37', 'hhhh', '213', '123', '123', 0, 18, 399996),
 (48, '2022-01-19 09:03:54', 'bbbb', '11', '11', '111', 0, 18, 444444),
-(49, '2022-01-19 09:04:21', 'mmmm', '112312', '123123', '', 0, 18, 199998);
+(49, '2022-01-19 09:04:21', 'mmmm', '112312', '123123', '', 0, 18, 199998),
+(50, '2022-01-19 14:02:21', 'Ha Nguyen', '0344558306', 'haha', '', 0, 18, 1649000),
+(51, '2022-01-19 14:58:27', 'Ha Nguyen', '0344558306', '827', '', 0, 18, 1593000),
+(52, '2022-01-20 09:01:59', 'User', '031232164', 'null', '', 0, 18, 7),
+(53, '2022-01-20 09:17:41', 'User', '0123456789', 'null', '', 0, 18, 0),
+(56, '2022-01-20 09:50:55', 'ha', '0123456879', '1asda', '', 2, 6, 518000),
+(57, '2022-01-20 09:51:00', 'ha', '123456789', 'asdasd', '', 2, 6, 598000),
+(59, '2022-01-21 09:12:16', 'ha', '123456789', 'asdasd', '', 1, 6, 398000),
+(60, '2022-01-21 09:12:19', 'ha', '123456789', 'asdasd', '', 1, 6, 349000),
+(61, '2022-01-20 10:56:01', 'ha', '123456789', 'asdasd', '', 0, 6, 599000);
 
 -- --------------------------------------------------------
 
@@ -347,6 +383,14 @@ ALTER TABLE `detail_orders`
   ADD KEY `id_product` (`product_id`);
 
 --
+-- Chỉ mục cho bảng `forgot_password`
+--
+ALTER TABLE `forgot_password`
+  ADD PRIMARY KEY (`customer_id`),
+  ADD UNIQUE KEY `token` (`token`),
+  ADD UNIQUE KEY `customer_id` (`customer_id`);
+
+--
 -- Chỉ mục cho bảng `manufacturers`
 --
 ALTER TABLE `manufacturers`
@@ -376,13 +420,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=888888895;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `category_detail`
@@ -400,7 +444,7 @@ ALTER TABLE `comment_product`
 -- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT cho bảng `manufacturers`
@@ -412,7 +456,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT cho bảng `product`

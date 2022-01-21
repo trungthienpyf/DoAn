@@ -1,8 +1,12 @@
 <?php
 session_start();
 
-$id=$_GET['id'];
-$size=$_GET['size'];
+$id = $_POST['id'];
+$size = $_POST['size'];
 unset($_SESSION['cart'][$id][$size]);
-
-header('location:view_cart.php');
+if (empty($_SESSION['cart'][$id])) {
+    unset($_SESSION['cart'][$id]);
+}
+if (empty($_SESSION['cart'])) {
+    unset($_SESSION['cart']);
+}

@@ -1,30 +1,22 @@
-
-<?php 
-
+<?php
 session_start();
-
 require 'admin/connect.php';
-$id=$_GET['id'];
-$size=$_GET['size'];
-$type=$_GET['type'];
-$sql="select * from product where id ='$id'";
-$check=mysqli_query($connect,$sql);
-$checkrows=mysqli_num_rows($check);
-if($checkrows!==1){
-	header('location:view_cart.php');
-	exit;
+$id = $_POST['id'];
+$type = $_POST['type'];
+$size = $_POST['size'];
 
-}
-
-if($type==='decrease'){
-	if($_SESSION['cart'][$id][$size]['quantity'] > 1 ){
-	$_SESSION['cart'][$id][$size]['quantity']--;
-	}else{
-		unset($_SESSION['cart'][$id][$size]);
-	}
-}else{
+if ($type === "1") {
 	$_SESSION['cart'][$id][$size]['quantity']++;
+} else {
+	if ($_SESSION['cart'][$id][$size]['quantity'] > 1) {
+		$_SESSION['cart'][$id][$size]['quantity']--;
+	} else {
+		unset($_SESSION['cart'][$id][$size]);
+		if (empty($_SESSION['cart'][$id])) {
+			unset($_SESSION['cart'][$id]);
+		}
+		if (empty($_SESSION['cart'])) {
+			unset($_SESSION['cart']);
+		}
+	}
 }
-
-
-header('location:view_cart.php');

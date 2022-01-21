@@ -54,9 +54,7 @@
 								?>
 							</span>vnđ
 						</td>
-						<td><button class="delete btn-delete" data-id="<?php echo $id ?>" data-size="<?php echo $size ?>" onClick="
-					delete_product(<?php echo $id ?>,'<?php echo $each2['name'] ?>','<?php echo $size ?>')
-					">X</button></td>
+						<td><button class="delete btn-delete" data-id="<?php echo $id ?>" data-size="<?php echo $size ?>" data-name="<?php echo $each2['name'] ?>">X</button></td>
 					</tr>
 				<?php } ?>
 			<?php } ?>
@@ -154,27 +152,23 @@
 		});
 		$(".btn-delete").click(function() {
 			let btn = $(this);
-			let id = btn.data('id');
-			let size = btn.data('size');
-			$.ajax({
-					type: "POST",
-					url: "delete_product.php",
-					data: {
-						id,
-						size
-					}
-				})
-				.done(function() {
-					btn.parents('tr').remove();
-				})
+			let name = btn.data('name');
+			if (confirm("Bạn chắc chắn muốn xóa " + name + " ?")) {
+				let id = btn.data('id');
+				let size = btn.data('size');
+				$.ajax({
+						type: "POST",
+						url: "delete_product.php",
+						data: {
+							id,
+							size
+						}
+					})
+					.done(function() {
+						btn.parents('tr').remove();
+					})
+			};
 		});
 	});
-
-	function delete_product(id, name, size) {
-		if (confirm("Bạn chắc chắn muốn xóa sản phẩm " + name + " ?")) {
-			// window.location.href = "delete_product.php?id=" + id + "&size=" + size;;
-
-		}
-	}
 </script>
 <?php require 'menu_index_bottom.php' ?>

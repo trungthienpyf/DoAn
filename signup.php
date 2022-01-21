@@ -18,7 +18,7 @@ if (isset($_SESSION['id'])) {
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/login.css">
     <script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
-    <title>Đăng nhập </title>
+    <title>Đăng kí </title>
 </head>
 
 <body>

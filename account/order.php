@@ -68,7 +68,6 @@ if (empty($_SESSION['id'])) {
                     <div>
                         <?php foreach ($result  as $each) { ?>
                             <div class="order_each">
-
                                 <div class="row header_order">
                                     <p>Đơn hàng #<?php echo $each['id'] ?></p>
                                     <p>Đặt ngày
@@ -79,17 +78,17 @@ if (empty($_SESSION['id'])) {
                                     </p>
                                     <?php switch ($each['status']) {
                                         case '0': ?>
-                                            <p style="color: #36ac3a;">
+                                            <p class="status status_0">
                                                 <?php echo "Đang chuẩn bị"; ?>
                                             </p>
                                         <?php break;
                                         case '1': ?>
-                                            <p style="color: #1d3557;">
+                                            <p class="status status_1">
                                                 <?php echo "Đã hoàn thành"; ?>
                                             </p>
                                         <?php break;
                                         case '2': ?>
-                                            <p style="color: #6f2d2d;">
+                                            <p class="status status_2">
                                                 <?php echo "Đã huỷ"; ?>
                                             </p>
                                     <?php break;
@@ -135,7 +134,9 @@ if (empty($_SESSION['id'])) {
                                 <div class="row" style="justify-content: space-between;">
                                     <p>Tổng giá trị đơn hàng: <?php echo number_format($each_order['total_price'], 0, '', '.') ?> ₫</p>
                                     <?php if ($each['status'] == 0) { ?>
-                                        <a href="cancel.php?order_id=<?php echo $each['id'] ?>" class="delete">Huỷ đơn hàng</a>
+                                        <button class="delete btn-delete" data-id="<?php echo $each['id'] ?>">
+                                            Huỷ đơn hàng
+                                        </button>
                                     <?php } ?>
                                 </div>
                                 <div><a href="" style="text-decoration: none;"><button>Xem chi tiết</button></a></div>
@@ -151,7 +152,6 @@ if (empty($_SESSION['id'])) {
             </div>
         </div>
     </div>
-
     <!-- Main end -->
 
 
@@ -161,5 +161,31 @@ if (empty($_SESSION['id'])) {
 
 </body>
 <script src="../assets/js/account.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".btn-delete").click(function() {
+            let btn = $(this);
+            if (confirm("Bạn chắc chắn muốn huỷ đơn hàng ?")) {
+                let id = btn.data('id');
+                $.ajax({
+                        type: "POST",
+                        url: "cancel.php",
+                        data: {
+                            id
+                        }
+                    })
+                    .done(function() {
+                        let parent_order = btn.parents('.order_each');
+                        parent_order.find(".status").removeClass("status_0");
+                        parent_order.find(".status").addClass("status_2");
+                        parent_order.find(".status").text("Đã huỷ");
+                        parent_order.find(".delete").remove();;
+                    })
+            };
+
+        });
+    });
+</script>
 
 </html>

@@ -29,25 +29,14 @@ if (isset($_SESSION['id'])) {
     <!-- Header end -->
     <div class="main_login">
         <div class="form">
-            <form action="process_signin.php" method="POST">
+            <form action="process_forgot_password.php" method="POST">
                 <div class="title">
-                    <h3>Đăng nhập</h3>
+                    <h3>Quên mật khẩu</h3>
                 </div>
                 <div class="row">
                     <h6>Email <span id="email_error_sign_in" class="error"></span> </h6>
                     <input type="email" name="email" id="email_sign_in">
                 </div>
-                <div class="row">
-                    <h6>Mật khẩu</h6>
-                    <input type="password" name="password">
-                </div>
-                <label class="check">
-                    <div style="display: flex; width: 50%;">
-                        <input type="checkbox" name="remember" class="checkbox">
-                        <p>Ghi nhớ đăng nhập</p>
-                    </div>
-                    <a href="forgot_password.php" style="width: 50%;text-align: end;">Quên mật khẩu</a>
-                </label>
                 <span class="error">
                     <?php
                     if (isset($_SESSION['error'])) {
@@ -56,11 +45,12 @@ if (isset($_SESSION['id'])) {
                     }
                     ?>
                 </span>
-                <button onclick="return check_sign_in()">Đăng nhập</button>
-                <div class="ask">
-                    <p>Bạn đã chưa có tài khoản? <a href="signup.php">Đăng kí</a></p>
-                </div>
+                <button onclick="return check_sign_up()">Nhận liên kết xác minh</button>
+
             </form>
+            <div class="ask">
+                <p>Bạn đã nhớ lại tài khoản? <a href="signin.php">Đăng nhập</a></p>
+            </div>
         </div>
 
     </div>

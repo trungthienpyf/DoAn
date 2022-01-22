@@ -1,4 +1,4 @@
-.order .order_each{
+.order .order_each {
     box-shadow: 0px 4px 10px rgba(146, 146, 146, 0.25);
     padding: 10px 10px 10px 10px;
     margin: 10px 0;
@@ -8,17 +8,17 @@
     padding: 10px;
     border-bottom: #1d3557 1px solid;
 }
-.order .row{
+.order .row {
     display: flex;
     width: 100%;
 }
-.order .header_order{
+.order .header_order {
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: #8a9eba 1px dotted;
 }
-.order .header_order p{
-    padding-right: 5px;
+.order .header_order p {
+    margin-right: 5px;
 }
 .order .header_order p::after {
     content: "|";
@@ -27,8 +27,9 @@
 }
 .order .header_order p:last-child::after {
     content: "";
+    padding: 0;
 }
-.order .item_flex{
+.order .item_flex {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,27 +37,63 @@
 .order .image {
     width: 120px;
 }
-.order .image img{
+.order .image img {
     width: 110px;
     height: 110px;
     object-fit: cover;
     object-position: 50% 20%;
 }
-.order .name{
+.order .name {
     width: 250px;
     display: flex;
     align-items: center;
     justify-content: start;
 }
-.order .price{
-width: 120px;
+.order .price {
+    width: 120px;
 }
-.order .quantity{
+.order .quantity {
     width: 120px;
 }
 
-.order .delete{
+.order .delete {
     background-color: #dbe3ee;
+    color: #8a9eba;
     padding: 3px 10px;
     border-radius: 10px;
+    margin: 0;
+    font-weight: 400;
+    font-size: 12px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.order .delete:hover {
+    transition: 0.25s;
+    color: #ff4252;
+    outline: 1px dotted #ff4252;
+    background-color: #dbe3ee;
+}
+
+.order .status_0 {
+    background-color: #babd00;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2px 10px;
+    color: #fff;
+}
+.order .status_1 {
+    background-color: #36ac3a;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2px 10px;
+    color: #fff;
+}
+.order .status_2 {
+    background-color: #ff4252;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2px 10px;
+    color: #fff;
 }

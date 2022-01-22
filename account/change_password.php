@@ -56,32 +56,39 @@ if (empty($_SESSION['id'])) {
                     <h3>Đổi mật khẩu</h3>
                 </div>
                 <div class="content">
-                    <form>
-                        <input type="hidden" name="id" style="display: none;" value="<?php echo $each['id'] ?>">
-                        <div class="row">
-                            <div class="mod_title">Nhập mật khẩu cũ</div>
-                            <input type="password" name="password_old" class="input" id="password_old">
-                            <span id="password_old_error" class="error">
-                                <?php
-                                if (isset($_SESSION['error'])) {
-                                    echo $_SESSION['error'];
-                                    unset($_SESSION['error']);
-                                }
-                                ?>
-                            </span>
+                    <?php if (isset($_SESSION['noti'])) { ?>
+                        <div>
+                            <h4><?php echo $_SESSION['noti'] ?></h4>
+                            <?php unset($_SESSION['noti']); ?>
                         </div>
-                        <div class="row">
-                            <div class="mod_title">Nhập mật khẩu mới</div>
-                            <input type="password" name="password" class="input" id="password">
-                            <span id="password_error" class="error"></span>
-                        </div>
-                        <div class="row">
-                            <div class="mod_title">Nhập lại mật khẩu mới</div>
-                            <input type="password" class="input" id="repassword">
-                            <span id="repassword_error" class="error"></span>
-                        </div>
-                        <button onclick=" return check_update_password()">Lưu thông tin</button>
-                    </form>
+                    <?php } else { ?>
+                        <form method="POST" action="process_change_password.php">
+                            <input type="hidden" name="id" style="display: none;" value="<?php echo $each['id'] ?>">
+                            <div class="row">
+                                <div class="mod_title">Nhập mật khẩu cũ</div>
+                                <input type="password" name="password_old" class="input" id="password_old">
+                                <span id="password_old_error" class="error">
+                                    <?php
+                                    if (isset($_SESSION['error'])) {
+                                        echo $_SESSION['error'];
+                                        unset($_SESSION['error']);
+                                    }
+                                    ?>
+                                </span>
+                            </div>
+                            <div class="row">
+                                <div class="mod_title">Nhập mật khẩu mới</div>
+                                <input type="password" name="password" class="input" id="password">
+                                <span id="password_error" class="error"></span>
+                            </div>
+                            <div class="row">
+                                <div class="mod_title">Nhập lại mật khẩu mới</div>
+                                <input type="password" class="input" id="repassword">
+                                <span id="repassword_error" class="error"></span>
+                            </div>
+                            <button onclick=" return check_update_password()">Lưu thông tin</button>
+                        </form>
+                    <?php } ?>
                 </div>
             </div>
         </div>

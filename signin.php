@@ -42,12 +42,15 @@ if (isset($_SESSION['id'])) {
                     <input type="password" name="password">
                 </div>
                 <label class="check">
-                    <input type="checkbox" name="remember" class="checkbox">
-                    <p>Ghi nhớ đăng nhập</p>
+                    <div style="display: flex; width: 50%;">
+                        <input type="checkbox" name="remember" class="checkbox">
+                        <p>Ghi nhớ đăng nhập</p>
+                    </div>
+                    <a href="forgot_password.php" style="width: 50%;text-align: end;">Quên mật khẩu</a>
                 </label>
                 <span class="error">
                     <?php
-                     if (isset($_SESSION['error'])) {
+                    if (isset($_SESSION['error'])) {
                         echo $_SESSION['error'];
                         unset($_SESSION['error']);
                     }
@@ -59,7 +62,7 @@ if (isset($_SESSION['id'])) {
                 </div>
             </form>
         </div>
-        
+
     </div>
     <!-- Footer start -->
     <?php include 'footer.php' ?>

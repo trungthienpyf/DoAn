@@ -24,6 +24,11 @@ $sql = "insert into customer(name,gender,birthday,email,password,phone,address)
 value('$name','$gender','$birthday','$email','$password','$phone','$address')";
 mysqli_query($connect, $sql);
 
+require 'mail.php';
+$title = "Đăng kí thành công";
+$content = "Cảm ơn $name đã đăng kí tài khoản. Chúc bạn mua sắm vui vẻ.";
+sendmail($email, $name, $title, $content);
+
 $sql = "select id from customer
 where email = '$email'";
 $result = mysqli_query($connect, $sql);
@@ -34,4 +39,4 @@ $_SESSION['id'] = $id;
 $_SESSION['name'] = $name;
 
 mysqli_close($connect);
-// header('location:index.php');
+header('location:index.php');

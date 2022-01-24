@@ -11,10 +11,6 @@ try {
 	} else {
 		$size = "";
 	}
-	// $sql="update orders
-	// set size
-
-	// "
 
 
 	if (empty($_SESSION['cart'][$id]) || $_SESSION['cart'][$id] !== $size) {

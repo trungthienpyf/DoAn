@@ -1,4 +1,4 @@
-<?php require '../check_admin_login.php';?>
+ <?php require '../check_admin_login.php';?>
 <?php require'../menu_top.php'?>
 <?php require '../connect.php'; 
 
@@ -8,7 +8,8 @@ if(isset($_GET['search'])){
 }
 $count_orders="select count(*) from orders join customer on orders.customer_id=customer.id
 where  phone like '%$search%' or name like '%$search%'
-or customer.phone like '%$search%' or customer.name like '%$search%'";
+or customer.phone like '%$search%' or customer.name like '%$search%'
+ORDER BY orders.time desc";
 $array_orders=mysqli_query($connect,$count_orders);
 $result_orders=mysqli_fetch_array($array_orders);
 $number_orders=$result_orders['count(*)'];
@@ -25,11 +26,14 @@ if(isset($_GET['page'])){
 $passed=$orders_number_in_page*($get_page-1);
 
 $sql="select orders.*,customer.name,customer.phone,customer.address,LPAD(phone_receive, 10, '0') AS phone
-from orders 
+from orders   
 join customer on orders.customer_id=customer.id
 where  phone like '%$search%' or name like '%$search%'
 or customer.phone like '%$search%' or customer.name like '%$search%' 
-limit $orders_number_in_page offset $passed";
+ORDER BY orders.time desc
+
+limit $orders_number_in_page offset $passed
+";
 $result=mysqli_query($connect,$sql);
 ?>
 	<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Đơn hàng</h2>

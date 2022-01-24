@@ -30,6 +30,7 @@
 	<div id="container">
 		<div class="navbar">
 			<ul class="navbar-body">
+				<li class="navbar-list"><a href="../root" class="navbar-item">Trang chủ</a></li>
 				<li class="navbar-list pointer " id="category"><a class="navbar-item head_color">Danh mục <i id="toggle_icon" class="fas fa-chevron-right icon_padding"></i></a>
 				</li>
 				<div id="category_sub" class="display_click">

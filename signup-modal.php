@@ -1,35 +1,14 @@
-<!-- Connect start -->
-<?php require 'admin/connect.php'; ?>
-<!-- Connect end -->
-<?php
-session_start();
-if (isset($_SESSION['id'])) {
-    header('location:account');
-    exit;
-}
-?>
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="assets/css/login-modal.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/login.css">
-    <script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
-    <title>Đăng kí </title>
-</head>
-
-<body>
-    <!-- Header start -->
-    <?php require 'header.php'; ?>
-    <!-- Header end -->
-
-    <div class="main_login">
+<div class="main_login modal fade" id="signup_modal" role="dialog">
+    <div class="modal-dialog" style="background-color: #fff; padding-bottom: 20px;">
         <div class="form">
-            <div class="title">
+            <div class="modal-header title">
                 <h3>Đăng kí</h3>
+                <div class="alert alert-warning">
+                    Bạn đã có tài khoản? <button class="link" id="btn-signin-link">Đăng nhập</button>
+                </div>
+                <div class="alert alert-danger" id="div-error-signup" style="display: none;"></div>
             </div>
             <form method="post" id="form-signup">
                 <div class="row">
@@ -74,42 +53,8 @@ if (isset($_SESSION['id'])) {
                     <h6>Địa chỉ<span id="address" class="error"></span></h6>
                     <input type="text" name="address" id="address">
                 </div>
-                <button onclick="return check_sign_up()">Đăng kí</button>
-                <div class="ask">
-                    <p>Bạn đã có tài khoản? <a href="signin.php">Đăng nhập</a></p>
-                </div>
+                <button>Đăng kí</button>
             </form>
         </div>
     </div>
-    <!-- Footer start -->
-    <?php include 'footer.php' ?>
-    <!-- Footer end -->
-</body>
-
-<script src="assets/js/login.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#form-signup').submit(function(event) {
-            event.preventDefault();
-            $.ajax({
-                    type: "POST",
-                    url: "process_signup.php",
-                    data: $("#form-signup").serializeArray(),
-                    dataType: "html",
-                })
-                .done(function(response) {
-                    if (response === 'error') {
-                        $("#email_error").text("Email đã được sử dụng");
-                        $("#email_error").show();
-                    } else {
-                        alert("Đăng kí thành công!")
-                        location.assign('index.php');
-                    }
-                });
-        });
-
-    });
-</script>
-
-</html>
+</div>

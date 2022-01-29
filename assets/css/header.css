@@ -101,7 +101,8 @@
 /*icon*/
 .header .icon ul.ul_2 {
     display: flex;
-    justify-content: start;
+    justify-content: end;
+    padding-right: 100px;
 }
 .header .icon ul.ul_2 li {
     margin: 0 20px;

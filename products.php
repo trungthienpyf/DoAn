@@ -17,9 +17,7 @@
 <body>
 
     <!-- Header start -->
-    <?php
-    require 'header.php';
-    ?>
+    <?php require 'header.php'; ?>
     <!-- Header end -->
 
     <!-- Main start -->

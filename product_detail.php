@@ -52,10 +52,10 @@ if (mysqli_num_rows($result) == 0) {
 				$each = mysqli_fetch_array($result);
 				?>
 				<li class="space">
-					<a href=""><?php echo $each['cate'] ?> </a>
+					<a href="products.php?category=<?php echo $each['cate'] ?> "><?php echo $each['cate'] ?> </a>
 				</li>
 				<li class="space">
-					<a href=""> <?php echo $each['cate_detail'] ?> </a>
+					<a href="products.php?category=<?php echo $each['cate_detail'] ?>"> <?php echo $each['cate_detail'] ?> </a>
 				</li>
 				<li>
 					<p class="name_bread"><?php echo $each['name'] ?></p>
@@ -95,6 +95,10 @@ if (mysqli_num_rows($result) == 0) {
 					<p>
 						<?php echo $each['description'] ?>
 					</p>
+					<h6>Đánh giá của khách hàng</h6>
+					<div>
+						
+					</div>
 				</div>
 			</div>
 		</div>
@@ -126,7 +130,7 @@ if (mysqli_num_rows($result) == 0) {
 		</div>
 	</div>
 	<!-- Main end -->
-
+	
 	<!-- Footer start -->
 	<?php include 'footer.php' ?>
 	<!-- Footer end -->
@@ -186,13 +190,11 @@ if (mysqli_num_rows($result) == 0) {
 				})
 				.done(function(response) {
 					if (response == 1) {
-						alert('Đặt hàng thành công hãy kiểm tra giỏ hàng')
+						alert('Đã thêm vào giỏ hàng')
 					} else {
 						alert(response)
 					}
 				})
-
-
 		})
 	</script>
 </body>

@@ -1,5 +1,8 @@
 <?php
 require 'admin/connect.php';
+if (!isset($_SESSION)) {
+     session_start();
+}
 if (isset($_COOKIE['remember'])) {
     $token = $_COOKIE['remember'];
     $sql = "select * from customer
@@ -9,9 +12,6 @@ if (isset($_COOKIE['remember'])) {
     $number_rows = mysqli_num_rows($result);
     if ($number_rows == 1) {
         $each = mysqli_fetch_array($result);
-        if (!isset($_SESSION)) {
-            session_start();
-        }
         $_SESSION['id'] = $each['id'];
         $_SESSION['name'] = $each['name'];
     }
@@ -90,14 +90,14 @@ if (isset($_COOKIE['remember'])) {
         <div class="icon">
             <ul class="ul_2">
                 <li>
+
                     <a href="view_cart.php">Giỏ hàng<i class="fas fa-shopping-cart"></i></a>
+
+                    <a href="view_cart.php" data-toggle="tooltip" title="Giỏ hàng">Giỏ hàng<i class="fas fa-shopping-cart"></i></a>
+
                 </li>
                 <li style="margin-top: 20px;">
                     <?php
-                    if (!isset($_SESSION)) {
-                        session_start();
-                    }
-
                     if (empty($_SESSION['id'])) {
                     ?>
                         <a href="signin.php" class="profile"> Đăng nhập </a>

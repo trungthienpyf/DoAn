@@ -3,7 +3,7 @@ require 'admin/connect.php';
 session_start();
 
 if (empty($_POST['phone']) || empty($_POST['name']) || empty($_POST['address'])) {
-	header('location:view_cart.php?error=Vui lòng điền thông tin cụ thể');
+	echo "Bạn phải điền đầy đủ thông tin";
 	exit;
 }
 
@@ -45,5 +45,5 @@ foreach ($cart as $product_id => $id) {
 	}
 }
 unset($_SESSION['cart']);
-
-header('location:view_cart.php?success=Đặt hàng thành công');
+echo "1";
+mysqli_close($connect);

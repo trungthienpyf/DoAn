@@ -29,7 +29,7 @@ if (isset($_SESSION['id'])) {
     <!-- Header end -->
     <div class="main_login">
         <div class="form">
-            <form action="process_signin.php" method="POST">
+            <form id="form-signin" method="POST">
                 <div class="title">
                     <h3>Đăng nhập</h3>
                 </div>
@@ -48,14 +48,7 @@ if (isset($_SESSION['id'])) {
                     </div>
                     <a href="forgot_password.php" style="width: 50%;text-align: end;">Quên mật khẩu</a>
                 </label>
-                <span class="error">
-                    <?php
-                    if (isset($_SESSION['error'])) {
-                        echo $_SESSION['error'];
-                        unset($_SESSION['error']);
-                    }
-                    ?>
-                </span>
+                <span class="error" id="error"> </span>
                 <button onclick="return check_sign_in()">Đăng nhập</button>
                 <div class="ask">
                     <p>Bạn đã chưa có tài khoản? <a href="signup.php">Đăng kí</a></p>
@@ -70,5 +63,28 @@ if (isset($_SESSION['id'])) {
 </body>
 
 <script src="assets/js/login.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#form-signin').submit(function(event) {
+            event.preventDefault();
+            $.ajax({
+                    type: "POST",
+                    url: "process_signin.php",
+                    data: $("#form-signin").serializeArray(),
+                    dataType: "html",
+                })
+                .done(function(response) {
+                    if (response === '1') {
+                        location.assign('index.php');
+                    } else {
+                        $("#error").text(response);
+                        $("#error").show();
+                    }
+                });
+        });
+
+    });
+</script>
 
 </html>

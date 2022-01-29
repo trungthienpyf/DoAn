@@ -30,10 +30,12 @@ if ($number_rows == 1) {
         mysqli_query($connect, $sql);
         setcookie('remember', $token, time() + 60 * 60 * 24 * 30);
     }
-    header('location:index.php');
+    // header('location:index.php');
+    echo "1";
     mysqli_close($connect);
     exit;
 }
 session_start();
 $_SESSION['error'] = "Sai email hoặc mật khẩu";
-header('location:signin.php');
+echo "Sai email hoặc mật khẩu!";
+// header('location:signin.php');

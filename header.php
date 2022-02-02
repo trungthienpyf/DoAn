@@ -91,9 +91,7 @@ if (isset($_COOKIE['remember'])) {
             <ul class="ul_2">
                 <li>
 
-                    <a href="view_cart.php">Giỏ hàng<i class="fas fa-shopping-cart"></i></a>
-
-                    <a href="view_cart.php" data-toggle="tooltip" title="Giỏ hàng">Giỏ hàng<i class="fas fa-shopping-cart"></i></a>
+                    <a href="view_cart.php" data-toggle="tooltip" title="Giỏ hàng"><i class="fas fa-shopping-cart"></i></a>
 
                 </li>
                 <li style="margin-top: 20px;">

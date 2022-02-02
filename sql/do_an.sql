@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th1 21, 2022 lúc 03:41 PM
--- Phiên bản máy phục vụ: 5.7.33
--- Phiên bản PHP: 7.4.19
+-- Host: 127.0.0.1
+-- Generation Time: Feb 02, 2022 at 11:52 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `do_an`
+-- Database: `do_an`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `name`, `phone`, `address`, `email`, `password`, `level`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `admin` (`id`, `name`, `phone`, `address`, `email`, `password`, `lev
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -57,7 +57,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `category` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category_detail`
+-- Table structure for table `category_detail`
 --
 
 CREATE TABLE `category_detail` (
@@ -78,7 +78,7 @@ CREATE TABLE `category_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `category_detail`
+-- Dumping data for table `category_detail`
 --
 
 INSERT INTO `category_detail` (`id`, `name`, `category_id`) VALUES
@@ -97,13 +97,13 @@ INSERT INTO `category_detail` (`id`, `name`, `category_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment_product`
+-- Table structure for table `comment_product`
 --
 
 CREATE TABLE `comment_product` (
   `id` int(11) NOT NULL,
   `content` text NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -111,7 +111,7 @@ CREATE TABLE `comment_product` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `customer`
+-- Table structure for table `customer`
 --
 
 CREATE TABLE `customer` (
@@ -127,7 +127,7 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `customer`
+-- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`id`, `name`, `gender`, `birthday`, `email`, `password`, `token`, `phone`, `address`) VALUES
@@ -147,7 +147,7 @@ INSERT INTO `customer` (`id`, `name`, `gender`, `birthday`, `email`, `password`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `detail_orders`
+-- Table structure for table `detail_orders`
 --
 
 CREATE TABLE `detail_orders` (
@@ -158,7 +158,7 @@ CREATE TABLE `detail_orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `detail_orders`
+-- Dumping data for table `detail_orders`
 --
 
 INSERT INTO `detail_orders` (`orders_id`, `product_id`, `quantity`, `size`) VALUES
@@ -198,24 +198,30 @@ INSERT INTO `detail_orders` (`orders_id`, `product_id`, `quantity`, `size`) VALU
 (60, 73, 1, ''),
 (61, 54, 1, 'L'),
 (61, 54, 1, 'S'),
-(61, 80, 1, '');
+(61, 80, 1, ''),
+(62, 53, 1, 'S'),
+(63, 53, 1, 'L'),
+(63, 53, 1, 'S'),
+(64, 53, 1, 'L'),
+(64, 53, 1, 'S'),
+(65, 53, 1, 'S');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `forgot_password`
+-- Table structure for table `forgot_password`
 --
 
 CREATE TABLE `forgot_password` (
   `customer_id` int(11) NOT NULL,
   `token` varchar(255) NOT NULL,
-  `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `create_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `manufacturers`
+-- Table structure for table `manufacturers`
 --
 
 CREATE TABLE `manufacturers` (
@@ -224,7 +230,7 @@ CREATE TABLE `manufacturers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `manufacturers`
+-- Dumping data for table `manufacturers`
 --
 
 INSERT INTO `manufacturers` (`id`, `name`) VALUES
@@ -234,12 +240,12 @@ INSERT INTO `manufacturers` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `name_receive` varchar(50) NOT NULL,
   `phone_receive` varchar(11) NOT NULL,
   `address_receive` text NOT NULL,
@@ -250,43 +256,32 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`id`, `time`, `name_receive`, `phone_receive`, `address_receive`, `note`, `status`, `customer_id`, `total_price`) VALUES
-(31, '2022-01-15 03:59:22', 'thien dep trai', '123456789', '12312312', '', 1, 2, 123457000),
-(32, '2022-01-08 09:33:29', 'qaaa', '123123', '123', '2', 2, 18, 444444),
-(33, '2022-01-15 04:45:15', '12312', '12345678', '123123', '1231', 2, 2, 222222),
-(34, '2022-01-15 04:45:15', '123123', '213', '123', '1231213', 2, 18, 99999),
-(35, '2022-01-15 04:45:16', '123', '0123456789', '123', '', 2, 18, 99999),
-(36, '2022-01-15 04:45:17', '312312', '12312312', '123123', '', 2, 18, 222222),
-(37, '2022-01-16 09:25:32', '3123123', '12312', '123', '123', 0, 18, 99999),
-(38, '2022-01-19 08:47:02', 'nnn', '123123', 'mmm', 'mmmm', 0, 18, 444444),
-(39, '2022-01-19 08:47:39', 'pppp', '12132123', 'pppp', '121212', 0, 18, 444444),
-(40, '2022-01-19 08:51:29', 'kkkk', '122', '12312', '12312', 0, 18, 399996),
-(41, '2022-01-19 08:52:05', 'ccc', '123123', '123123', '123123', 0, 18, 399996),
-(42, '2022-01-19 08:53:08', 'qqqq', '123123', '123123', '123123123', 0, 18, 199998),
-(43, '2022-01-19 08:53:55', 'zzzz', '123', '123', '123', 0, 18, 199998),
-(44, '2022-01-19 08:54:26', 'kkk', '433', '312312', '123123', 0, 18, 199998),
-(45, '2022-01-19 08:55:05', '66666', '123123', '21312', '3123123', 0, 18, 322221),
-(46, '2022-01-19 08:56:37', '123123', '1231231', '123123', '123123', 0, 18, 199998),
-(47, '2022-01-19 08:58:37', 'hhhh', '213', '123', '123', 0, 18, 399996),
-(48, '2022-01-19 09:03:54', 'bbbb', '11', '11', '111', 0, 18, 444444),
-(49, '2022-01-19 09:04:21', 'mmmm', '112312', '123123', '', 0, 18, 199998),
-(50, '2022-01-19 14:02:21', 'Ha Nguyen', '0344558306', 'haha', '', 0, 18, 1649000),
-(51, '2022-01-19 14:58:27', 'Ha Nguyen', '0344558306', '827', '', 0, 18, 1593000),
-(52, '2022-01-20 09:01:59', 'User', '031232164', 'null', '', 0, 18, 7),
-(53, '2022-01-20 09:17:41', 'User', '0123456789', 'null', '', 0, 18, 0),
+(39, '2022-01-31 09:24:02', 'pppp', '324567834', 'pppp', '121212', 1, 18, 444444),
+(40, '2022-01-31 09:22:31', 'kkkk', '123423465', '12312', '12312', 2, 18, 399996),
+(41, '2022-01-31 09:26:01', 'ccc', '987654321', '123123', '123123', 1, 18, 399996),
+(42, '2022-01-31 09:35:00', 'qqqq', '765387654', '123123', '123123123', 1, 18, 199998),
+(43, '2022-01-31 09:33:18', 'zzzz', '7658674425', '123', '123', 1, 18, 199998),
+(46, '2022-01-31 09:25:59', '123123', '543567893', '123123', '123123', 1, 18, 199998),
+(47, '2022-01-31 09:31:30', 'hhhh', '567456789', '123', '123', 1, 18, 399996),
+(48, '2022-01-31 09:26:00', 'bbbb', '123456789', '11', '111', 1, 18, 444444),
 (56, '2022-01-20 09:50:55', 'ha', '0123456879', '1asda', '', 2, 6, 518000),
 (57, '2022-01-20 09:51:00', 'ha', '123456789', 'asdasd', '', 2, 6, 598000),
 (59, '2022-01-21 09:12:16', 'ha', '123456789', 'asdasd', '', 1, 6, 398000),
 (60, '2022-01-21 09:12:19', 'ha', '123456789', 'asdasd', '', 1, 6, 349000),
-(61, '2022-01-20 10:56:01', 'ha', '123456789', 'asdasd', '', 0, 6, 599000);
+(61, '2022-01-31 09:31:44', 'ha', '123456789', 'asdasd', '', 1, 6, 599000),
+(62, '2022-01-31 09:37:28', 'ha', '0123456789', 'asdasd', '', 1, 6, 199000),
+(63, '2022-02-02 10:13:01', 'ha', '0123456789', 'asdasd', '', 0, 6, 398000),
+(64, '2022-02-02 10:13:01', 'ha', '0123456789', 'asdasd', '', 0, 6, 398000),
+(65, '2022-02-02 10:13:01', 'ha', '0123456789', 'asdasd', '', 0, 6, 199000);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -300,7 +295,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `img`, `price`, `manufacturers_id`, `category_detail_id`) VALUES
@@ -336,24 +331,24 @@ INSERT INTO `product` (`id`, `name`, `description`, `img`, `price`, `manufacture
 (81, 'Túi tò te', 'Giờ con đeo túi tò te đi mua cho mẹ cái túi đì o', '1642089553.jpg', 299000, 48, 23);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `category_detail`
+-- Indexes for table `category_detail`
 --
 ALTER TABLE `category_detail`
   ADD PRIMARY KEY (`id`),
@@ -361,7 +356,7 @@ ALTER TABLE `category_detail`
   ADD KEY `category_id` (`category_id`);
 
 --
--- Chỉ mục cho bảng `comment_product`
+-- Indexes for table `comment_product`
 --
 ALTER TABLE `comment_product`
   ADD PRIMARY KEY (`id`),
@@ -369,21 +364,21 @@ ALTER TABLE `comment_product`
   ADD KEY `id_product` (`product_id`);
 
 --
--- Chỉ mục cho bảng `customer`
+-- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Chỉ mục cho bảng `detail_orders`
+-- Indexes for table `detail_orders`
 --
 ALTER TABLE `detail_orders`
   ADD PRIMARY KEY (`orders_id`,`product_id`,`size`),
   ADD KEY `id_product` (`product_id`);
 
 --
--- Chỉ mục cho bảng `forgot_password`
+-- Indexes for table `forgot_password`
 --
 ALTER TABLE `forgot_password`
   ADD PRIMARY KEY (`customer_id`),
@@ -391,21 +386,21 @@ ALTER TABLE `forgot_password`
   ADD UNIQUE KEY `customer_id` (`customer_id`);
 
 --
--- Chỉ mục cho bảng `manufacturers`
+-- Indexes for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `ten` (`name`);
 
 --
--- Chỉ mục cho bảng `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_customer` (`customer_id`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
@@ -413,89 +408,89 @@ ALTER TABLE `product`
   ADD KEY `fk_category_product` (`category_detail_id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `category_detail`
+-- AUTO_INCREMENT for table `category_detail`
 --
 ALTER TABLE `category_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT cho bảng `comment_product`
+-- AUTO_INCREMENT for table `comment_product`
 --
 ALTER TABLE `comment_product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `customer`
+-- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT cho bảng `manufacturers`
+-- AUTO_INCREMENT for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT cho bảng `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `category_detail`
+-- Constraints for table `category_detail`
 --
 ALTER TABLE `category_detail`
   ADD CONSTRAINT `category_detail_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
 
 --
--- Các ràng buộc cho bảng `comment_product`
+-- Constraints for table `comment_product`
 --
 ALTER TABLE `comment_product`
   ADD CONSTRAINT `comment_product_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
   ADD CONSTRAINT `comment_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Các ràng buộc cho bảng `detail_orders`
+-- Constraints for table `detail_orders`
 --
 ALTER TABLE `detail_orders`
   ADD CONSTRAINT `detail_orders_ibfk_1` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`id`),
   ADD CONSTRAINT `detail_orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Các ràng buộc cho bảng `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
 
 --
--- Các ràng buộc cho bảng `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `fk_manufactures_product` FOREIGN KEY (`manufacturers_id`) REFERENCES `manufacturers` (`id`),

@@ -1,8 +1,21 @@
 <?php require '../check_admin_login.php';?>
 <?php require'../menu_top.php'?>
 <?php require '../connect.php'; 
-
+if(empty($_GET['id'])){
+	header('location:index.php?error=Hãy truyền mã');
+	exit;
+}
 $id=$_GET['id'];
+
+$sql="select * from orders where id='$id'";
+$row=mysqli_query($connect,$sql);
+$check_row=mysqli_num_rows($row);
+if($check_row !==1){
+	header('location:index.php?error=Hãy truyền mã');
+	exit;
+}
+
+
 $sum=0;
 $sql="select *
 from detail_orders 

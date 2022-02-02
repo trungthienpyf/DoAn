@@ -37,12 +37,15 @@ limit $orders_number_in_page offset $passed
 $result=mysqli_query($connect,$sql);
 ?>
 	<h2 style="padding: 10px; display: inline-block; color: #0c2d68;" >Đơn hàng</h2>
+
 	<div style="padding: 10px 20px;">
 		<form action="">
 			<span style="font-size: 24px; ">Tìm kiếm</span>
 		<input style="margin: 0 0 0 16px; width: 300px; height: 30px;"  type="search" name="search"
 		value="<?php echo $search?>"  placeholder="Tìm kiếm đơn hàng theo tên, điện thoại">
+
 	</form></div>
+	<?php require '../check_error_success.php'; ?>
 	</form>
 	<table>
 		<tr>
@@ -83,11 +86,13 @@ $result=mysqli_query($connect,$sql);
 							echo "Mới đặt";
 							break;
 						case '1':
-							echo "Đã đặt";
+							echo "Đã duyệt";
 							break;
 						case '2':
 							echo "Đã hủy";
 							break;	
+
+							default: break; 
 					} ?>
 				</td>
 				<td>

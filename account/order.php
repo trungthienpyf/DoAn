@@ -69,8 +69,8 @@ if (empty($_SESSION['id'])) {
                         <?php foreach ($result  as $each) { ?>
                             <div class="order_each">
                                 <div class="row header_order">
-                                    <p>Đơn hàng #<?php echo $each['id'] ?></p>
-                                    <p>Đặt ngày
+                                    <p class="breadcrumb">Đơn hàng #<?php echo $each['id'] ?></p>
+                                    <p class="breadcrumb">Đặt ngày
                                         <?php
                                         $d = strtotime($each['time']);
                                         echo date("d-m-Y", $d);
@@ -78,17 +78,17 @@ if (empty($_SESSION['id'])) {
                                     </p>
                                     <?php switch ($each['status']) {
                                         case '0': ?>
-                                            <p class="status status_0">
+                                            <p class="status status_0 breadcrumb">
                                                 <?php echo "Đang chuẩn bị"; ?>
                                             </p>
                                         <?php break;
                                         case '1': ?>
-                                            <p class="status status_1">
+                                            <p class="status status_1 breadcrumb">
                                                 <?php echo "Đã hoàn thành"; ?>
                                             </p>
                                         <?php break;
                                         case '2': ?>
-                                            <p class="status status_2">
+                                            <p class="status status_2 breadcrumb">
                                                 <?php echo "Đã huỷ"; ?>
                                             </p>
                                     <?php break;
@@ -139,7 +139,7 @@ if (empty($_SESSION['id'])) {
                                         </button>
                                     <?php } ?>
                                 </div>
-                                <div><a href="" style="text-decoration: none;"><button>Xem chi tiết</button></a></div>
+                                <div><a href="order_detail.php?order=<?php echo $each['id'] ?>" style="text-decoration: none;"><button>Xem chi tiết</button></a></div>
                             </div>
                         <?php } ?>
                     </div>

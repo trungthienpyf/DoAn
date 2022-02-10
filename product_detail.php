@@ -20,6 +20,7 @@ if (mysqli_num_rows($result) == 0) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/product_detail.css">
+	<link rel="stylesheet" href="assets/css/rating.css">
 	<script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
 	<title><?php
 			$id = $_GET['id'];
@@ -85,8 +86,8 @@ if (mysqli_num_rows($result) == 0) {
 					<?php } ?>
 
 					<div class="button">
-						<button id="form_insert" class="add_cart_new"><i class="fas fa-shopping-cart" style="color: #fff;"></i>Thêm vào giỏ hàng </button>
-						<a href="view_cart.php">Mua ngay</a>
+						<button id="form_insert" class="add_cart_new"><i class="fas fa-shopping-cart" style="color: #fff;"></i> Thêm vào giỏ hàng </button>
+						<button id="btn_buy" class="add_cart_new"> Mua ngay</button>
 					</div>
 				</form>
 
@@ -96,8 +97,15 @@ if (mysqli_num_rows($result) == 0) {
 						<?php echo $each['description'] ?>
 					</p>
 					<h6>Đánh giá của khách hàng</h6>
-					<div>
-						
+					<div style="display: flex; align-items: center;">
+						<span class="star-cb-group">
+							<input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
+							<input type="radio" id="rating-4" name="rating" value="4" /><label for="rating-4">4</label>
+							<input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
+							<input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
+							<input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
+						</span>
+						<p style="font-size: 16px;" id="star_text"></[div]>
 					</div>
 				</div>
 			</div>
@@ -130,49 +138,76 @@ if (mysqli_num_rows($result) == 0) {
 		</div>
 	</div>
 	<!-- Main end -->
-	
+
 	<!-- Footer start -->
 	<?php include 'footer.php' ?>
 	<!-- Footer end -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script type="text/javascript">
-		function ReplaceSelectWithButtons(selectField) {
-			// get the basics
-			var selectValue = selectField.val();
-			var selectId = selectField.attr('id')
 
-			// get all options and create buttons
-			$(selectField).find('option').each(function() {
-				if ($(this).val()) {
-					var btn = $('<div data-value="' + $(this).val() + '" data-target="' + selectId + '" class="selectbtn">' + $(this).text() + '</div>');
-					if ($(this).val() == selectValue) {
-						btn.addClass('selected');
-					}
-					btn.insertBefore(selectField);
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	function ReplaceSelectWithButtons(selectField) {
+		// get the basics
+		var selectValue = selectField.val();
+		var selectId = selectField.attr('id')
+
+		// get all options and create buttons
+		$(selectField).find('option').each(function() {
+			if ($(this).val()) {
+				var btn = $('<div data-value="' + $(this).val() + '" data-target="' + selectId + '" class="selectbtn">' + $(this).text() + '</div>');
+				if ($(this).val() == selectValue) {
+					btn.addClass('selected');
 				}
-			});
-			// hide the select field
-			selectField.hide();
-			// map click event to buttons
-			$(document).on('click', '.selectbtn', function() {
-				var target = $(this).data('target');
-				$('.selectbtn[data-target="' + target + '"]').removeClass('selected');
-				$(this).addClass('selected');
+				btn.insertBefore(selectField);
+			}
+		});
+		// hide the select field
+		selectField.hide();
+		// map click event to buttons
+		$(document).on('click', '.selectbtn', function() {
+			var target = $(this).data('target');
+			$('.selectbtn[data-target="' + target + '"]').removeClass('selected');
+			$(this).addClass('selected');
 
-				// deselect everything, select the selected 
-				var selectorAll = '#' + target + ' option';
-				$(selectorAll).removeAttr('selected');
-				var selectorSingle = '#' + target + ' option[value="' + $(this).data('value') + '"]';
-				$(selectorSingle).attr('selected', 'selected');
-				$(selectorSingle).change();
+			// deselect everything, select the selected 
+			var selectorAll = '#' + target + ' option';
+			$(selectorAll).removeAttr('selected');
+			var selectorSingle = '#' + target + ' option[value="' + $(this).data('value') + '"]';
+			$(selectorSingle).attr('selected', 'selected');
+			$(selectorSingle).change();
 
-			});
+		});
+	}
+	// change selects
+	ReplaceSelectWithButtons($('#size'));
+
+	$("#form_insert").click(function(e) {
+		e.preventDefault();
+		let id = $('#id').val();
+		let size = $('#size').val();
+		if (size === "") {
+			size = "null"
 		}
+		$.ajax({
+				url: 'add_cart.php',
+				type: 'post',
+				dataType: 'html',
+				data: {
+					id: id,
+					size: size
+				},
+			})
+			.done(function(response) {
+				if (response == 1) {
+					alert('Đã thêm vào giỏ hàng')
+				} else {
+					alert(response)
+				}
+			})
+	});
 
-		// change selects
-		ReplaceSelectWithButtons($('#size'));
-
-		$("#form_insert").click(function(e) {
+	$(document).ready(function() {
+		$("#btn_buy").click(function(e) {
 			e.preventDefault();
 			let id = $('#id').val();
 			let size = $('#size').val();
@@ -190,13 +225,49 @@ if (mysqli_num_rows($result) == 0) {
 				})
 				.done(function(response) {
 					if (response == 1) {
-						alert('Đã thêm vào giỏ hàng')
+						window.location.assign("view_cart.php");
 					} else {
-						alert(response)
+						alert(response);
 					}
 				})
-		})
-	</script>
-</body>
+		});
+
+
+		<?php
+		$sql = "SELECT AVG(star)
+		FROM comment_product
+		WHERE product_id='$id'";
+		$result = mysqli_query($connect, $sql);
+		$result = mysqli_fetch_array($result);
+		$quantity = intval($result[0]);
+		$quantity_float = floatval($result[0]);
+		$star_number = ceil($quantity);
+		if (isset($star_number)) {
+		?>
+			$("#star_text").text(" <?php echo number_format($quantity_float, 1)?>/5");
+			switch (<?php echo $star_number ?>) {
+				case 1:
+					$("input[name='rating'][value='1']").prop("checked", true);
+					break;
+				case 2:
+					$("input[name='rating'][value='2']").prop("checked", true);
+					break;
+				case 3:
+					$("input[name='rating'][value='3']").prop("checked", true);
+					break;
+				case 4:
+					$("input[name='rating'][value='4']").prop("checked", true);
+					break;
+				case 5:
+					$("input[name='rating'][value='5']").prop("checked", true);
+					break;
+				default:
+					break;
+			}
+		<?php
+		}
+		?>
+	});
+</script>
 
 </html>

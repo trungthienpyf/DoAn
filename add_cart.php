@@ -13,7 +13,9 @@ try {
 	}
 
 
-	if (empty($_SESSION['cart'][$id]) || $_SESSION['cart'][$id] !== $size) {
+	if (isset($_SESSION['cart'][$id][$size]) ) {
+		$_SESSION['cart'][$id][$size]['quantity']++;
+	} else {
 		require 'admin/connect.php';
 		$sql = "select * from product
 		where id='$id'";
@@ -24,8 +26,6 @@ try {
 		$_SESSION['cart'][$id][$size]['img'] = $each['img'];
 		$_SESSION['cart'][$id][$size]['price'] = $each['price'];
 		$_SESSION['cart'][$id][$size]['quantity'] = 1;
-	} else {
-		$_SESSION['cart'][$id][$size]['quantity']++;
 	}
 	echo 1;
 } catch (Throwable $e) {

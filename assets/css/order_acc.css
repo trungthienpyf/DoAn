@@ -17,15 +17,15 @@
     padding-bottom: 5px;
     border-bottom: #8a9eba 1px dotted;
 }
-.order .header_order p {
+.order .header_order p.breadcrumb {
     margin-right: 5px;
 }
-.order .header_order p::after {
+.order .header_order p.breadcrumb::after {
     content: "|";
     padding: 0 5px;
     color: #1d3557;
 }
-.order .header_order p:last-child::after {
+.order .header_order p.breadcrumb:last-child::after {
     content: "";
     padding: 0;
 }
@@ -97,3 +97,12 @@
     padding: 2px 10px;
     color: #fff;
 }
+
+/*order detail*/
+.order .info {
+    width: 50%;
+}
+
+
+
+

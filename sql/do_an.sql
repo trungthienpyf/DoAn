@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th2 10, 2022 lúc 10:48 AM
+-- Thời gian đã tạo: Th2 17, 2022 lúc 02:42 AM
 -- Phiên bản máy phục vụ: 5.7.33
 -- Phiên bản PHP: 7.4.19
 
@@ -116,7 +116,9 @@ INSERT INTO `comment_product` (`id`, `content`, `time`, `customer_id`, `product_
 (7, 'nice lắm', '2022-02-10 08:04:01', 6, 53, 3),
 (8, 'dở', '2022-02-10 08:03:39', 6, 73, 1),
 (9, 'tạm được', '2022-02-10 10:05:50', 2, 53, 2),
-(10, 'ngon lành', '2022-02-10 10:07:19', 25, 53, 5);
+(10, 'ngon lành', '2022-02-10 10:07:19', 25, 53, 5),
+(11, 'quần tạm được không ưng lắm, ai yêu thích thì mua, tôi không yêu thích nhưng vẫn mua vì đó là quyền ủa tôi, bạn không có quyền đánh giá tôi.\r\n', '2022-02-15 04:12:30', 13, 53, 2),
+(12, 'goood', '2022-02-15 04:35:05', 7, 53, 3);
 
 -- --------------------------------------------------------
 
@@ -223,7 +225,9 @@ INSERT INTO `detail_orders` (`orders_id`, `product_id`, `quantity`, `size`) VALU
 (67, 52, 4, 'M'),
 (67, 52, 1, 'S'),
 (67, 53, 3, 'S'),
-(68, 53, 1, 'S');
+(68, 53, 1, 'S'),
+(69, 53, 1, 'S'),
+(70, 53, 1, 'S');
 
 -- --------------------------------------------------------
 
@@ -313,7 +317,9 @@ INSERT INTO `orders` (`id`, `time`, `name_receive`, `phone_receive`, `address_re
 (65, '2022-02-08 09:12:12', 'ha', '0123456789', 'asdasd', '', 2, 6, 349000),
 (66, '2022-02-08 09:13:25', 'ha', '0123456789', 'asdasd', '', 2, 6, 199000),
 (67, '2022-02-10 09:54:16', 'thien', '11111', 'phu yen', 'thu', 2, 2, 2097000),
-(68, '2022-02-10 10:06:54', 'Ha Nguyen', '0325162359', 'dong nai', '', 1, 25, 199000);
+(68, '2022-02-10 10:06:54', 'Ha Nguyen', '0325162359', 'dong nai', '', 1, 25, 199000),
+(69, '2022-02-15 04:11:02', 'hoang', '0325162359', 'dong nai', '', 1, 7, 199000),
+(70, '2022-02-15 04:11:00', 'hung', '0325162359', 'dong nai', '', 1, 13, 199000);
 
 -- --------------------------------------------------------
 
@@ -470,7 +476,7 @@ ALTER TABLE `category_detail`
 -- AUTO_INCREMENT cho bảng `comment_product`
 --
 ALTER TABLE `comment_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `customer`
@@ -488,7 +494,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT cho bảng `product`

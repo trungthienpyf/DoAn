@@ -147,3 +147,18 @@
 }
 
 /* Content product end*/
+
+.name{
+    color: #457b9d;
+}
+.date {
+    font-size: 12px;
+    color: #a8dadc;
+}
+.comment {
+    padding: 0 0 10px 15px !important ;
+    border-bottom: #a8dadc 1px dotted;
+}
+.comment:last-child {
+    border: none;
+}

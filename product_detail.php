@@ -20,7 +20,7 @@ if (mysqli_num_rows($result) == 0) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/product_detail.css">
-	<link rel="stylesheet" href="assets/css/rating.css">
+	<link rel="stylesheet" href="assets/css/rating_disable.css">
 	<script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
 	<title><?php
 			$id = $_GET['id'];
@@ -97,19 +97,39 @@ if (mysqli_num_rows($result) == 0) {
 						<?php echo $each['description'] ?>
 					</p>
 					<h6>Đánh giá của khách hàng</h6>
-					<div style="display: flex; align-items: center;">
-						<span class="star-cb-group">
-							<input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
-							<input type="radio" id="rating-4" name="rating" value="4" /><label for="rating-4">4</label>
-							<input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
-							<input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
-							<input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
-						</span>
-						<p style="font-size: 16px;" id="star_text"></[div]>
-					</div>
+
+
+					<?php
+					$sql = "SELECT * FROM comment_product
+					WHERE product_id='$id'";
+					$result = mysqli_query($connect, $sql);
+					if (mysqli_num_rows($result) == 0) { ?>
+						<div>
+							<p>Chưa có đánh giá</p>
+						</div>
+					<?php
+					} else {
+					?>
+						<div>
+							<div style="display: flex; align-items: center;">
+								<span class="star-cb-group">
+									<input type="radio" id="rating-5" name="rating" value="5" disabled /><label for="rating-5">5</label>
+									<input type="radio" id="rating-4" name="rating" value="4" disabled /><label for="rating-4">4</label>
+									<input type="radio" id="rating-3" name="rating" value="3" disabled /><label for="rating-3">3</label>
+									<input type="radio" id="rating-2" name="rating" value="2" disabled /><label for="rating-2">2</label>
+									<input type="radio" id="rating-1" name="rating" value="1" disabled /><label for="rating-1">1</label>
+								</span>
+								<p style="font-size: 16px;" id="star_text"></p>
+							</div>
+							<div id="comment" style=" border: #a8dadc 1px solid; padding: 10px 0;">
+
+							</div>
+						</div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<div class="other_product">
 		<link rel="stylesheet" href="assets/css/index.css">
@@ -232,7 +252,6 @@ if (mysqli_num_rows($result) == 0) {
 				})
 		});
 
-
 		<?php
 		$sql = "SELECT AVG(star)
 		FROM comment_product
@@ -244,7 +263,7 @@ if (mysqli_num_rows($result) == 0) {
 		$star_number = ceil($quantity);
 		if (isset($star_number)) {
 		?>
-			$("#star_text").text(" <?php echo number_format($quantity_float, 1)?>/5");
+			$("#star_text").text(" <?php echo number_format($quantity_float, 1) ?>/5");
 			switch (<?php echo $star_number ?>) {
 				case 1:
 					$("input[name='rating'][value='1']").prop("checked", true);
@@ -267,6 +286,27 @@ if (mysqli_num_rows($result) == 0) {
 		<?php
 		}
 		?>
+
+		load_data(page = 1, id = <?php echo $id ?>);
+
+		function load_data(page, id) {
+
+			$.ajax({
+				url: "page_comment.php",
+				method: "POST",
+				data: {
+					page: page,
+					id: id
+				},
+				success: function(data) {
+					$('#comment').html(data);
+				}
+			})
+		}
+		$(document).on('click', '.pagination_link', function() {
+			var page = $(this).attr("id");
+			load_data(page, id);
+		});
 	});
 </script>
 

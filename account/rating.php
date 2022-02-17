@@ -111,40 +111,94 @@ if (mysqli_num_rows($result) == 0) {
                                         where orders_id = '$order_id' and product_id = '$id_product' 
                                         limit 1";
                         $result_order = mysqli_query($connect, $sql);
+                        $each_order = mysqli_fetch_array($result_order);
                         ?>
 
                         <div class="header_order">
-                            <?php foreach ($result_order  as $each_order) { ?>
-                                <div class="row">
-                                    <div style="width: 25%;">
-                                        <img class="img_rating" src="../admin/product/photos/<?php echo $each_order['img'] ?>">
-                                    </div>
-                                    <div style="width: 75%;">
-                                        <?php echo $each_order['name'] ?>
-                                        <?php
-                                        if ($each_order['size']) {
-                                            echo "Size: " . ($each_order['size']);
-                                        }
-                                        ?>
-
-                                        <form id="form-rating">
-                                            <fieldset>
-                                                <input type="hidden" name="product_id" id="product_id" value=" <?php echo $each_order['product_id'] ?> ">
-                                                <input type="hidden" name="customer_id" id="customer_id" value=" <?php echo $id ?> ">
-                                                <span class="star-cb-group">
-                                                    <input type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
-                                                    <input type="radio" id="rating-4" name="rating" value="4" /><label for="rating-4">4</label>
-                                                    <input type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
-                                                    <input type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
-                                                    <input type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
-                                                </span>
-                                            </fieldset>
-                                            <textarea style="resize: none;padding: 5px;" name="comment" id="comment" cols="50" rows="7"></textarea>
-                                        </form>
-                                    </div>
+                            <div class="row">
+                                <div style="width: 25%;">
+                                    <img class="img_rating" src="../admin/product/photos/<?php echo $each_order['img'] ?>">
                                 </div>
-
-                            <?php } ?>
+                                <div style="width: 75%;">
+                                    <?php echo $each_order['name'] ?>
+                                    <?php
+                                    if ($each_order['size']) {
+                                        echo "Size: " . ($each_order['size']);
+                                    }
+                                    ?>
+                                    <?php
+                                    $id = $_SESSION['id'];
+                                    $sql = "select * from comment_product
+                                    where customer_id = $id and product_id = $id_product
+                                    limit 1";
+                                    $result = mysqli_query($connect, $sql);
+                                    $each = mysqli_fetch_array($result);
+                                    if (mysqli_num_rows($result) == 1) {
+                                        switch ($each['star']) {
+                                            case '1':
+                                                $checked_1 = "checked";
+                                                $checked_2 = "";
+                                                $checked_3 = "";
+                                                $checked_4 = "";
+                                                $checked_5 = "";
+                                                break;
+                                            case '2':
+                                                $checked_1 = "";
+                                                $checked_2 = "checked";
+                                                $checked_3 = "";
+                                                $checked_4 = "";
+                                                $checked_5 = "";
+                                                break;
+                                            case '3':
+                                                $checked_1 = "";
+                                                $checked_2 = "";
+                                                $checked_3 = "checked";
+                                                $checked_4 = "";
+                                                $checked_5 = "";
+                                                break;
+                                            case '4':
+                                                $checked_1 = "";
+                                                $checked_2 = "";
+                                                $checked_3 = "";
+                                                $checked_4 = "checked";
+                                                $checked_5 = "";
+                                                break;
+                                            case '5':
+                                                $checked_1 = "";
+                                                $checked_2 = "";
+                                                $checked_3 = "";
+                                                $checked_4 = "";
+                                                $checked_5 = "checked";
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                        $comment = $each['content'];
+                                    } else {
+                                        $checked_1 = "";
+                                        $checked_2 = "";
+                                        $checked_3 = "";
+                                        $checked_4 = "";
+                                        $checked_5 = "";
+                                        $comment = "";
+                                    }
+                                    ?>
+                                    <form id="form-rating">
+                                        <fieldset>
+                                            <input type="hidden" name="product_id" id="product_id" value=" <?php echo $each_order['product_id'] ?> ">
+                                            <input type="hidden" name="customer_id" id="customer_id" value=" <?php echo $id ?> ">
+                                            <span class="star-cb-group">
+                                                <input <?php echo $checked_5 ?> type="radio" id="rating-5" name="rating" value="5" /><label for="rating-5">5</label>
+                                                <input <?php echo $checked_4 ?> type="radio" id="rating-4" name="rating" value="4" /><label for="rating-4">4</label>
+                                                <input <?php echo $checked_3 ?> type="radio" id="rating-3" name="rating" value="3" /><label for="rating-3">3</label>
+                                                <input <?php echo $checked_2 ?> type="radio" id="rating-2" name="rating" value="2" /><label for="rating-2">2</label>
+                                                <input <?php echo $checked_1 ?> type="radio" id="rating-1" name="rating" value="1" /><label for="rating-1">1</label>
+                                            </span>
+                                        </fieldset>
+                                        <textarea style="resize: none;padding: 5px;" name="comment" id="comment" cols="50" rows="7"><?php echo  $comment ?></textarea>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <button id="btn-rating" disabled class="disable_button"> Đánh giá </button>

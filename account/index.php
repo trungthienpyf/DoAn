@@ -56,7 +56,7 @@ if (empty($_SESSION['id'])) {
                     <h3>Thông tin cá nhân</h3>
                 </div>
                 <div class="content">
-                    <form method="post" action="process_update_account.php">
+                    <form id="form-update">
                         <input type="hidden" name="id" style="display: none;" value="<?php echo $each['id'] ?>">
                         <div class="row">
                             <div class="mod_title"> Tên</div>
@@ -111,6 +111,10 @@ if (empty($_SESSION['id'])) {
     <!-- Footer end -->
 
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="../assets/js/account.js"></script>
 <script>
     //gender options
     if (<?php echo $each['gender'] ?> === 1) {
@@ -121,6 +125,28 @@ if (empty($_SESSION['id'])) {
         document.getElementById("gender").options.selectedIndex = 2;
     }
 </script>
-<script src="../assets/js/account.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#form-update").submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                    type: "POST",
+                    url: "process_update_account.php",
+                    data: $("#form-update").serializeArray(),
+                    dataType: "html",
+                })
+                .done(function(response) {
+                    if (response === 'error') {
+                        $("#email_error").text("Email đã được sử dụng");
+                        $("#email_error").show();
+                    } else {
+                        alert("Cập nhật thông tin thành công!")
+                        location.reload();
+                    }
+                });
+
+        });
+    });
+</script>
 
 </html>

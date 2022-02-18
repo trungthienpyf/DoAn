@@ -14,8 +14,8 @@
 }
 
 /*Category start*/
-.category .header_category{
-    padding: 15px 5px 10px 0; 
+.category .header_category {
+    padding: 15px 5px 10px 0;
     border-bottom: 1px #1d3557 solid;
     margin-bottom: 10px;
 }
@@ -27,17 +27,17 @@
     border-bottom: 1px #1d3557 dotted;
     margin-bottom: 20px;
 }
-.category .cate_item:last-child{
+.category .cate_item:last-child {
     border-bottom: none;
 }
 .category .cate_item ul li {
     padding: 5px;
     font-size: 18px;
 }
-.category .cate{
+.category .cate {
     text-decoration: none;
 }
-.category .cate h5:hover{
+.category .cate h5:hover {
     color: #e63946;
     transition: 0.15s;
 }
@@ -48,7 +48,7 @@
 .products .header_product {
     display: flex;
     width: 100%;
-    padding: 10px 5px 15px 0; 
+    padding: 10px 5px 15px 0;
 }
 .products .title_product {
     width: 60%;
@@ -56,6 +56,7 @@
 .products .sort_product {
     width: 40%;
     text-align: end;
+    position: relative;
 }
 
 .products .table {
@@ -63,24 +64,24 @@
     float: left;
 }
 
-.products .thumbnail{
+.products .thumbnail {
     width: 33%;
     float: left;
     text-align: center;
 }
-.products  .thumbnail .img_thumb {
+.products .thumbnail .img_thumb {
     width: 310px;
     height: 320px;
     object-fit: cover;
     object-position: 50% 20%;
 }
-.products .thumbnail .caption{
+.products .thumbnail .caption {
     padding-bottom: 20px;
 }
-.products .thumbnail .caption a{
+.products .thumbnail .caption a {
     font-size: 20px;
 }
-.products .thumbnail .caption .price{
+.products .thumbnail .caption .price {
     color: #e63946;
     padding: 5px;
 }
@@ -89,17 +90,41 @@
     width: 100%;
     text-align: center;
 }
-.products .page a{
+.products .page a {
     padding: 0 5px;
 }
-.products .page .this_page{
+.products .page .this_page {
     text-decoration: underline;
     color: #e63946;
 }
 
-.products .page a i:hover{
+.products .page a i:hover {
     color: #e63946;
     transition: 0.25s;
 }
 
+.products .sort {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.products .sub_menu {
+    display: none;
+    background-color: #fff;
+    border: #1d3557 1px solid;
+    text-align: center;
+    width: 130px;
+}
+.products .sort_product:hover .sub_menu {
+    display: block;
+    position: absolute;
+    right: 0;
+}
+.products .sort_product:hover .sub_menu ul li{
+    padding: 3px 0 ;
+    border-bottom: #1d3557 .5px dotted;
+}
+.products .sort_product:hover .sub_menu ul li:last-child{
+    border: none;
+}
 /*Products end*/

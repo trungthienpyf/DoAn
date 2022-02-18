@@ -252,12 +252,12 @@ figure{
 }
 .highcharts-figure{
 	margin: 0;
-	width: 50%;
+	width: 100%;
 }
 .chart_container{
 	padding-top: 30px;
-	display: flex;
-	justify-content: space-around;
+	/*display: flex;*/
+	/*justify-content: space-around;*/
 }
 .dashboard_info{
 	display: flex;

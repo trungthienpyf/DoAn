@@ -133,57 +133,7 @@ $each_order=mysqli_fetch_array($result);
 					  }
 
 					});
-					Highcharts.chart('container_body2', {
-					  title: {
-					    text: 'Doanh thu 30 ngày gần nhất'
-					  },
-					  yAxis: {
-					    title: {
-					      text: 'Tiền'
-					    }
-					  },
-
-					  xAxis: {
-					    categories: arrX
-					  },
-
-					  legend: {
-					    layout: 'vertical',
-					    align: 'right',
-					    verticalAlign: 'middle'
-					  },
-
-					  plotOptions: {
-					    series: {
-					      label: {
-					        connectorAllowed: false
-					      },
-					      
-					    }
-					  },
-
-					  series: [{
-					    name: 'Doanh thu',
-					    data: arrY
-
-					  }],
-
-					  responsive: {
-					    rules: [{
-					      condition: {
-					        maxWidth: 500
-					      },
-					      chartOptions: {
-					        legend: {
-					          layout: 'horizontal',
-					          align: 'center',
-					          verticalAlign: 'bottom'
-					        }
-					      }
-					    }]
-					  }
-
-					});
+					
 					})
 					
 					

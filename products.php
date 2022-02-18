@@ -116,9 +116,11 @@
                 $page = $_GET['page'];
             }
             $sql_category_text = "";
+            $sql_category_text2 = "";
             $sql_sort_text = "";
             if (isset($_GET['category'])) {
                 $sql_category_text = "where category_detail.name = '$category'";
+                $sql_category_text2 = "WHERE category.name = '$category'";
             }
             if (isset($_GET['sort'])) {
                 $sort = $_GET['sort'];
@@ -154,6 +156,23 @@
             $sql_category_text  $sql_sort_text
             limit $product_in_page offset $skip";
             $show_product = mysqli_query($connect, $sql_show_product);
+
+            $sql_show_product = "select product.*, category_detail.name
+                from product
+                join category_detail on product.category_detail_id = category_detail.id
+                $sql_category_text  $sql_sort_text
+                limit $product_in_page offset $skip";
+            $show_product = mysqli_query($connect, $sql_show_product);
+            
+            if (mysqli_num_rows($show_product) == 0) {
+                $sql_show_product = "select product.*, category.name as cate 
+                    from product
+                    join category_detail on product.category_detail_id = category_detail.id
+                    JOIN category ON category_detail.category_id = category.id
+                    $sql_category_text2  $sql_sort_text
+                    limit $product_in_page offset $skip";
+                $show_product = mysqli_query($connect, $sql_show_product);
+            }
 
             ?>
             <div class="table">

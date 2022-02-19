@@ -47,13 +47,13 @@
 			?>
 				<table border="1" width="100%">
 					<tr>
-						<th style="width: 5%;">ID</th>
-						<th style="width: 25%;">Tên</th>
-						<th style="width: 15%;">Hình ảnh</th>
-						<th style="width: 15%;">Giá</th>
-						<th style="width: 15%;">Số lượng</th>
-						<th style="width: 15%;">Tiền</th>
-						<th style="width: 10%;">Xóa</th>
+						<th style="width: 5%;text-align: center;">ID</th>
+						<th style="width: 25%;text-align: center;">Tên</th>
+						<th style="width: 15%;text-align: center;">Hình ảnh</th>
+						<th style="width: 15%;text-align: center;">Giá</th>
+						<th style="width: 15%;text-align: center;">Số lượng</th>
+						<th style="width: 15%;text-align: center;">Tiền</th>
+						<th style="width: 10%;text-align: center;">Xóa</th>
 					</tr>
 					<?php foreach ($cart as $id => $each) {
 						foreach ($each as $size => $each2) {  ?>
@@ -96,7 +96,7 @@
 				</table>
 
 				<div>
-					<h5 style="float:right;">Tổng tiền: <span id="span-total"><?php echo  $total; ?></span> vnđ</h5>
+					<h5 style="float:right;">Tổng tiền: <span id="span-total" class="number_format"><?php echo  $total; ?></span> vnđ</h5>
 				</div>
 
 				<?php
@@ -162,6 +162,7 @@
 <script src="assets/js/login.js"></script>
 <script>
 	$(document).ready(function() {
+		//edit quantity
 		$(".btn-quantity_in_cart").click(function() {
 			let btn = $(this);
 			let id = btn.data('id');
@@ -293,6 +294,7 @@
 					});
 			}
 		});
+
 	});
 </script>
 

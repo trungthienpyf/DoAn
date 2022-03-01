@@ -157,7 +157,7 @@
             limit $product_in_page offset $skip";
             $show_product = mysqli_query($connect, $sql_show_product);
 
-            $sql_show_product = "select product.*, category_detail.name
+            $sql_show_product = "select product.*, category_detail.name as cate 
                 from product
                 join category_detail on product.category_detail_id = category_detail.id
                 $sql_category_text  $sql_sort_text
@@ -173,7 +173,6 @@
                     limit $product_in_page offset $skip";
                 $show_product = mysqli_query($connect, $sql_show_product);
             }
-
             ?>
             <div class="table">
                 <?php foreach ($show_product as $each) { ?>

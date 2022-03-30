@@ -25,7 +25,7 @@
                         <input type="checkbox" name="remember" class="checkbox">
                         <p>Ghi nhớ đăng nhập</p>
                     </div>
-                    <a href="forgot_password.php" style="width: 50%;text-align: end;">Quên mật khẩu</a>
+                    <!-- <a href="forgot_password.php" style="width: 50%;text-align: end;">Quên mật khẩu</a> -->
                 </label>
                 <button >Đăng nhập</button>
             </form>

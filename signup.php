@@ -2,7 +2,7 @@
 <?php require 'admin/connect.php'; ?>
 <!-- Connect end -->
 <?php
-session_start();
+
 if (isset($_SESSION['id'])) {
     header('location:account');
     exit;
@@ -99,11 +99,14 @@ if (isset($_SESSION['id'])) {
                     dataType: "html",
                 })
                 .done(function(response) {
-                    if (response === 'error') {
-                        $("#email_error").text("Email đã được sử dụng");
+                            
+                    if (response) {
+                         $("#email_error").text("Email đã được sử dụng ");
                         $("#email_error").show();
+
                     } else {
-                        alert("Đăng kí thành công!")
+                
+                       alert("Đăng kí thành công!")
                         location.assign('index.php');
                     }
                 });

@@ -15,9 +15,10 @@ $result = mysqli_query($connect, $sql);
 $number_rows = mysqli_fetch_array($result)['count(*)'];
 
 if ($number_rows == 1) {
-    session_start();
-    $_SESSION['error'] = "Email đã được sử dụng";
-    echo "error";
+
+  
+    echo  json_encode("ERROR EMAIL");
+
     // header('location:signup.php');
     exit;
 }
@@ -25,10 +26,6 @@ $sql = "insert into customer(name,gender,birthday,email,password,phone,address)
 value('$name','$gender','$birthday','$email','$password','$phone','$address')";
 mysqli_query($connect, $sql);
 
-require 'mail.php';
-$title = "Đăng kí tài khoản thành công";
-$content = "Cảm ơn $name đã đăng kí tài khoản. Chúc bạn mua sắm vui vẻ.";
-sendmail($email, $name, $title, $content);
 
 $sql = "select id from customer
 where email = '$email'";
@@ -39,6 +36,6 @@ session_start();
 $_SESSION['id'] = $id;
 $_SESSION['name'] = $name;
 
-echo "1";
+
 mysqli_close($connect);
 // header('location:index.php');

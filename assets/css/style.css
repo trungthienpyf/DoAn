@@ -84,3 +84,6 @@ select:focus-visible {
 i {
     color: #457b9d;
 }
+.active{
+    display: none;
+}

@@ -22,16 +22,7 @@ function check_sign_up() {
     if (email.length == 0) {
         document.getElementById('email_error').innerHTML = 'Không được để trống.';
         check_email_error = true;
-    } else {
-        let regex_email = /^[\w\-]+@(?:[\w-]+)+(?:\.[\w-]{2,8}){1,5}$/;
-        if (!regex_email.test(email)) {
-            document.getElementById('email_error').innerHTML = 'Email không hợp lệ.';
-            check_email_error = true;
-        } else {
-            document.getElementById('email_error').innerHTML = '';
-            check_email_error = false;
-        }
-    }
+    } 
     //Phone
     let check_phone_error = false;
     let phone = document.getElementById('phone').value;
@@ -92,16 +83,7 @@ function check_sign_in() {
     if (email.length == 0) {
         document.getElementById('email_error_sign_in').innerHTML = 'Không được để trống.';
         check_error = true;
-    } else {
-        let regex_email = /^[\w\-]+@(?:[\w-]+)+(?:\.[\w-]{2,8}){1,5}$/;
-        if (!regex_email.test(email)) {
-            document.getElementById('email_error_sign_in').innerHTML = 'Email không hợp lệ.';
-            check_error = true;
-        } else {
-            document.getElementById('email_error_sign_in').innerHTML = '';
-            check_error = false;
-        }
-    }
+    } 
     if (check_error) {
         return false;
     }

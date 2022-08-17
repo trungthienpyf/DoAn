@@ -32,7 +32,7 @@ if ($number_rows == 1) {
     }
     // header('location:index.php');
     echo "1";
-    mysqli_close($connect);
+   
     exit;
 }
 session_start();

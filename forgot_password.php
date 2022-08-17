@@ -2,7 +2,7 @@
 <?php require 'admin/connect.php'; ?>
 <!-- Connect end -->
 <?php
-session_start();
+
 if (isset($_SESSION['id'])) {
     header('location:account');
     exit;

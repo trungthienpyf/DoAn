@@ -79,12 +79,12 @@ if (empty($_SESSION['id'])) {
                                     <?php switch ($each['status']) {
                                         case '0': ?>
                                             <p class="status status_0 breadcrumb">
-                                                <?php echo "Đang chuẩn bị"; ?>
+                                                <?php echo "Đang đặt"; ?>
                                             </p>
                                         <?php break;
                                         case '1': ?>
                                             <p class="status status_1 breadcrumb">
-                                                <?php echo "Đã hoàn thành"; ?>
+                                                <?php echo "Đơn đặt thành công"; ?>
                                             </p>
                                         <?php break;
                                         case '2': ?>
@@ -124,6 +124,15 @@ if (empty($_SESSION['id'])) {
                                                 <?php
                                                 if ($each_order['size']) {
                                                     echo "Size: " . ($each_order['size']);
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="quantity item_flex">
+                                                <?php
+                                                if (!empty($each_order['cart_payment'])) {
+                                                    echo "Thanh toán " . ucwords($each_order['cart_payment']);
+                                                }else{
+                                                    echo "Thanh toán khi nhận hàng";
                                                 }
                                                 ?>
                                             </div>

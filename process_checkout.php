@@ -2,14 +2,38 @@
 require 'admin/connect.php';
 session_start();
 
-if (empty($_POST['phone']) || empty($_POST['name']) || empty($_POST['address'])) {
-	echo "Bạn phải điền đầy đủ thông tin";
+
+
+if (empty($_POST['name'])){
+	echo "Vui lòng điền tên người nhận";
+	exit;
+}
+if (empty($_POST['phone'])){
+	echo "Vui lòng điền số điện thoại người nhận người nhận";
+	exit;
+}
+if (empty($_POST['city'])){
+	echo "Vui lòng chọn Tỉnh/ Thành Phố và các địa chỉ còn lại";
+	exit;
+}
+if (empty($_POST['district'])){
+	echo "Vui lòng chọn Quận/ Huyện và các địa chỉ còn lại";
+	exit;
+}
+if (empty($_POST['street'])){
+	echo "Vui lòng chọn Phường/ Xã và các địa chỉ còn lại";
 	exit;
 }
 
+if (empty($_POST['address_detail'])){
+	echo "Vui lòng địa chỉ cụ thể";
+	exit;
+}
+
+$address_receive=  $_POST['city'] .' ' . $_POST['district']  .' ' . $_POST['street'] .' (' . $_POST['address_detail'] .')';
 $phone_receive = $_POST['phone'];
 $name_receive = $_POST['name'];
-$address_receive = $_POST['address'];
+
 $note = $_POST['note'];
 
 $cart = $_SESSION['cart'];

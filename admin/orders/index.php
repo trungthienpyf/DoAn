@@ -55,6 +55,7 @@ $result=mysqli_query($connect,$sql);
 			<th>Thông tin người nhận</th>
 			<th>Trạng thái</th>
 			<th>Tổng tiền</th>
+			<th>Thanh toán</th>
 			<th>Xem</th>
 			<th>Duyệt</th>
 		</tr>
@@ -98,6 +99,15 @@ $result=mysqli_query($connect,$sql);
 				<td>
 					<?php echo number_format($each['total_price'], 0, '', '.')?> VNĐ 
 				</td>
+				<td>
+					<?php if(!empty($each['cart_payment'])){
+						echo ucwords($each['cart_payment']);
+					} else{ 
+						echo "Thanh toán khi nhận ";
+					} 
+					?>
+						
+					</td>
 				<td>
 					<a class="alter_style" href="detail.php?id=<?php echo $each['id']?>">Xem</a>
 				</td>

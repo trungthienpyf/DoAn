@@ -10,6 +10,8 @@
 	<script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<title>Giỏ hàng</title>
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -115,7 +117,7 @@
 					$address = "";
 				}
 				?>
-				<form style="padding-left: 60px;" method="post" id="form-order">
+				<form style="padding-left: 60px;" method="post" id="form-order" action="thanhtoanmomo.php">
 					<table>
 						<tr>
 							<td class="col">Tên người nhận</td>
@@ -132,15 +134,57 @@
 						<tr>
 							<td class="col">Địa chỉ người nhận</td>
 							<td>
-								<input type="text" name="address" value='<?php echo $address ?>'>
+									<div style="padding: 10px 0;">
+										<select name="city"  id="select-city" >
+											<option value="">Chọn Tỉnh/ Thành Phố</option>
+										</select>
+									</div>
+									<div >
+										<select name="district"  class="active" id="select-district">
+											<option value="">Chọn Quận/ Huyện</option>
+										</select>
+									</div>
+									<div style="padding: 10px 0;">
+										<select name="street" class="active"  id="select-street">
+											<option value="">Chọn Phường/Xã</option>
+										</select>
+									</div>
+									<div style="padding: 10px 0;">
+										<textarea style="width:270px;height:100px" placeholder="Địa chỉ cụ thể" name="address_detail"></textarea>
+									</div>
 							</td>
 						</tr>
 						<tr>
 							<td class="col">Ghi chú </td>
 							<td> <textarea name="note"></textarea></td>
 						</tr>
+						<tr>
+							<td class="col">Thanh toán </td>
+							<td>
+								<div>Thanh toán khi nhận hàng
+									<input type="radio" name="payment"  value='1' 
+									<?php if(isset($_GET['type']) && $_GET['type']==1){?> 
+										
+										<?php  }  ?>
+											checked
+										> 
+								</div> 
+								<div>Thanh toán MOMO bằng ATM
+									<input type="radio" name="payment" value='2' <?php if(isset($_GET['type']) && $_GET['type']==2){ ?> 
+										checked
+										<?php  }?> 
+									> 	
+								</div> 
+								
+							</td>
+						</tr>
 					</table>
 					<span style="color:red;" id="error_order"></span>
+					<?php if(isset($_GET['error'])){ ?>
+						<span  class="error_server" style="color: red; ">
+						<?php echo $_GET['error']; ?>
+						</span>
+						<?php } ?>
 					<button style="margin:0">Đặt hàng</button>
 				</form>
 			<?php  } else { ?>
@@ -158,10 +202,128 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="assets/js/login.js"></script>
 <script>
+<<<<<<< Updated upstream
 	$(document).ready(function() {
+=======
+		$('#select-district').change(function(){
+		$('#select-street').empty()
+		$('#select-street').append(`<option value="">Chọn Phường/Xã</option>`)
+			let path=$('#select-city option:selected').data('path')
+			$('#select-street').removeClass('active')
+			 $.getJSON("assets/locations/"+path, function(json) {
+			 	console.log(json)
+		
+			$.each(json.district,function(index,value){
+					if(value.name == $("#select-district option:selected").text()){
+						$.each(value.ward,function(index,street2){
+
+							console.log(street2)
+						
+								
+								$('#select-street').append(`<option value="${street2.pre +' '+street2.name}">${street2.pre +' '+street2.name}</option>`)
+						})
+							
+					}
+						
+					
+								
+					
+
+				 		
+				 	})
+				   
+				});
+			 $('#select-street').select2()
+			
+		})
+
+
+
+
+		$('#select-city').change(function(){
+		$('#select-district').empty()
+		$('#select-street').empty()
+		$('#select-district').append(`<option value="">Chọn Quận/ Huyện</option>`)
+			let path=$('#select-city option:selected').data('path')
+			$('#select-district').removeClass('active')
+			 $.getJSON("assets/locations/"+path, function(json) {
+			 	
+			
+			$.each(json,function(value){
+					$.each(json.district,function(index,district2){
+						
+						$('#select-district').append(`<option value="${district2.name}">${district2.name}</option>`)
+					})
+							
+				
+
+			 		
+			 	})
+				   
+				});
+			 $('#select-district').select2()
+			
+		})
+
+
+		$('#select-city').select2()
+		$(document).ready(async function() {
+			 $.getJSON("assets/locations/index.json", function(json) {
+			 	
+			
+			$.each(json,function(index, value){
+				
+			 		 $('#select-city').append(`<option value="${index}" data-path="${value.file_path}">${index}</option>`)
+			 	})
+				   
+				});
+			
+
+			$('#form-order').submit(function(event) {
+			
+			if($("input[name='payment']:checked").val()==='2'){
+				
+				$('#form-order').submit()
+			}else if($("input[name='payment']:checked").val()==='1'){
+				
+				event.preventDefault();
+				if (<?php echo $_SESSION['id'] ?? "''" ?> === '') {
+				console.log("hoho");
+				$("#signin_modal").modal();
+				} else {
+					$.ajax({
+							type: "POST",
+							url: "process_checkout.php",
+							data: $("#form-order").serializeArray(),
+							dataType: "html",
+						})
+						.done(function(response) {
+							if (response === '1') {
+								alert("Đặt hàng thành công!");
+								location.assign('cam_on.php');
+							} else {
+								$(".error_server").text('')
+								$("#error_order").text(response);
+								$("#error_order").show();
+								
+
+							}
+						});
+				}
+			}
+			
+		});
+
+
+
+
+
+		//edit quantity
+>>>>>>> Stashed changes
 		$(".btn-quantity_in_cart").click(function() {
 			let btn = $(this);
 			let id = btn.data('id');
@@ -230,29 +392,7 @@
 			$('#signin_modal').modal();
 		});
 
-		$('#form-order').submit(function(event) {
-			event.preventDefault();
-			if (<?php echo $_SESSION['id'] ?? "''" ?> === '') {
-				console.log("hoho");
-				$("#signin_modal").modal();
-			} else {
-				$.ajax({
-						type: "POST",
-						url: "process_checkout.php",
-						data: $("#form-order").serializeArray(),
-						dataType: "html",
-					})
-					.done(function(response) {
-						if (response === '1') {
-							alert("Đặt hàng thành công!");
-							location.reload();
-						} else {
-							$("#error_order").text(response);
-							$("#error_order").show();
-						}
-					});
-			}
-		});
+		
 
 		$('#form-signin').submit(function(event) {
 			event.preventDefault();

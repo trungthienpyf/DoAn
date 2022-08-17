@@ -1,6 +1,6 @@
 <?php
 require 'admin/connect.php';
-session_start();
+
 
 
 if (isset($_COOKIE['remember'])) {

@@ -75,7 +75,7 @@
 										<img width="200" src="admin/product/photos/<?php echo $each2['img'] ?>">
 									</a>
 								</td>
-								<td><span class="span-price"><?php echo   $each2['price'] ?></span></td>
+								<td><span class="span-price"><?php echo number_format($each2['price'], 0, '', '.') ?></span></td>
 								<td>
 									<div style="line-height: 20px; width: 60px;height: 20px;margin: 0 auto;">
 										<button style="float: left;" class="btn-quantity_in_cart mini" data-type="0" data-id="<?php echo $id ?>" data-size="<?php echo $size ?>">-</button>
@@ -84,12 +84,14 @@
 									</div>
 								</td>
 								<td>
-									<span class="span-sum">
+									<span class="span-sum" data-id="<?php echo $id ?>">
 										<?php $sum = $each2['price'] * $each2['quantity'];
-										echo $sum;
 										$total += $sum;
+										echo number_format($sum, 0, '', '.');
+
 										?>
-									</span>vnđ
+										VND
+									</span>
 								</td>
 								<td><button class="delete btn-delete" data-id="<?php echo $id ?>" data-size="<?php echo $size ?>" data-name="<?php echo $each2['name'] ?>">X</button></td>
 							</tr>
@@ -98,7 +100,7 @@
 				</table>
 
 				<div>
-					<h5 style="float:right;">Tổng tiền: <span id="span-total" class="number_format"><?php echo  $total; ?></span> vnđ</h5>
+					<h5 style="float:right;">Tổng tiền: <span id="span-total" class="number_format"><?php echo number_format($total, 0, '', '.') ; ?> VND</span> </h5>
 				</div>
 
 				<?php
@@ -206,12 +208,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="assets/js/login.js"></script>
 <script>
-<<<<<<< Updated upstream
+
 	$(document).ready(function() {
-<<<<<<< HEAD
+
 		//edit quantity
-=======
-=======
+
 		$('#select-district').change(function(){
 		$('#select-street').empty()
 		$('#select-street').append(`<option value="">Chọn Phường/Xã</option>`)
@@ -224,28 +225,17 @@
 					if(value.name == $("#select-district option:selected").text()){
 						$.each(value.ward,function(index,street2){
 
-							console.log(street2)
-						
-								
 								$('#select-street').append(`<option value="${street2.pre +' '+street2.name}">${street2.pre +' '+street2.name}</option>`)
 						})
 							
 					}
-						
-					
-								
-					
-
-				 		
+				 
 				 	})
 				   
 				});
 			 $('#select-street').select2()
 			
 		})
-
-
-
 
 		$('#select-city').change(function(){
 		$('#select-district').empty()
@@ -262,8 +252,6 @@
 						$('#select-district').append(`<option value="${district2.name}">${district2.name}</option>`)
 					})
 							
-				
-
 			 		
 			 	})
 				   
@@ -323,11 +311,8 @@
 
 
 
-
-
 		//edit quantity
->>>>>>> Stashed changes
->>>>>>> thien
+
 		$(".btn-quantity_in_cart").click(function() {
 			let btn = $(this);
 			let id = btn.data('id');
@@ -355,13 +340,20 @@
 						parent_tr.remove();
 					} else {
 						parent_tr.find('.span-quantity').text(quantity);
-						let sum = price * quantity;
+						let sum = price.replace('.','') * quantity;
+						sum=sum.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})
+					
 						parent_tr.find('.span-sum').text(sum);
 					}
 					let total = 0;
 					$(".span-sum").each(function() {
-						total += parseFloat($(this).text());
+						
+					
+						total += parseFloat($(this).text().slice(0,-4).split('.').join(""));
+						
 					})
+					total=total.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})
+						
 					$('#span-total').text(total);
 				})
 		});
@@ -381,6 +373,10 @@
 						}
 					})
 					.done(function() {
+					
+						let totalRemove=$(`span[data-id="${id}"]`).text()
+						let total=parseFloat($('#span-total').text().slice(0,-4).split('.').join("")) - parseFloat(totalRemove.slice(0,-4).split('.').join(""))
+						$('#span-total').text(total.toLocaleString('it-IT', {style : 'currency', currency : 'VND'}));
 						btn.parents('tr').remove();
 					})
 			};
@@ -439,6 +435,7 @@
 		});
 
 	});
+	})
 </script>
 
 </html>

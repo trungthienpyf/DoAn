@@ -119,10 +119,11 @@ $result=mysqli_query($connect,$sql);
 				</td>
 					
 				<?php }else{  ?>
-				<td>
-						<span style="color:rgb(120, 120, 120);">Duyệt</span>
-					<br>
-						<span style="color:rgb(120, 120, 120);">Hủy</span>
+				<td>	<?php if($each['status']==1){?>
+						<span style="color:rgb(120, 120, 120)">Đơn đã được duyêt·</span>
+						<?php } else{?>
+							<span style="color:rgb(120, 120, 120)">Đơn đã được hủy</span>
+								<?php } ?>
 				</td>
 				<?php } ?>
 			</tr>

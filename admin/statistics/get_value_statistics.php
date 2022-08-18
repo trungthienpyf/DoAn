@@ -1,7 +1,7 @@
 <?php 
 require '../connect.php';
 
-$max_date=$_GET['days'];
+$max_date=30;
 
 $sql="SELECT DATE_FORMAT(time,'%e-%m') as 'time_date',
 	sum(total_price) as 'sum' 
@@ -11,6 +11,7 @@ $sql="SELECT DATE_FORMAT(time,'%e-%m') as 'time_date',
 $result=mysqli_query($connect,$sql);
 
 $today=date('d');
+
 if($max_date >$today){
 $get_day_last_month=30-$today;
 $last_month=date('m',strtotime("-1 month")); 
@@ -31,17 +32,24 @@ $arr=[];
 for($i=$start_day_last_month; $i<=$max_day_last_month;$i++){
 	$key=$i . '-' .$last_month;
 	$arr[$key]=0;
+	
 }
 for($i=1; $i<=$today;$i++){
 	$key=$i . '-' .$this_month;
 	$arr[$key]=0;
 }
+
 foreach ($result as $each) {
-	$arr[$each['time_date']]=(float)$each['sum'];
+	
+			if(array_key_exists($each['time_date'],$arr)){
+				$arr[$each['time_date']]=(float)$each['sum'];
+				
+			}
+
 }
 
-$arr1=[];
-$object= json_encode([$arr,$arr1]);
+
+$object= json_encode([$arr]);
 echo $object;
 
 ?>

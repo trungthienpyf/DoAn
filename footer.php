@@ -7,7 +7,7 @@
                 <td>
                     <div class="footer_logo">
                         <label for="" class="logo">
-                            <h2>Logo</h2>
+                            <h2>PYClothing</h2>
                         </label>
                     </div>
                 </td>
@@ -15,7 +15,7 @@
                     <div>
                         <div class="footer_001">
                             <h3>Liên hệ</h3>
-                            <p>abcdefghik@gmail.com</p>
+                            <p>296.tdd@gmail.com</p>
                             <p>(+84) 0936 652 952</p>
                         </div>
                         <div class="footer_001">

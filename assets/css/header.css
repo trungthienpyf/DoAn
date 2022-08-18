@@ -73,6 +73,7 @@
 .header .sub_menu {
     display: none;
     background-color: #fff;
+    z-index: 100;
 }
 
 .header .menu ul.ul_1 li:hover .sub_menu {

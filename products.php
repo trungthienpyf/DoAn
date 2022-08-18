@@ -86,7 +86,7 @@
                 </div>
                 <div class="sort_product">
                     <div class="sort">
-                        <p style=" border: #1d3557 1px solid;display:block; width:130px ;text-align: center;">Sắp xếp<i class="fas fa-caret-down"></i> </p>
+                        <p  class="p_show" style=" border: #1d3557 1px solid;display:block; width:130px ;text-align: center;">Sắp xếp<i class="fas fa-caret-down "></i> </p>
                     </div>
                     <div class="sub_menu">
                         <?php

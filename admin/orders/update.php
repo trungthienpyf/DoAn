@@ -24,4 +24,4 @@ $sql="update orders set status='$status' where id='$id'";
 
 mysqli_query($connect,$sql);
 mysqli_close($connect);
-header('location:index.php');
+header('Location: ' . $_SERVER['HTTP_REFERER']);

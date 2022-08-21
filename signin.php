@@ -52,7 +52,12 @@ if (isset($_SESSION['id'])) {
                 <button onclick="return check_sign_in()">Đăng nhập</button>
                 <div class="ask">
                     <p>Bạn đã chưa có tài khoản? <a href="signup.php">Đăng kí</a></p>
+                    <p><a href="forgot_password.php">Quên mật khẩu</a></p>
                 </div>
+               <span class="error" id="error"> <?php if(isset($_GET['errorPass'])){ 
+                        echo $_GET['errorPass'];
+                    }?>  
+                    </span>
             </form>
         </div>
 

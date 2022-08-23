@@ -3,6 +3,7 @@ $email = $_POST['email'];
 require 'admin/connect.php';
 $sql = "select id,name from customer where email = '$email'";
 $result = mysqli_query($connect, $sql);
+
 if (mysqli_num_rows($result) === 1) {
     $each = mysqli_fetch_array($result);
     $id = $each['id'];
@@ -20,5 +21,10 @@ if (mysqli_num_rows($result) === 1) {
     $title = 'Đổi mật khẩu mới';
     $content = "Bấm vào <a href='$link'> đây </a> để đổi mật khẩu. ";
     sendmail($email, $name, $title, $content);
-    header('location:change_password.php');
+    
+        header('location:waiting_for_password.php');
+}else{
+        header('location:forgot_password.php?errorPass=Email không tồn tại');
+
 }
+

@@ -20,5 +20,9 @@ if (mysqli_num_rows($result) === 1) {
     $title = 'Đổi mật khẩu mới';
     $content = "Bấm vào <a href='$link'> đây </a> để đổi mật khẩu. ";
     sendmail($email, $name, $title, $content);
-    header('location:change_password.php');
+     header('location:waiting_for_password.php');
+}else{
+        header('location:forgot_password.php?errorPass=Email không tồn tại');
+
 }
+

@@ -81,7 +81,7 @@ if(isset($_GET['resultCode']) && $_GET['resultCode']==0 ){
 	<link rel="stylesheet" href="assets/css/view_cart.css">
 	<script src="https://kit.fontawesome.com/19302221dc.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<title>Giỏ hàng</title>
+	<title>Cảm ơn</title>
 </head>
 
 <body>
@@ -108,7 +108,9 @@ if(isset($_GET['resultCode']) && $_GET['resultCode']==0 ){
 <div class="main">
 		<div style="min-height: 600px; margin:0 40px;">
 			<div class="title_product" style="padding-bottom: 15px; margin-left: 150px;">
+
 				<h3>Cảm ơn</h3>
+				<!-- <h3>Giỏ hàng</h3> -->
 			</div>
 
 				<h3 style="text-align:center">Đặt hàng thành công!</h3>

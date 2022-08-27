@@ -1,5 +1,10 @@
+
 <?php 
 require 'admin/connect.php';
+
+<?php 
+require 'admin/connect.php';
+	
 
 
 
@@ -49,7 +54,6 @@ require 'admin/connect.php';
 			</div>
 
 				<h3 style="text-align:center">Vui lòng xác nhận mật khẩu qua gmail</h3>
-
 		</div>
 	</div>
 	<?php include 'signup-modal.php' ?>

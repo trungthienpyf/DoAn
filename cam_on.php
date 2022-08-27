@@ -1,4 +1,3 @@
-
 <?php 
 require 'admin/connect.php';
 session_start();
@@ -109,6 +108,8 @@ if(isset($_GET['resultCode']) && $_GET['resultCode']==0 ){
 <div class="main">
 		<div style="min-height: 600px; margin:0 40px;">
 			<div class="title_product" style="padding-bottom: 15px; margin-left: 150px;">
+
+				<h3>Cảm ơn</h3>
 				<!-- <h3>Giỏ hàng</h3> -->
 			</div>
 

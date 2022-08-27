@@ -46,7 +46,10 @@ if (isset($_SESSION['id'])) {
                     ?>
                 </span>
                 <button onclick="return check_sign_up()">Nhận liên kết xác minh</button>
+
+  <span class="error" id="error"> 
                      <span class="error" id="error"> 
+
                         <?php if(isset($_GET['errorPass'])){ 
                         echo $_GET['errorPass'];
                              }?>  

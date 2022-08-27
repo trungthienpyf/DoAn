@@ -18,12 +18,24 @@ function sendmail($email, $name, $title, $content)
     try {
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+
         $mail->IsSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.office365.com';     
         $mail->Port       = 587 ;          
         $mail->SMTPSecure = "STARTTLS";
                                   //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
                         //Set the SMTP server to send through
+
+        $mail->Username   = 'pyclothing1@outlook.com.vn';                     //SMTP username
+        $mail->Password   = 'trungthien@123';                               //SMTP password                               //SMTP password
+        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+$mail->SMTPAuth = true;
+        //Recipients
+
+        $mail->CharSet = "UTF-8";
+        $mail->setFrom('
+pyclothing1@outlook.com.vn', 'Mail PYClothing');
+
         $mail->Username   = 'xxthiencute@outlook.com';                     //SMTP username
         $mail->Password   = 'trungthien@123';                               //SMTP password
         // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
@@ -33,6 +45,7 @@ function sendmail($email, $name, $title, $content)
 
         //Recipients
         $mail->setFrom('xxthiencute@outlook.com', 'Mail PYClothing');
+
         $mail->addAddress($email, $name);     //Add a recipient
 
 

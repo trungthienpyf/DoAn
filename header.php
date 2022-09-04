@@ -113,3 +113,32 @@ if (isset($_COOKIE['remember'])) {
         </div>
     </nav>
 </header>
+        
+    <div class="css_zalo">
+       
+              <div class="coccoc-alo-phone coccoc-alo-green coccoc-alo-show">
+            <div class="coccoc-alo-ph-circle"></div>
+            
+            <div class="coccoc-alo-ph-circle-fill"></div>
+               <a href="https://zalo.me/0367891596">
+            <div class="coccoc-zalo-ph-img-circle"></div>
+              </a>
+        </div>
+    
+      
+ </div>
+        
+    <div class="css_phone">
+       
+              <div class="coccoc-alo-phone coccoc-alo-green coccoc-alo-show">
+            <div class="coccoc-alo-ph-circle"></div>
+           
+            <div class="coccoc-alo-ph-circle-fill"></div>
+              
+                  <a href="tel:0367891596">
+            <div class="coccoc-alo-ph-img-circle"></div>
+              </a>
+        </div>
+    
+      
+ </div>

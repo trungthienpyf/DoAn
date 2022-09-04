@@ -55,13 +55,15 @@ if (isset($_SESSION['id'])) {
                     <p><a href="forgot_password.php">Quên mật khẩu</a></p>
                 </div>
 
-                               <span class="error" id="error"> <?php if(isset($_GET['errorPass'])){ 
+                              
 
-               <span class="error" id="error"> <?php if(isset($_GET['errorPass'])){ 
+               <span class="error" id="error"> 
+               <?php if(isset($_GET['errorPass'])){ 
 
                         echo $_GET['errorPass'];
                     }?>  
                     </span>
+
             </form>
         </div>
 

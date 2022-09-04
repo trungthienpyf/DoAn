@@ -1,69 +1,6 @@
 <?php 
 require 'admin/connect.php';
 session_start();
-if (isset($_SESSION['id'])) {
-	$customer_id = $_SESSION['id'];
-} else {
-	$customer_id = 18;
-}
-
-if(isset($_GET['resultCode']) && $_GET['resultCode']==0 ){
-	if(isset($_GET['partnerCode'])){
-	$_SESSION['p'];
-	$_SESSION['n'];
-	$_SESSION['a'];
-	$_SESSION['te'];
-	$cart = $_SESSION['cart'];
-
-	$partnerCode=$_GET['partnerCode'];
-	$orderId=$_GET['orderId'];
-
-	$amount=$_GET['amount'];
-	$orderInfo=$_GET['orderInfo'];
-	$orderType=$_GET['orderType'];
-	$transId=$_GET['transId'];
-
-	$payType=$_GET['payType'];
-
-		$phone_receive=$_SESSION['p'];
-	$name_receive=$_SESSION['n'];
-	$address_receive=$_SESSION['a'];
-	$note=$_SESSION['te'];
-
-	$code_cart=rand(1,100000);
-	$sql = "insert into momo(partner_code, order_id, amount, order_info, order_type, trans_id, pay_type,code_cart) 
-	values('$partnerCode', '$orderId', '$amount', '$orderInfo', '$orderType', '$transId', '$payType','$code_cart')";
-	mysqli_query($connect, $sql);
-
-	$status = 0;
-
-
-	$sql = "insert into orders(name_receive, phone_receive, address_receive, note, status, customer_id, total_price,code_cart,cart_payment) 
-	values('$name_receive', '$phone_receive', '$address_receive', '$note', '$status', '$customer_id', '$amount','$code_cart','momo')";
-	mysqli_query($connect, $sql);
-
-	$sql = "select max(id) from orders where customer_id='$customer_id'";
-	$result = mysqli_query($connect, $sql);
-
-	$orders_id = mysqli_fetch_array($result)['max(id)'];
-	$quantity = 0;
-	foreach ($cart as $product_id => $id) {
-		foreach ($id as $size => $each) {
-			$quantity = $each['quantity'];
-			$sql = "insert into detail_orders(orders_id, product_id, quantity,size) 
-		values('$orders_id','$product_id','$quantity','$size')";
-			mysqli_query($connect, $sql);
-		}
-	}
-	unset($_SESSION['cart'],$_SESSION['p'],$_SESSION['n'],$_SESSION['a'],$_SESSION['te']);
-	}
-
-}else{
-	header('Location:view_cart.php' );
-}
-
-	
-	
 
 
 ?>
@@ -86,7 +23,12 @@ if(isset($_GET['resultCode']) && $_GET['resultCode']==0 ){
 
 <body>
 
+	<!-- Connect start -->
+	<?php
 
+	
+
+	?>
 	<!-- Connect end-->
 
 	<!-- Header start -->

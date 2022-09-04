@@ -71,6 +71,69 @@ $each_order=mysqli_fetch_array($result);
 	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			let arr_rate=[];
+
+			$.ajax({
+				url: '../statistics/get_value_statistics_for_rate.php',
+				type: 'get',
+				dataType: 'json',
+				 async: false,
+				
+				success:function(response){
+					let object = response[0]
+                    // console.log(object)
+                    arr_rate.push(object)
+                    
+				}
+			})
+				console.log(arr_rate[0].succes);
+			Highcharts.chart('container_body2', {
+			    chart: {
+			        plotBackgroundColor: null,
+			        plotBorderWidth: null,
+			        plotShadow: false,
+			        type: 'pie'
+			    },
+			    title: {
+			        text: 'Tỉ lệ xử lý đơn hàng'
+			    },
+			  
+			    accessibility: {
+			        point: {
+			            valueSuffix: '%'
+			        }
+			    },
+			    plotOptions: {
+			        pie: {
+			            allowPointSelect: true,
+			            cursor: 'pointer',
+			            dataLabels: {
+			                enabled: true,
+			                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+			            }
+			        }
+			    },
+			    series: [{
+			        name: 'Tỉ lệ',
+			        colorByPoint: true,
+			        data: [{
+			            name: 'Thành công',
+			            y: parseInt(arr_rate[0].succes),
+			            sliced: true,
+			            selected: true
+			        }, {
+			            name: 'Thất bại',
+			            y:parseInt(arr_rate[0].failed)
+	
+			        }],
+			    }]
+			});
+
+
+
+
+
+
 			$.ajax({
 				url: '../statistics/get_value_statistics.php',
 				type: 'get',

@@ -2,6 +2,7 @@
     width: 1280px;
     margin: 0 auto;
     display: flex;
+    min-height: 579px;
 }
 .main_account .menu_left {
     width: 20%;

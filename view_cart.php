@@ -100,7 +100,7 @@
 				</table>
 
 				<div>
-					<h5 style="float:right;">Tổng tiền: <span id="span-total" class="number_format"><?php echo number_format($total, 0, '', '.') ; ?> VND</span> </h5>
+					<h5 style="float:right;">Tổng tiền: <span id="span-total" style="font-size: 20px" class="number_format"><?php echo number_format($total, 0, '', '.') ; ?> VND</span> </h5>
 				</div>
 
 				<?php
@@ -119,7 +119,7 @@
 					$address = "";
 				}
 				?>
-				<form style="padding-left: 60px;" method="post" id="form-order" action="thanhtoanmomo.php">
+				<form style="padding-left: 60px; margin-top: 20px;" method="post" id="form-order" action="thanhtoanmomo.php">
 					<table>
 						<tr>
 							<td class="col">Tên người nhận</td>
@@ -187,9 +187,10 @@
 						<?php echo $_GET['error']; ?>
 						</span>
 						<?php } ?>
-					<button style="margin:0">Đặt hàng</button>
+					<button style="margin:0;margin-top:15px;">Đặt hàng</button>
 				</form>
 			<?php  } else { ?>
+
 				<h3 style="text-align:center">Giỏ hàng của bạn đang rỗng</h3>
 			<?php } ?>
 		</div>
@@ -279,6 +280,7 @@
 			if($("input[name='payment']:checked").val()==='2'){
 				
 				$('#form-order').submit()
+
 			}else if($("input[name='payment']:checked").val()==='1'){
 				
 				event.preventDefault();
@@ -293,9 +295,9 @@
 							dataType: "html",
 						})
 						.done(function(response) {
-							if (response === '1') {
+							if (response == '1') {
 								alert("Đặt hàng thành công!");
-								location.assign('cam_on.php');
+								location.assign('cam_on_normal.php');
 							} else {
 								$(".error_server").text('')
 								$("#error_order").text(response);

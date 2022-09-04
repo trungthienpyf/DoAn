@@ -34,17 +34,26 @@
 		<div class="navbar">
 			<ul class="navbar-body">
 				<li class="navbar-list"><a href="../root" class="navbar-item">Trang chủ</a></li>
-				<li class="navbar-list pointer " id="category"><a class="navbar-item head_color">Danh mục <i id="toggle_icon" class="fas fa-chevron-right icon_padding"></i></a>
+				
+				<?php if($_SESSION['level']==0){ ?>
+						<li class="navbar-list"><a href="../orders" class="navbar-item">Đơn hàng</a></li>
+
+				<?php }else{ ?>
+						<li class="navbar-list"><a href="../orders" class="navbar-item">Đơn hàng</a></li>
+						<li class="navbar-list pointer " id="category"><a class="navbar-item head_color">Danh mục <i id="toggle_icon" class="fas fa-chevron-right icon_padding"></i></a>
 				</li>
 				<div id="category_sub" class="display_click">
 				<li class="navbar-list_sub  animation_nav "><a href="../category" class="navbar-item">Quản lý danh mục chính</a></li>	
 				<li class="navbar-list_sub  animation_nav " ><a href="../category_sub" class="navbar-item">Quản lý danh mục phụ</a></li>	
 				</div>
-				
 				<li class="navbar-list"><a href="../manufactures" class="navbar-item">Quản lý nhà sản xuất</a></li>
 				<li class="navbar-list"><a href="../staff" class="navbar-item">Quản lý nhân viên</a></li>
+				<li class="navbar-list"><a href="../customer" class="navbar-item">Quản lý khách hàng</a></li>
 				<li class="navbar-list"><a href="../product" class="navbar-item">Sản phẩm</a></li>
-				<li class="navbar-list"><a href="../orders" class="navbar-item">Đơn hàng</a></li>
+				<?php } ?>
+			
+				
+				
 			</ul>
 		</div>
 		<div class="main-body">

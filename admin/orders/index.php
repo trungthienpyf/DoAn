@@ -61,7 +61,7 @@ $result=mysqli_query($connect,$sql);
 		</tr>
 		<?php foreach ($result as $id => $each) { ?>
 			<tr style="text-align:center;">
-				<td><?php echo $id+1?></td>
+				<td><?php echo $each['id']?></td>
 				<td><?php 
 				$d=strtotime($each['time']);
 				echo "Ngày: ". date("d-m-Y",$d) ."<br>";

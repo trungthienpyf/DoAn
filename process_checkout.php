@@ -68,6 +68,11 @@ foreach ($cart as $product_id => $id) {
 		mysqli_query($connect, $sql);
 	}
 }
+
+
+
+
 unset($_SESSION['cart']);
 echo "1";
 mysqli_close($connect);
+

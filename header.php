@@ -30,7 +30,7 @@ if (isset($_COOKIE['remember'])) {
         </label>
 
         <div class="logo">
-            <a href="index.php">PYClothing</a>
+            <a href="index.php">PhuYenSide</a>
         </div>
 
         <div class="menu">

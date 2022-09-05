@@ -7,7 +7,7 @@
                 <td>
                     <div class="footer_logo">
                         <label for="" class="logo">
-                            <h2>Logo</h2>
+                            <h2>PhuYenSide</h2>
                         </label>
                     </div>
                 </td>

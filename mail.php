@@ -34,7 +34,7 @@ $mail->SMTPAuth = true;
 
         $mail->CharSet = "UTF-8";
         $mail->setFrom('
-pyclothing1@outlook.com.vn', 'Mail PYClothing');
+pyclothing1@outlook.com.vn', 'Mail PhuYenSide');
 
         $mail->Username   = 'xxthiencute@outlook.com';                     //SMTP username
         $mail->Password   = 'trungthien@123';                               //SMTP password
@@ -44,7 +44,7 @@ pyclothing1@outlook.com.vn', 'Mail PYClothing');
         $mail->CharSet = "UTF-8";
 
         //Recipients
-        $mail->setFrom('xxthiencute@outlook.com', 'Mail PYClothing');
+        $mail->setFrom('xxthiencute@outlook.com', 'Mail PhuYenSide');
 
         $mail->addAddress($email, $name);     //Add a recipient
 

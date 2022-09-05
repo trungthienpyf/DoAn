@@ -17,7 +17,11 @@
 		
 		<div class="header-compoment">
 			<div class="header-logo">
-			    <img style="padding-left: 10px;" height="65px" src="../photos_logo/logo_da.gif" alt="">
+			   <h2 style="line-height: 65px;color: #1b1942;
+    font-size: 45px;
+    font-weight: bold;
+
+  " >PhuYenSide</h2>
 			</div>
 			<ul class="header-container ">
 				
